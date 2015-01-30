@@ -24,7 +24,6 @@ public class UsuarioBean implements AbstractBean {
     }
 
     public String consultar(ActionEvent actionEvent) {
-        addMessage("Usuário Cadastrado com sucesso");
         return "usuarioConsulta";
     }
 
@@ -48,6 +47,18 @@ public class UsuarioBean implements AbstractBean {
     public void addMessage(String summary) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
         FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    @Override
+    public String prepararInclusao(ActionEvent actionEvent) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public String prepararEdicao(ActionEvent actionEvent) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

@@ -9,28 +9,22 @@
 	<ui:define name="titulo">Consulta de Usuários</ui:define>
 
 	<ui:define name="corpo">
-		<h1>Consulta de Usuários</h1>
 		<h:form>
-			<h:dataTable value="#{usuarioBean.usuarioView.usuarios}" var="usuario"
-				border="1" cellspacing="0" cellpadding="2">
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Login" />
-					</f:facet>
+			<p:dataTable var="usuario"
+				value="#{usuarioBean.usuarioView.usuarios}">
+				<p:column headerText="Login">
 					<h:outputText value="#{usuario.login}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Opções" />
-					</f:facet>
-					<h:commandButton value="Visualizar"
-						action="#{usuarioBean.visualizar}" />
-					<h:commandButton value="Editar"
-						action="#{usuarioBean.editar}" />
-					<h:commandButton value="Excluir"
-						action="#{usuarioBean.excluir}" />
-				</h:column>
-			</h:dataTable>
+				</p:column>
+
+				<p:column headerText="Opções">
+					<p:commandButton value="Visualizar"
+						actionListener="#{usuarioBean.visualizar}" ajax="false" />
+					<p:commandButton value="Editar"
+						actionListener="#{usuarioBean.editar}" ajax="false" />
+					<p:commandButton value="Excluir"
+						actionListener="#{usuarioBean.excluir}" ajax="false" />
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>
