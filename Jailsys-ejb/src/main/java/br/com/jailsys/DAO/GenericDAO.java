@@ -17,8 +17,8 @@ public abstract class GenericDAO<T extends EntidadeComum> {
 
     private static final String QUERY_LISTAR_POR = "FROM %s o WHERE o.%s = :valor";
 
-    @PersistenceContext(unitName = "BOX_DS")
-    private EntityManager em;
+    @PersistenceContext(unitName = "jailsys")
+    private EntityManager manager;
 
     private static final Logger LOGGER = Logger.getLogger(GenericDAO.class);
 
@@ -93,10 +93,10 @@ public abstract class GenericDAO<T extends EntidadeComum> {
     }
 
     protected EntityManager getEntityManager() {
-        if (em == null) {
+        if (manager == null) {
             throw new IllegalStateException("getEntityManager() não foi setado antes do uso neste DAO");
         }
-        return em;
+        return manager;
     }
 
     private Class<?> getTypeClass() {

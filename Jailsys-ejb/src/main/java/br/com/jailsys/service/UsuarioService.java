@@ -2,44 +2,46 @@ package br.com.jailsys.service;
 
 import java.util.List;
 
+import br.com.jailsys.DAO.UsuarioDAO;
 import br.com.jailsys.model.EntidadeComum;
+import br.com.jailsys.model.Usuario;
 
 public class UsuarioService implements AbstractService<EntidadeComum> {
-
+    
+    
+    UsuarioDAO usuarioDao;
+    
+    
     @Override
     public void salvar(EntidadeComum entidade) {
-        // TODO Auto-generated method stub
-        
+        usuarioDao.salvar((Usuario) entidade);
     }
 
     @Override
     public EntidadeComum salvarERetornar(EntidadeComum entidade) {
-        // TODO Auto-generated method stub
-        return null;
+        return usuarioDao.salvarERetornar((Usuario) entidade);
     }
 
     @Override
     public void editar(EntidadeComum entidade) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public List<EntidadeComum> consultar() {
-        // TODO Auto-generated method stub
-        return null;
+         usuarioDao.atualizar((Usuario) entidade);
     }
 
     @Override
     public void excluir(Long id) {
-        // TODO Auto-generated method stub
+        usuarioDao.delete(id);
         
     }
 
     @Override
     public void buscar(Long id) {
-        // TODO Auto-generated method stub
+        usuarioDao.buscar(id);
         
+    }
+
+
+    public List<Usuario> consultar() {
+        return usuarioDao.listar(); 
     }
 
 }
