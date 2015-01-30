@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -13,22 +14,22 @@ public class Usuario {
     @Id
     @GeneratedValue
     private Long id;
-    
-    @Column(length=100, nullable=false)
+
+    @Column(length = 100, nullable = false, unique = true)
     private String login;
-    
-    @Column(length=100, nullable=false)
+
+    @Column(length = 100, nullable = false)
     private String senha;
-    
-    @OneToOne(cascade=CascadeType.PERSIST)
-    @Column(nullable=false)
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
-    
-    @ManyToOne(cascade=CascadeType.PERSIST)
-    @Column(nullable=false)
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "grupo_id")
     private Grupo grupo;
-    
-    @Column(nullable=false)
+
+    @Column(nullable = false)
     private boolean ativo;
 
     public Long getId() {
