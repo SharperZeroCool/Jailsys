@@ -11,5 +11,6 @@ public interface AbstractService<T extends EntidadeComum> {
     public void editar(T entidade);
     public List<T> consultar();
     public void excluir(Long id);
+    public void excluir(T entidade);
     public void buscar(Long id);
 }
