@@ -1,19 +1,20 @@
 package br.com.jailsys.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Usuario {
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Usuario extends EntidadeComum implements Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1801799201648626978L;
 
     @Column(length = 100, nullable = false, unique = true)
     private String login;
@@ -31,14 +32,6 @@ public class Usuario {
 
     @Column(nullable = false)
     private boolean ativo;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getLogin() {
         return login;
