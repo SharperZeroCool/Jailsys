@@ -45,10 +45,6 @@ public class UsuarioBean implements AbstractBean, Serializable {
         this.inputConfimacaoSenha = inputConfimacaoSenha;
     }
     
-    public void teste() {
-        System.out.println("asdas");
-    }
-
     private HtmlCommandButton botaoSalvar;
 
     public String consultar() {
