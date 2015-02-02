@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
@@ -17,7 +17,7 @@ import br.com.jailsys.service.UsuarioService;
 import br.com.jailsys.view.UsuarioView;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class UsuarioBean implements AbstractBean, Serializable {
 
     /**
@@ -43,6 +43,10 @@ public class UsuarioBean implements AbstractBean, Serializable {
 
     public void setInputConfimacaoSenha(HtmlInputText inputConfimacaoSenha) {
         this.inputConfimacaoSenha = inputConfimacaoSenha;
+    }
+    
+    public void teste() {
+        System.out.println("asdas");
     }
 
     private HtmlCommandButton botaoSalvar;

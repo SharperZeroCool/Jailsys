@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.jailsys.model.Usuario;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class UsuarioView implements Serializable {
     /**
      * 
