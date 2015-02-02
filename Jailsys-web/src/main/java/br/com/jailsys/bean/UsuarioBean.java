@@ -50,8 +50,12 @@ public class UsuarioBean implements AbstractBean, Serializable {
         usuarioView.getUsuario().setAtivo(Boolean.TRUE);
         service.salvar(usuarioView.getUsuario());
         addMessage("Usuário Cadastrado com sucesso");
-        usuarioView.setUsuarios(service.consultar());
+        this.atualizarView();
         return "usuarioConsulta.xhtml?faces-redirect=true";
+    }
+    
+    public void atualizarView(){
+        usuarioView.setUsuarios(service.consultar());
     }
 
     public String editar() {
