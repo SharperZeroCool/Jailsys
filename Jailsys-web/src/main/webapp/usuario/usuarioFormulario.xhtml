@@ -12,17 +12,17 @@
 				<p:outputLabel value="Login" for="login" />
 				<p:inputText id="login" size="100"
 					value="#{usuarioBean.usuarioView.usuario.login}" required="true"
-					binding="#{usuarioBean.inputLogin}" />
+					binding="#{usuarioBean.usuarioView.inputLogin}" />
 				<p:outputLabel value="Senha" for="senha" />
 				<p:password id="senha" size="100"
 					value="#{usuarioBean.usuarioView.usuario.senha}" feedback="true"
 					inline="true" match="confirmacaoSenha" label="Senha"
-					required="true" binding="#{usuarioBean.inputSenha}" />
+					required="true" binding="#{usuarioBean.usuarioView.inputSenha}" />
 				<p:outputLabel value="Confirmação de Senha" for="confirmacaoSenha" />
 				<p:password id="confirmacaoSenha" size="100"
 					value="#{usuarioBean.usuarioView.confirmacaoSenha}" feedback="true"
 					inline="true" label="Confirmação de Senha" required="true"
-					binding="#{usuarioBean.inputConfimacaoSenha}" />
+					binding="#{usuarioBean.usuarioView.inputConfimacaoSenha}" />
 				<ui:insert name="botao" />
 			</p:panelGrid>
 		</h:form>
