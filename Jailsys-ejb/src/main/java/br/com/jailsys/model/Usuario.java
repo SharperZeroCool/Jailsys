@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import br.com.jailsys.util.CriptografiaUtil;
+
 @Entity
 public class Usuario extends EntidadeComum implements Serializable {
     /**
@@ -71,5 +73,13 @@ public class Usuario extends EntidadeComum implements Serializable {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public void criptografarSenha() {
+        this.senha = getSenhaCriptografada();
+    }
+
+    public String getSenhaCriptografada() {
+        return CriptografiaUtil.criptografar(this.getSenha());
     }
 }
