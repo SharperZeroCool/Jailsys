@@ -30,6 +30,11 @@ public class UsuarioBean implements AbstractBean, Serializable {
     @Inject
     private UsuarioView usuarioView;
 
+    private String telaCadastro = "usuarioCadastro.xhtml";
+    private String telaConsulta = "usuarioConsulta.xhtml";
+    private String telaEdicao = "usuarioEdicao.xhtml";
+    private String mudaURL = "?faces-redirect=true";
+
     public List<Usuario> consultar() {
         if (usuarioView.getUsuarios().isEmpty()) {
             usuarioView.setUsuarios(service.consultar());
@@ -38,12 +43,12 @@ public class UsuarioBean implements AbstractBean, Serializable {
     }
 
     public String prepararInclusao(ActionEvent actionEvent) {
-        return "usuarioCadastro.xhtml";
+        return telaCadastro;
     }
 
     public String prepararEdicao(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        return "usuarioEdicao.xhtml";
+        return telaEdicao;
     }
 
     public String salvar() {
@@ -51,28 +56,28 @@ public class UsuarioBean implements AbstractBean, Serializable {
         service.salvar(usuarioView.getUsuario());
         addMessage("Usuário Cadastrado com sucesso");
         this.atualizarView();
-        return "usuarioConsulta.xhtml?faces-redirect=true";
+        return telaConsulta + mudaURL;
     }
-    
-    public void atualizarView(){
+
+    public void atualizarView() {
         usuarioView.setUsuarios(service.consultar());
     }
 
     public String editar() {
         service.editar(usuarioView.getUsuario());
         addMessage("Usuário Editado com sucesso");
-        return "usuarioConsulta.xhtml?faces-redirect=true";
+        return telaConsulta + mudaURL;
     }
 
     public String visualizar(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        return "usuarioEdicao.xhtml";
+        return telaEdicao;
     }
 
     public String excluir(Usuario usuario) {
         service.excluir(usuario);
-        addMessage("Usuário Excluido com sucesso");
-        return "usuarioConsulta.xhtml";
+        addMessage("Usuário Excluído com sucesso");
+        return telaConsulta;
     }
 
     public void addMessage(String summary) {

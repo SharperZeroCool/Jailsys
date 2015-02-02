@@ -31,7 +31,7 @@ public class UsuarioView implements Serializable {
 
     private HtmlInputText inputSenha;
 
-    private HtmlInputText inputConfimacaoSenha;
+    private HtmlInputText inputConfirmacaoSenha;
 
     private HtmlCommandButton botaoSalvar;
 
@@ -75,12 +75,12 @@ public class UsuarioView implements Serializable {
         this.inputSenha = inputSenha;
     }
 
-    public HtmlInputText getInputConfimacaoSenha() {
-        return inputConfimacaoSenha;
+    public HtmlInputText getInputConfirmacaoSenha() {
+        return inputConfirmacaoSenha;
     }
 
-    public void setInputConfimacaoSenha(HtmlInputText inputConfimacaoSenha) {
-        this.inputConfimacaoSenha = inputConfimacaoSenha;
+    public void setInputConfirmacaoSenha(HtmlInputText inputConfirmacaoSenha) {
+        this.inputConfirmacaoSenha = inputConfirmacaoSenha;
     }
 
     public HtmlCommandButton getBotaoSalvar() {
