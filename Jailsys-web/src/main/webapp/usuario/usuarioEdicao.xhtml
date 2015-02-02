@@ -10,6 +10,6 @@
 	<ui:define name="botao">
 		<p:outputLabel />
 		<p:commandButton value="Submit" actionListener="#{usuarioBean.editar}"
-			ajax="false" />
+			ajax="false" binding="#{usuarioBean.botaoSalvar}"/>
 	</ui:define>
 </ui:composition>

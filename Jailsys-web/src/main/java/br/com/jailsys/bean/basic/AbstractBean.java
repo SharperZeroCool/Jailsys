@@ -2,6 +2,8 @@ package br.com.jailsys.bean.basic;
 
 import javax.faces.event.ActionEvent;
 
+import br.com.jailsys.model.Usuario;
+
 public interface AbstractBean {
 
     /**
@@ -10,7 +12,7 @@ public interface AbstractBean {
      * @param actionEvent
      * @return
      */
-    public String consultar(ActionEvent actionEvent);
+    public String consultar();
 
     /**
      * Carrega o botao de inclusao junto com o formulario de cadastro e carrega
@@ -28,7 +30,7 @@ public interface AbstractBean {
      * @param actionEvent
      * @return
      */
-    public String prepararEdicao(ActionEvent actionEvent);
+    public String prepararEdicao(Usuario usuario);
 
     /**
      * Persiste os dados da entidade correspondente no banco de dados.
@@ -36,7 +38,7 @@ public interface AbstractBean {
      * @param actionEvent
      * @return
      */
-    public String salvar(ActionEvent actionEvent);
+    public String salvar();
 
     /**
      * Altera os dados da entidade correspondente no banco de dados.
@@ -53,7 +55,7 @@ public interface AbstractBean {
      * @param actionEvent
      * @return
      */
-    public String visualizar(ActionEvent actionEvent);
+    public String visualizar(Usuario usuario);
 
     /**
      * Altera o status da instancia da entidade correspondente para inativo e
@@ -62,5 +64,5 @@ public interface AbstractBean {
      * @param actionEvent
      * @return
      */
-    public String excluir(ActionEvent actionEvent);
+    public String excluir(Usuario usuario);
 }
