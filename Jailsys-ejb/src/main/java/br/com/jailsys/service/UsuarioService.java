@@ -35,6 +35,7 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
         Usuario usuario = (Usuario) entidade;
         usuario.setPessoa(pessoa);
         usuario.setGrupo(grupo);
+        usuario.criptografarSenha();
         usuarioDao.salvar((Usuario) entidade);
     }
 
@@ -51,8 +52,7 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
     @Override
     public void excluir(Long id) {
         Usuario usuario = (Usuario) buscar(id);
-        usuario.setAtivo(false);
-        editar(usuario);
+        excluir(usuario);
         
     }
 
@@ -69,8 +69,8 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 
     @Override
     public void excluir(EntidadeComum entidade) {
-        ((Usuario) entidade).setAtivo(false);
-        editar(entidade);
+        ((Usuario) entidade).setAtivo(Boolean.FALSE);
+        usuarioDao.atualizar((Usuario) entidade);
     }
 
 }

@@ -1,12 +1,11 @@
 package br.com.jailsys.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.component.html.HtmlCommandButton;
-import javax.faces.component.html.HtmlInputText;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -17,7 +16,7 @@ import br.com.jailsys.service.UsuarioService;
 import br.com.jailsys.view.UsuarioView;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class UsuarioBean implements AbstractBean, Serializable {
 
     /**
@@ -31,27 +30,11 @@ public class UsuarioBean implements AbstractBean, Serializable {
     @Inject
     private UsuarioView usuarioView;
 
-    private HtmlInputText inputLogin;
-
-    private HtmlInputText inputSenha;
-
-    private HtmlInputText inputConfimacaoSenha;
-
-    public HtmlInputText getInputConfimacaoSenha() {
-        return inputConfimacaoSenha;
-    }
-
-    public void setInputConfimacaoSenha(HtmlInputText inputConfimacaoSenha) {
-        this.inputConfimacaoSenha = inputConfimacaoSenha;
-    }
-    
-    private HtmlCommandButton botaoSalvar;
-
-    public String consultar() {
+    public List<Usuario> consultar() {
         if (usuarioView.getUsuarios().isEmpty()) {
             usuarioView.setUsuarios(service.consultar());
         }
-        return "usuarioConsulta";
+        return usuarioView.getUsuarios();
     }
 
     public String prepararInclusao(ActionEvent actionEvent) {
@@ -60,10 +43,11 @@ public class UsuarioBean implements AbstractBean, Serializable {
 
     public String prepararEdicao(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        return "usuarioEdicao";
+        return "usuarioEdicao.xhtml?faces-redirect=true";
     }
 
     public String salvar() {
+        usuarioView.getUsuario().setAtivo(Boolean.TRUE);
         service.salvar(usuarioView.getUsuario());
         addMessage("Usuário Cadastrado com sucesso");
         usuarioView.setUsuarios(service.consultar());
@@ -78,9 +62,6 @@ public class UsuarioBean implements AbstractBean, Serializable {
 
     public String visualizar(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        this.inputLogin.setDisabled(true);
-        this.inputSenha.setDisabled(true);
-        this.botaoSalvar.setDisabled(true);
         return "usuarioCadastro.xhtml?faces-redirect=true";
     }
 
@@ -101,30 +82,6 @@ public class UsuarioBean implements AbstractBean, Serializable {
 
     public void setUsuarioView(UsuarioView usuarioView) {
         this.usuarioView = usuarioView;
-    }
-
-    public HtmlInputText getInputLogin() {
-        return inputLogin;
-    }
-
-    public void setInputLogin(HtmlInputText inputLogin) {
-        this.inputLogin = inputLogin;
-    }
-
-    public HtmlInputText getInputSenha() {
-        return inputSenha;
-    }
-
-    public void setInputSenha(HtmlInputText inputSenha) {
-        this.inputSenha = inputSenha;
-    }
-
-    public HtmlCommandButton getBotaoSalvar() {
-        return botaoSalvar;
-    }
-
-    public void setBotaoSalvar(HtmlCommandButton botaoSalvar) {
-        this.botaoSalvar = botaoSalvar;
     }
 
 }

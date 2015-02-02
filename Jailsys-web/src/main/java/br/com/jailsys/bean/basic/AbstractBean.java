@@ -1,5 +1,7 @@
 package br.com.jailsys.bean.basic;
 
+import java.util.List;
+
 import javax.faces.event.ActionEvent;
 
 import br.com.jailsys.model.Usuario;
@@ -12,7 +14,7 @@ public interface AbstractBean {
      * @param actionEvent
      * @return
      */
-    public String consultar();
+    public List<Usuario> consultar();
 
     /**
      * Carrega o botao de inclusao junto com o formulario de cadastro e carrega

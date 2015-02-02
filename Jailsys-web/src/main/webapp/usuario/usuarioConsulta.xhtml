@@ -6,27 +6,30 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<f:metadata>
-		<f:viewAction action="#{usuarioBean.consultar}" />
-	</f:metadata>
-
 	<ui:define name="titulo">Consulta de Usuários</ui:define>
 
 	<ui:define name="corpo">
 		<h:form prependId="false">
 			<p:dataTable var="usuario"
-				value="#{usuarioBean.usuarioView.usuarios}">
+				value="#{usuarioBean.consultar()}">
 				<p:column headerText="Login">
 					<h:outputText value="#{usuario.login}" />
+				</p:column>
+				<p:column headerText="Ativo">
+					<h:outputText value="#{usuario.ativo}" />
 				</p:column>
 
 				<p:column headerText="Opções">
 					<p:commandButton value="Visualizar"
-						action="#{usuarioBean.visualizar(usuario)}" ajax="false" immediate="true" />
+						action="#{usuarioBean.visualizar(usuario)}" ajax="false" immediate="true">						<f:param name="usuario" value="#{usuario}"></f:param>
+					</p:commandButton>
 					<p:commandButton value="Editar"
-						action="#{usuarioBean.prepararEdicao(usuario)}" ajax="false" immediate="true" />
+						action="#{usuarioBean.prepararEdicao(usuario)}" ajax="false" immediate="true">						<f:param name="usuario" value="#{usuario}"></f:param>
+					</p:commandButton>
 					<p:commandButton value="Excluir"
-						action="#{usuarioBean.excluir(usuario)}" ajax="false" immediate="true" />
+						action="#{usuarioBean.excluir(usuario)}" ajax="false" immediate="true">
+						<f:param name="usuario" value="#{usuario}"></f:param>
+					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 		</h:form>
