@@ -21,14 +21,14 @@
 
 				<p:column headerText="Opções">
 					<p:commandButton value="Visualizar"
-						action="#{usuarioBean.visualizar(usuario)}" ajax="false" immediate="true">						<f:param name="usuario" value="#{usuario}"></f:param>
+						action="#{usuarioBean.visualizar(usuario)}" ajax="false" immediate="true">						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
 					<p:commandButton value="Editar"
-						action="#{usuarioBean.prepararEdicao(usuario)}" ajax="false" immediate="true">						<f:param name="usuario" value="#{usuario}"></f:param>
+						action="#{usuarioBean.prepararEdicao(usuario)}" ajax="false" immediate="true">						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
 					<p:commandButton value="Excluir"
 						action="#{usuarioBean.excluir(usuario)}" ajax="false" immediate="true">
-						<f:param name="usuario" value="#{usuario}"></f:param>
+						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>

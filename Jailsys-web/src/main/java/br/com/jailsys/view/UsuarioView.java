@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.jailsys.model.Usuario;
+import br.com.jailsys.qualifier.UsuarioBean;
 
 @Named
 public class UsuarioView implements Serializable {
@@ -19,6 +20,7 @@ public class UsuarioView implements Serializable {
     private static final long serialVersionUID = 693074166910643443L;
 
     @Inject
+    @UsuarioBean
     Usuario usuario;
 
     private List<Usuario> usuarios = new ArrayList<Usuario>();

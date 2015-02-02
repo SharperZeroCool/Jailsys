@@ -48,7 +48,7 @@ public interface AbstractBean {
      * @param actionEvent
      * @return
      */
-    public String editar(ActionEvent actionEvent);
+    public String editar();
 
     /**
      * Visualiza os dados da entidade correspondente sem permitir a edicao da

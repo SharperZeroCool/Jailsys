@@ -38,12 +38,12 @@ public class UsuarioBean implements AbstractBean, Serializable {
     }
 
     public String prepararInclusao(ActionEvent actionEvent) {
-        return "usuarioCadastro";
+        return "usuarioCadastro.xhtml";
     }
 
     public String prepararEdicao(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        return "usuarioEdicao.xhtml?faces-redirect=true";
+        return "usuarioEdicao.xhtml";
     }
 
     public String salvar() {
@@ -54,21 +54,21 @@ public class UsuarioBean implements AbstractBean, Serializable {
         return "usuarioConsulta.xhtml?faces-redirect=true";
     }
 
-    public String editar(ActionEvent actionEvent) {
+    public String editar() {
         service.editar(usuarioView.getUsuario());
         addMessage("Usuário Editado com sucesso");
-        return "usuarioConsulta";
+        return "usuarioConsulta.xhtml?faces-redirect=true";
     }
 
     public String visualizar(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        return "usuarioCadastro.xhtml?faces-redirect=true";
+        return "usuarioEdicao.xhtml";
     }
 
     public String excluir(Usuario usuario) {
         service.excluir(usuario);
         addMessage("Usuário Excluido com sucesso");
-        return "usuarioConsulta";
+        return "usuarioConsulta.xhtml";
     }
 
     public void addMessage(String summary) {
