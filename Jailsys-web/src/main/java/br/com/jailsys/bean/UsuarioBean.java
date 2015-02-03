@@ -30,10 +30,10 @@ public class UsuarioBean implements AbstractBean, Serializable {
     @Inject
     private UsuarioView usuarioView;
 
-    private String telaCadastro = "usuarioCadastro.xhtml";
-    private String telaConsulta = "usuarioConsulta.xhtml";
-    private String telaEdicao = "usuarioEdicao.xhtml";
-    private String mudaURL = "?faces-redirect=true";
+    private final String TELA_CADASTRO = "usuarioCadastro.xhtml";
+    private final String TELA_CONSULTA = "usuarioConsulta.xhtml";
+    private final String TELA_EDICAO = "usuarioEdicao.xhtml";
+    private final String MUDAR_URL = "?faces-redirect=true";
 
     public List<Usuario> consultar() {
         if (usuarioView.getUsuarios().isEmpty()) {
@@ -43,12 +43,12 @@ public class UsuarioBean implements AbstractBean, Serializable {
     }
 
     public String prepararInclusao(ActionEvent actionEvent) {
-        return telaCadastro;
+        return TELA_CADASTRO;
     }
 
     public String prepararEdicao(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        return telaEdicao;
+        return TELA_EDICAO;
     }
 
     public String salvar() {
@@ -56,7 +56,7 @@ public class UsuarioBean implements AbstractBean, Serializable {
         service.salvar(usuarioView.getUsuario());
         addMessage("Usuário Cadastrado com sucesso");
         this.atualizarView();
-        return telaConsulta + mudaURL;
+        return TELA_CONSULTA + MUDAR_URL;
     }
 
     public void atualizarView() {
@@ -66,18 +66,18 @@ public class UsuarioBean implements AbstractBean, Serializable {
     public String editar() {
         service.editar(usuarioView.getUsuario());
         addMessage("Usuário Editado com sucesso");
-        return telaConsulta + mudaURL;
+        return TELA_CONSULTA + MUDAR_URL;
     }
 
     public String visualizar(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        return telaEdicao;
+        return TELA_EDICAO;
     }
 
     public String excluir(Usuario usuario) {
         service.excluir(usuario);
         addMessage("Usuário Excluído com sucesso");
-        return telaConsulta;
+        return TELA_CONSULTA;
     }
 
     public void addMessage(String summary) {
