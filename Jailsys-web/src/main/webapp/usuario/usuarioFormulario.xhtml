@@ -23,6 +23,9 @@
 					value="#{usuarioBean.usuarioView.confirmacaoSenha}" feedback="true"
 					inline="true" label="Confirmação de Senha" required="true"
 					binding="#{usuarioBean.usuarioView.inputConfimacaoSenha}" />
+				<p:outputLabel value="Ativo" for="ativo" />
+				<p:selectBooleanCheckbox id="ativo"
+					value="#{usuarioBean.usuarioView.usuario.ativo}" />
 				<ui:insert name="botao" />
 			</p:panelGrid>
 		</h:form>

@@ -47,7 +47,6 @@ public class UsuarioBean implements AbstractBean, Serializable {
     }
 
     public String salvar() {
-        usuarioView.getUsuario().setAtivo(Boolean.TRUE);
         service.salvar(usuarioView.getUsuario());
         addMessage("Usuário Cadastrado com sucesso");
         usuarioView.setUsuarios(service.consultar());
