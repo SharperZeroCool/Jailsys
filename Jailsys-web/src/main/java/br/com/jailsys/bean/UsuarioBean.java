@@ -18,9 +18,6 @@ import br.com.jailsys.view.UsuarioView;
 @ViewScoped
 public class UsuarioBean implements AbstractBean, Serializable {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 2256641221649626781L;
 
     @Inject

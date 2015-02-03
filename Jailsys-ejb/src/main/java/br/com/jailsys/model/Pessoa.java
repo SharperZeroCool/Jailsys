@@ -10,20 +10,18 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Pessoa extends EntidadeComum implements Serializable {
-    /**
-     * 
-     */
+
     private static final long serialVersionUID = -7205815321884922764L;
 
-    @Column(length=100, nullable=false)
+    @Column(length = 100, nullable = false)
     private String nome;
-    
-    @Column(length=20, nullable=false)
+
+    @Column(length = 20, nullable = false)
     private String cpfCnpj;
-    
-    @Column(length=100, nullable=false)
+
+    @Column(length = 100, nullable = false)
     private String email;
-    
+
     @Temporal(TemporalType.DATE)
     private Date dataNasc;
 

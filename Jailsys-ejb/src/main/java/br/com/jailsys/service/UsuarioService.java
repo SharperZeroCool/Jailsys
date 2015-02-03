@@ -15,9 +15,6 @@ import br.com.jailsys.model.Usuario;
 public class UsuarioService implements AbstractService<EntidadeComum>,
         Serializable {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1028924301178170070L;
     @Inject
     UsuarioDAO usuarioDao;
@@ -46,25 +43,24 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 
     @Override
     public void editar(EntidadeComum entidade) {
-         usuarioDao.atualizar((Usuario) entidade);
+        usuarioDao.atualizar((Usuario) entidade);
     }
 
     @Override
     public void excluir(Long id) {
         Usuario usuario = (Usuario) buscar(id);
         excluir(usuario);
-        
+
     }
 
     @Override
     public EntidadeComum buscar(Long id) {
         return usuarioDao.buscar(id);
-        
+
     }
 
-
     public List<Usuario> consultar() {
-        return usuarioDao.listar(); 
+        return usuarioDao.listar();
     }
 
     @Override

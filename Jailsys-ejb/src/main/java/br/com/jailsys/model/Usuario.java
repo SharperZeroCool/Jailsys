@@ -13,9 +13,7 @@ import br.com.jailsys.util.CriptografiaUtil;
 
 @Entity
 public class Usuario extends EntidadeComum implements Serializable {
-    /**
-     * 
-     */
+
     private static final long serialVersionUID = 1801799201648626978L;
 
     @Column(length = 100, nullable = false, unique = true)

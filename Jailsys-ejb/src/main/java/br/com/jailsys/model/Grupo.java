@@ -7,15 +7,13 @@ import javax.persistence.Entity;
 
 @Entity
 public class Grupo extends EntidadeComum implements Serializable {
-    /**
-     * 
-     */
+    
     private static final long serialVersionUID = -2924742858034727696L;
 
-    @Column(length=100, nullable=false)
+    @Column(length = 100, nullable = false)
     private String nome;
-    
-    @Column(length=500)
+
+    @Column(length = 500)
     private String descricao;
 
     public String getNome() {
