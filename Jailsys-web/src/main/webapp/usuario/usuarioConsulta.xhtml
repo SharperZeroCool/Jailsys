@@ -10,8 +10,7 @@
 
 	<ui:define name="corpo">
 		<h:form prependId="false">
-			<p:dataTable var="usuario"
-				value="#{usuarioBean.consultar()}">
+			<p:dataTable var="usuario" value="#{usuarioBean.consultar()}">
 				<p:column headerText="Login">
 					<h:outputText value="#{usuario.login}" />
 				</p:column>
@@ -21,13 +20,15 @@
 
 				<p:column headerText="Opções">
 					<p:commandButton value="Visualizar"
-						action="#{usuarioBean.visualizar(usuario)}" ajax="false" immediate="true">						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
+						action="#{usuarioBean.visualizar(usuario)}" ajax="false">
+						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
 					<p:commandButton value="Editar"
-						action="#{usuarioBean.prepararEdicao(usuario)}" ajax="false" immediate="true">						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
+						action="#{usuarioBean.prepararEdicao(usuario)}" ajax="false">
+						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
 					<p:commandButton value="Excluir"
-						action="#{usuarioBean.excluir(usuario)}" ajax="false" immediate="true">
+						action="#{usuarioBean.excluir(usuario)}" ajax="false">
 						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
 				</p:column>

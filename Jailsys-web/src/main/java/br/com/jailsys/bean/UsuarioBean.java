@@ -54,7 +54,6 @@ public class UsuarioBean implements AbstractBean, Serializable {
     }
 
     public String salvar() {
-        usuarioView.getUsuario().setAtivo(Boolean.TRUE);
         service.salvar(usuarioView.getUsuario());
         FacesUtil.mostrarMensagemSucesso(MENSAGEM_CADASTRO);
         this.atualizarView();
