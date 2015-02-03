@@ -8,9 +8,11 @@
 	<title><ui:insert name="titulo">Jailsys</ui:insert></title>
 </h:head>
 <h:body>
-	<f:loadBundle basename="messages" var="msg" /> 
+	<f:loadBundle basename="messages" var="msg" />
 	<div id="conteudo">
-		<h1><h:outputText value="#{msg['jailsysweb.paginainicial.header']}" /></h1>
+		<h1>
+			<h:outputText value="#{msg['jailsysweb.template.header']}" />
+		</h1>
 		<h:form prependId="false">
 			<p:menubar style="margin-top: -20px; margin-bottom: 20px">
 				<p:menuitem value="Início" outcome="/index" />
@@ -25,6 +27,8 @@
 		</h:form>
 		<ui:insert name="corpo" />
 	</div>
-	<footer><h:outputText value="#{msg['jailsysweb.paginainicial.footer']}" /></footer>
+	<footer>
+		<h:outputText value="#{msg['jailsysweb.template.footer']}" />
+	</footer>
 </h:body>
 </html>

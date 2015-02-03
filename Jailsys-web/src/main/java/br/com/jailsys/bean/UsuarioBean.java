@@ -3,16 +3,15 @@ package br.com.jailsys.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 
 import br.com.jailsys.bean.basic.AbstractBean;
 import br.com.jailsys.model.Usuario;
 import br.com.jailsys.service.UsuarioService;
+import br.com.jailsys.util.FacesUtil;
 import br.com.jailsys.view.UsuarioView;
 
 @ManagedBean
@@ -34,6 +33,9 @@ public class UsuarioBean implements AbstractBean, Serializable {
     private final String TELA_CONSULTA = "usuarioConsulta.xhtml";
     private final String TELA_EDICAO = "usuarioEdicao.xhtml";
     private final String MUDAR_URL = "?faces-redirect=true";
+    private final String MENSAGEM_CADASTRO = "jailsysweb.usuario.cadastro.sucesso";
+    private final String MENSAGEM_EDICAO = "jailsysweb.usuario.edicao.sucesso";
+    private final String MENSAGEM_EXCLUSAO = "jailsysweb.usuario.exclusao.sucesso";
 
     public List<Usuario> consultar() {
         if (usuarioView.getUsuarios().isEmpty()) {
@@ -54,7 +56,7 @@ public class UsuarioBean implements AbstractBean, Serializable {
     public String salvar() {
         usuarioView.getUsuario().setAtivo(Boolean.TRUE);
         service.salvar(usuarioView.getUsuario());
-        addMessage("Usuário Cadastrado com sucesso");
+        FacesUtil.mostrarMensagemSucesso(MENSAGEM_CADASTRO);
         this.atualizarView();
         return TELA_CONSULTA + MUDAR_URL;
     }
@@ -65,7 +67,7 @@ public class UsuarioBean implements AbstractBean, Serializable {
 
     public String editar() {
         service.editar(usuarioView.getUsuario());
-        addMessage("Usuário Editado com sucesso");
+        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EDICAO);
         return TELA_CONSULTA + MUDAR_URL;
     }
 
@@ -76,13 +78,8 @@ public class UsuarioBean implements AbstractBean, Serializable {
 
     public String excluir(Usuario usuario) {
         service.excluir(usuario);
-        addMessage("Usuário Excluído com sucesso");
+        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EXCLUSAO);
         return TELA_CONSULTA;
-    }
-
-    public void addMessage(String summary) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
-        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
     public UsuarioView getUsuarioView() {
