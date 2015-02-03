@@ -39,7 +39,7 @@ public class UsuarioBean implements AbstractBean, Serializable {
 
     public List<Usuario> consultar() {
         if (usuarioView.getUsuarios().isEmpty()) {
-            usuarioView.setUsuarios(service.consultar());
+            this.atualizarView();
         }
         return usuarioView.getUsuarios();
     }
@@ -49,7 +49,6 @@ public class UsuarioBean implements AbstractBean, Serializable {
     }
 
     public String prepararEdicao(Usuario usuario) {
-        usuarioView.setUsuario(usuario);
         return TELA_EDICAO;
     }
 
@@ -71,7 +70,6 @@ public class UsuarioBean implements AbstractBean, Serializable {
     }
 
     public String visualizar(Usuario usuario) {
-        usuarioView.setUsuario(usuario);
         return TELA_EDICAO;
     }
 
