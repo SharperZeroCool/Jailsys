@@ -57,7 +57,7 @@ public class UsuarioBean implements AbstractBean, Serializable {
         service.salvar(usuarioView.getUsuario());
         FacesUtil.mostrarMensagemSucesso(MENSAGEM_CADASTRO);
         this.atualizarView();
-        return TELA_CONSULTA + MUDAR_URL;
+        return TELA_CONSULTA;
     }
 
     public void atualizarView() {
@@ -67,7 +67,7 @@ public class UsuarioBean implements AbstractBean, Serializable {
     public String editar() {
         service.editar(usuarioView.getUsuario());
         FacesUtil.mostrarMensagemSucesso(MENSAGEM_EDICAO);
-        return TELA_CONSULTA + MUDAR_URL;
+        return TELA_CONSULTA;
     }
 
     public String visualizar(Usuario usuario) {

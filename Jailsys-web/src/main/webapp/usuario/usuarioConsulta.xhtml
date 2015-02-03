@@ -10,11 +10,15 @@
 
 	<ui:define name="corpo">
 		<h:form prependId="false">
-			<p:dataTable var="usuario" value="#{usuarioBean.consultar()}">
-				<p:column headerText="Login">
+			<p:dataTable var="usuario" value="#{usuarioBean.consultar()}"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Login" sortBy="#{usuario.login}"
+					filterBy="#{usuario.login}" filterMatchMode="contains">
 					<h:outputText value="#{usuario.login}" />
 				</p:column>
-				<p:column headerText="Ativo">
+				<p:column headerText="Ativo" sortBy="#{usuario.ativo}">
 					<h:outputText value="#{usuario.ativo}" />
 				</p:column>
 
