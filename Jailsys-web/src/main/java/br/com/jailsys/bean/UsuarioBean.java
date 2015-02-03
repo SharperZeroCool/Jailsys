@@ -30,6 +30,11 @@ public class UsuarioBean implements AbstractBean, Serializable {
     @Inject
     private UsuarioView usuarioView;
 
+    private final String TELA_CADASTRO = "usuarioCadastro.xhtml";
+    private final String TELA_CONSULTA = "usuarioConsulta.xhtml";
+    private final String TELA_EDICAO = "usuarioEdicao.xhtml";
+    private final String MUDAR_URL = "?faces-redirect=true";
+
     public List<Usuario> consultar() {
         if (usuarioView.getUsuarios().isEmpty()) {
             usuarioView.setUsuarios(service.consultar());
@@ -38,36 +43,40 @@ public class UsuarioBean implements AbstractBean, Serializable {
     }
 
     public String prepararInclusao(ActionEvent actionEvent) {
-        return "usuarioCadastro.xhtml";
+        return TELA_CADASTRO;
     }
 
     public String prepararEdicao(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        return "usuarioEdicao.xhtml";
+        return TELA_EDICAO;
     }
 
     public String salvar() {
         service.salvar(usuarioView.getUsuario());
         addMessage("Usuário Cadastrado com sucesso");
+        this.atualizarView();
+        return TELA_CONSULTA + MUDAR_URL;
+    }
+
+    public void atualizarView() {
         usuarioView.setUsuarios(service.consultar());
-        return "usuarioConsulta.xhtml?faces-redirect=true";
     }
 
     public String editar() {
         service.editar(usuarioView.getUsuario());
         addMessage("Usuário Editado com sucesso");
-        return "usuarioConsulta.xhtml?faces-redirect=true";
+        return TELA_CONSULTA + MUDAR_URL;
     }
 
     public String visualizar(Usuario usuario) {
         usuarioView.setUsuario(usuario);
-        return "usuarioEdicao.xhtml";
+        return TELA_EDICAO;
     }
 
     public String excluir(Usuario usuario) {
         service.excluir(usuario);
-        addMessage("Usuário Excluido com sucesso");
-        return "usuarioConsulta.xhtml";
+        addMessage("Usuário Excluído com sucesso");
+        return TELA_CONSULTA;
     }
 
     public void addMessage(String summary) {
