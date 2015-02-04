@@ -12,7 +12,7 @@ public class Funcionario extends Pessoa {
 
     private static final long serialVersionUID = -2104357455313055533L;
 
-    @Column(length = 45, nullable = false)
+    @Column(length = 45, nullable = false, unique = true)
     private String codigo;
 
     @Temporal(TemporalType.TIME)
@@ -25,9 +25,6 @@ public class Funcionario extends Pessoa {
 
     @Temporal(TemporalType.TIME)
     private Date horarioEntrada;
-
-    @Column(nullable = false)
-    private boolean ativo;
 
     public String getCodigo() {
         return codigo;
@@ -59,14 +56,6 @@ public class Funcionario extends Pessoa {
 
     public void setHorarioEntrada(Date horarioEntrada) {
         this.horarioEntrada = horarioEntrada;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
     }
 
 }

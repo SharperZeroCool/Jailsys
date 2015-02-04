@@ -16,7 +16,7 @@ public class ProdutorUsuario {
 
     @Produces
     @UsuarioBean
-    public Usuario produzirGrupo() {
+    public Usuario produzirUsuario() {
         Usuario usuario = new Usuario();
         String id = FacesUtil.getRequestParameter("idUsuario");
         if (!Strings.isNullOrEmpty(id)) {

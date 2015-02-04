@@ -6,22 +6,40 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Cadastro de Pessoa</ui:define>
+	<ui:define name="titulo">
+		#{msg['jailsysweb.pessoa.titulo.cadastro.label']}
+	</ui:define>
 
 	<ui:define name="corpo">
-		<h1>Cadastro de Pessoa</h1>
+		<h1>
+			<p:outputLabel
+				value="#{msg['jailsysweb.pessoa.titulo.cadastro.label']}" />
+		</h1>
 		<h:form>
 			<p:panelGrid columns="2">
-				<p:outputLabel value="Nome" for="nome" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}"
+					for="nome" />
 				<p:inputText id="nome" size="100" value="#{pessoaBean.nome}" />
-				<p:outputLabel value="CPF/CNPJ" for="cpfCnpj" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.pessoa.form.cadastro.label.cpfCnpj']}"
+					for="cpfCnpj" />
 				<p:inputText id="cpfCnpj" size="100" value="#{pessoaBean.cpfCnpj}" />
-				<p:outputLabel value="E-mail" for="email" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.pessoa.form.cadastro.label.email']}"
+					for="email" />
 				<p:inputText id="email" size="100" value="#{pessoaBean.email}" />
-				<p:outputLabel value="Data de Nascimento" for="dataNascimento" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}"
+					for="dataNascimento" />
 				<p:calendar id="dataNascimento" size="12" pattern="dd/MM/yyyy"
 					value="#{pessoaBean.dataNascimento}">
 				</p:calendar>
+				<p:outputLabel
+					value="#{msg['jailsysweb.pessoa.form.cadastro.label.celular']}"
+					for="celular" />
+				<p:inputMask id="celular" value="#{pessoaBean.celular}"
+					mask="+99 (99) 9999-9999?9" />
 			</p:panelGrid>
 		</h:form>
 	</ui:define>

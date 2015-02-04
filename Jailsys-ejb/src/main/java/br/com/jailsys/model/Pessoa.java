@@ -5,10 +5,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Pessoa extends EntidadeComum implements Serializable {
 
     private static final long serialVersionUID = -7205815321884922764L;
@@ -16,7 +19,7 @@ public class Pessoa extends EntidadeComum implements Serializable {
     @Column(length = 100, nullable = false)
     private String nome;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 20, nullable = false, unique = true)
     private String cpfCnpj;
 
     @Column(length = 100, nullable = false)
@@ -24,6 +27,9 @@ public class Pessoa extends EntidadeComum implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date dataNasc;
+
+    @Column(length = 15, unique = true)
+    private String celular;
 
     public String getNome() {
         return nome;
@@ -55,5 +61,13 @@ public class Pessoa extends EntidadeComum implements Serializable {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 }
