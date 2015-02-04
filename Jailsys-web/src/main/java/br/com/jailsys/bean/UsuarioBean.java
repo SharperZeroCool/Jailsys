@@ -34,7 +34,7 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
     private final String MENSAGEM_EDICAO = "jailsysweb.usuario.edicao.sucesso";
     private final String MENSAGEM_EXCLUSAO = "jailsysweb.usuario.exclusao.sucesso";
 
-    public List<Usuario> consultar() {
+    public List<Usuario> listar() {
         if (usuarioView.getUsuarios().isEmpty()) {
             this.atualizarView();
         }
@@ -57,7 +57,7 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
     }
 
     public void atualizarView() {
-        usuarioView.setUsuarios(service.consultar());
+        usuarioView.setUsuarios(service.listar());
     }
 
     public String editar() {

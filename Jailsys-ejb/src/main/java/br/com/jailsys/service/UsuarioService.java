@@ -43,7 +43,7 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 
     @Override
     public void editar(EntidadeComum entidade) {
-        usuarioDao.atualizar((Usuario) entidade);
+        usuarioDao.editar((Usuario) entidade);
     }
 
     @Override
@@ -59,14 +59,14 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 
     }
 
-    public List<Usuario> consultar() {
+    public List<Usuario> listar() {
         return usuarioDao.listar();
     }
 
     @Override
     public void excluir(EntidadeComum entidade) {
         ((Usuario) entidade).setAtivo(Boolean.FALSE);
-        usuarioDao.atualizar((Usuario) entidade);
+        usuarioDao.editar((Usuario) entidade);
     }
 
 }

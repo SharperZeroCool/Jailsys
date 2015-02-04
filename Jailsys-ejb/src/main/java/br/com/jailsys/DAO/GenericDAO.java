@@ -22,13 +22,13 @@ public abstract class GenericDAO<T extends EntidadeComum> {
 
     private static final Logger LOGGER = Logger.getLogger(GenericDAO.class);
 
-    public void salvar(T entity) {
-        getEntityManager().persist(entity);
+    public void salvar(T entidade) {
+        getEntityManager().persist(entidade);
         getEntityManager().flush();
     }
 
-    public void atualizar(T entity) {
-        getEntityManager().merge(entity);
+    public void editar(T entidade) {
+        getEntityManager().merge(entidade);
         getEntityManager().flush();
     }
 
@@ -42,15 +42,15 @@ public abstract class GenericDAO<T extends EntidadeComum> {
         return object;
     }
 
-    public void delete(T entity) {
-        entity = getEntityManager().merge(entity);
-        getEntityManager().remove(entity);
+    public void excluir(T entidade) {
+        entidade = getEntityManager().merge(entidade);
+        getEntityManager().remove(entidade);
         getEntityManager().flush();
     }
 
-    public void delete(Long id) {
+    public void excluir(Long id) {
         T object = buscar(id);
-        delete(object);
+        excluir(object);
     }
 
     public List<T> listarPor(String atributo, Object valor) {
@@ -104,10 +104,10 @@ public abstract class GenericDAO<T extends EntidadeComum> {
                 .getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
-    public T salvarERetornar(T entity) {
-        getEntityManager().persist(entity);
+    public T salvarERetornar(T entidade) {
+        getEntityManager().persist(entidade);
         getEntityManager().flush();
-        return entity;
+        return entidade;
     }
 
     public Query criarQuery(String query) {
