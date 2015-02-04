@@ -28,7 +28,7 @@ public class Pessoa extends EntidadeComum implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataNasc;
 
-    @Column(length = 15, unique = true)
+    @Column(length = 20, unique = true)
     private String celular;
 
     private boolean ativo;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<ui:composition template="/WEB-INF/template/Layout.xhtml"
+<ui:composition template="/pessoa/pessoaFormulario.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -10,37 +10,9 @@
 		#{msg['jailsysweb.pessoa.titulo.cadastro.label']}
 	</ui:define>
 
-	<ui:define name="corpo">
-		<h1>
-			<p:outputLabel
-				value="#{msg['jailsysweb.pessoa.titulo.cadastro.label']}" />
-		</h1>
-		<h:form>
-			<p:panelGrid columns="2">
-				<p:outputLabel
-					value="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}"
-					for="nome" />
-				<p:inputText id="nome" size="100" value="#{pessoaBean.nome}" />
-				<p:outputLabel
-					value="#{msg['jailsysweb.pessoa.form.cadastro.label.cpfCnpj']}"
-					for="cpfCnpj" />
-				<p:inputText id="cpfCnpj" size="100" value="#{pessoaBean.cpfCnpj}" />
-				<p:outputLabel
-					value="#{msg['jailsysweb.pessoa.form.cadastro.label.email']}"
-					for="email" />
-				<p:inputText id="email" size="100" value="#{pessoaBean.email}" />
-				<p:outputLabel
-					value="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}"
-					for="dataNascimento" />
-				<p:calendar id="dataNascimento" size="12" pattern="dd/MM/yyyy"
-					value="#{pessoaBean.dataNascimento}">
-				</p:calendar>
-				<p:outputLabel
-					value="#{msg['jailsysweb.pessoa.form.cadastro.label.celular']}"
-					for="celular" />
-				<p:inputMask id="celular" value="#{pessoaBean.celular}"
-					mask="+99 (99) 9999-9999?9" />
-			</p:panelGrid>
-		</h:form>
+	<ui:define name="botao">
+		<p:commandButton action="#{pessoaBean.salvar()}"
+			value="#{msg['jailsysweb.pessoa.form.cadastro.botao.salvar']}"
+			ajax="false" />
 	</ui:define>
 </ui:composition>
