@@ -5,10 +5,10 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 
 import br.com.jailsys.bean.basic.AbstractBean;
+import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Usuario;
 import br.com.jailsys.service.UsuarioService;
 import br.com.jailsys.util.FacesUtil;
@@ -16,7 +16,7 @@ import br.com.jailsys.view.UsuarioView;
 
 @ManagedBean
 @ViewScoped
-public class UsuarioBean implements AbstractBean, Serializable {
+public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 
     private static final long serialVersionUID = 2256641221649626781L;
 
@@ -34,18 +34,18 @@ public class UsuarioBean implements AbstractBean, Serializable {
     private final String MENSAGEM_EDICAO = "jailsysweb.usuario.edicao.sucesso";
     private final String MENSAGEM_EXCLUSAO = "jailsysweb.usuario.exclusao.sucesso";
 
-    public List<Usuario> consultar() {
+    public List<Usuario> listar() {
         if (usuarioView.getUsuarios().isEmpty()) {
             this.atualizarView();
         }
         return usuarioView.getUsuarios();
     }
 
-    public String prepararInclusao(ActionEvent actionEvent) {
+    public String prepararInclusao() {
         return TELA_CADASTRO;
     }
 
-    public String prepararEdicao(Usuario usuario) {
+    public String prepararEdicao() {
         return TELA_EDICAO;
     }
 
@@ -57,7 +57,7 @@ public class UsuarioBean implements AbstractBean, Serializable {
     }
 
     public void atualizarView() {
-        usuarioView.setUsuarios(service.consultar());
+        usuarioView.setUsuarios(service.listar());
     }
 
     public String editar() {
@@ -66,11 +66,11 @@ public class UsuarioBean implements AbstractBean, Serializable {
         return TELA_CONSULTA;
     }
 
-    public String visualizar(Usuario usuario) {
+    public String visualizar() {
         return TELA_EDICAO;
     }
 
-    public String excluir(Usuario usuario) {
+    public String excluir(EntidadeComum usuario) {
         service.excluir(usuario);
         FacesUtil.mostrarMensagemSucesso(MENSAGEM_EXCLUSAO);
         return TELA_CONSULTA;
