@@ -11,7 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa extends EntidadeComum implements Serializable {
 
     private static final long serialVersionUID = -7205815321884922764L;
@@ -30,6 +30,8 @@ public class Pessoa extends EntidadeComum implements Serializable {
 
     @Column(length = 15, unique = true)
     private String celular;
+    
+    private boolean ativo;
 
     public String getNome() {
         return nome;
@@ -69,5 +71,13 @@ public class Pessoa extends EntidadeComum implements Serializable {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }

@@ -7,7 +7,7 @@ import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Pessoa;
 
 public class PessoaService implements AbstractService<EntidadeComum> {
-    
+
     @Inject
     PessoaDAO pessoaDao;
 
@@ -25,19 +25,19 @@ public class PessoaService implements AbstractService<EntidadeComum> {
     @Override
     public void editar(EntidadeComum entidade) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void excluir(Long id) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void excluir(EntidadeComum entidade) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
