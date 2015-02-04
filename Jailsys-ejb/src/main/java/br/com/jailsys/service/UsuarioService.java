@@ -50,23 +50,21 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
     public void excluir(Long id) {
         Usuario usuario = (Usuario) buscar(id);
         excluir(usuario);
-
-    }
-
-    @Override
-    public EntidadeComum buscar(Long id) {
-        return usuarioDao.buscar(id);
-
-    }
-
-    public List<Usuario> listar() {
-        return usuarioDao.listar();
     }
 
     @Override
     public void excluir(EntidadeComum entidade) {
         ((Usuario) entidade).setAtivo(Boolean.FALSE);
         usuarioDao.editar((Usuario) entidade);
+    }
+
+    @Override
+    public EntidadeComum buscar(Long id) {
+        return usuarioDao.buscar(id);
+    }
+
+    public List<Usuario> listar() {
+        return usuarioDao.listar();
     }
 
 }
