@@ -10,7 +10,7 @@
 
 	<ui:define name="corpo">
 		<h:form prependId="false">
-			<p:dataTable var="usuario" value="#{usuarioBean.consultar()}"
+			<p:dataTable var="usuario" value="#{usuarioBean.listar()}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
@@ -24,11 +24,11 @@
 
 				<p:column headerText="Opções">
 					<p:commandButton value="Visualizar"
-						action="#{usuarioBean.visualizar(usuario)}" ajax="false">
+						action="#{usuarioBean.visualizar()}" ajax="false">
 						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
 					<p:commandButton value="Editar"
-						action="#{usuarioBean.prepararEdicao(usuario)}" ajax="false">
+						action="#{usuarioBean.prepararEdicao()}" ajax="false">
 						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
 					<p:commandButton value="Excluir"

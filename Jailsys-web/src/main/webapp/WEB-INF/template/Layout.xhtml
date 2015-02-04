@@ -16,18 +16,48 @@
 		<h:form prependId="false">
 			<p:menubar style="margin-top: -20px; margin-bottom: 20px">
 				<p:menuitem value="Início" outcome="/index" />
-				<p:submenu label="Usuário">
-					<p:menuitem value="Cadastrar Usuário"
-						outcome="/usuario/usuarioCadastro" />
-					<p:menuitem value="Consultar Usuário"
+				<p:submenu label="#{msg['jailsysweb.usuario.menu.label']}">
+					<p:menuitem
+						value="#{msg['jailsysweb.usuario.menu.cadastro.label']}"
+						action="/usuario/usuarioCadastro" />
+					<p:menuitem
+						value="#{msg['jailsysweb.usuario.menu.consulta.label']}"
 						action="/usuario/usuarioConsulta" />
+				</p:submenu>
+				<p:submenu label="#{msg['jailsysweb.pessoa.menu.label']}">
+					<p:menuitem value="#{msg['jailsysweb.pessoa.menu.cadastro.label']}"
+						action="/pessoa/pessoaCadastro" />
+					<p:menuitem value="#{msg['jailsysweb.pessoa.menu.consulta.label']}"
+						action="/pessoa/pessoaConsulta" />
+				</p:submenu>
+				<p:submenu label="Funcionario">
+					<p:menuitem value="Cadastrar Funcionario"
+						action="/funcionario/funcionarioCadastro" />
+					<p:menuitem value="Consultar Funcionario"
+						action="/funcionario/funcionarioConsulta" />
+				</p:submenu>
+				<p:submenu label="Preso">
+					<p:menuitem value="Cadastrar Preso"
+						action="/preso/funcionarioPreso" />
+					<p:menuitem value="Consultar Preso"
+						action="/preso/funcionarioPreso" />
+				</p:submenu>
+				<p:submenu label="Ambiente">
+					<p:menuitem value="Cadastrar Ambiente"
+						action="/ambiente/ambienteCadastro" />
+					<p:menuitem value="Consultar Ambiente"
+						action="/ambiente/ambienteConsulta" />
+				</p:submenu>
+				<p:submenu label="Atividade">
+					<p:menuitem value="Cadastrar Atividade"
+						action="/atividade/atividadeCadastro" />
+					<p:menuitem value="Consultar Atividade"
+						action="/atividade/atividadeConsulta" />
 				</p:submenu>
 			</p:menubar>
 			<p:messages id="messages" />
 		</h:form>
 		<ui:insert name="corpo" />
-		
-		
 	</div>
 	<footer>
 		<h:outputText value="#{msg['jailsysweb.template.footer']}" />

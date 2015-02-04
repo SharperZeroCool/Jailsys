@@ -17,7 +17,7 @@ public class UsuarioView implements Serializable {
 
     @Inject
     @UsuarioBean
-    Usuario usuario;
+    private Usuario usuario;
 
     private List<Usuario> usuarios = new ArrayList<Usuario>();
 
