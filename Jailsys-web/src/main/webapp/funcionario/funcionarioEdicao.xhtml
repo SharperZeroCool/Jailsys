@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<ui:composition template="/funcionario/funcionarioFormulario.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Editar Funcionário</ui:define>
+	<ui:define name="botao">
+		<p:outputLabel />
+		<p:commandButton value="Submit" action="#{funcionarioBean.editar()}"
+			ajax="false" />
+	</ui:define>
+</ui:composition>

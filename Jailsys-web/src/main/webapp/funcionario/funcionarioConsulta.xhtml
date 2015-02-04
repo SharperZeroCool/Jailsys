@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Consulta de Funcionários</ui:define>
+
+	<ui:define name="corpo">
+		<h:form prependId="false">
+			<p:dataTable var="funcionario" value="#{funcionarioBean.listar()}"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Nome" sortBy="#{funcionario.nome}"
+					filterBy="#{funcionario.nome}" filterMatchMode="contains">
+					<h:outputText value="#{funcionario.nome}" />
+				</p:column>
+				<p:column headerText="Código" sortBy="#{funcionario.codigo}"
+					filterBy="#{funcionario.codigo}" filterMatchMode="contains">
+					<h:outputText value="#{funcionario.codigo}" />
+				</p:column>
+				<p:column headerText="CPF" sortBy="#{funcionario.cpf}"
+					filterBy="#{funcionario.cpf}" filterMatchMode="contains">
+					<h:outputText value="#{funcionario.cpf}" />
+				</p:column>
+				<p:column headerText="Data de Entrada"
+					sortBy="#{funcionario.dataEntrada}">
+					<h:outputText value="#{funcionario.dataEntrada}" />
+				</p:column>
+				<p:column headerText="Ativo" sortBy="#{funcionario.ativo}">
+					<h:outputText value="#{funcionario.ativo}" />
+				</p:column>
+
+				<p:column headerText="Opções" style="width:310px;">
+					<p:commandButton value="Visualizar"
+						action="#{funcionarioBean.visualizar()}" ajax="false">
+						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
+					</p:commandButton>
+					<p:commandButton value="Editar"
+						action="#{funcionarioBean.prepararEdicao()}" ajax="false">
+						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
+					</p:commandButton>
+					<p:commandButton value="Excluir"
+						action="#{funcionarioBean.excluir(funcionario)}" ajax="false">
+						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

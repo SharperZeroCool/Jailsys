@@ -22,7 +22,7 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
     @Override
     public void salvar(EntidadeComum entidade) {
         Pessoa pessoa = new Pessoa();
-        pessoa.setCpfCnpj("asdasd");
+        pessoa.setCpf("asdasd");
         pessoa.setDataNasc(new Date());
         pessoa.setEmail("asdasd");
         pessoa.setNome("asdasd");

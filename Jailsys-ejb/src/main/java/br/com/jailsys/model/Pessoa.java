@@ -20,7 +20,7 @@ public class Pessoa extends EntidadeComum implements Serializable {
     private String nome;
 
     @Column(length = 20, nullable = false, unique = true)
-    private String cpfCnpj;
+    private String cpf;
 
     @Column(length = 100, nullable = false)
     private String email;
@@ -30,7 +30,7 @@ public class Pessoa extends EntidadeComum implements Serializable {
 
     @Column(length = 15, unique = true)
     private String celular;
-    
+
     private boolean ativo;
 
     public String getNome() {
@@ -41,12 +41,12 @@ public class Pessoa extends EntidadeComum implements Serializable {
         this.nome = nome;
     }
 
-    public String getCpfCnpj() {
-        return cpfCnpj;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpfCnpj(String cpfCnpj) {
-        this.cpfCnpj = cpfCnpj;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {
