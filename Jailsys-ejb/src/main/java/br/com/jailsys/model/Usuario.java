@@ -23,11 +23,11 @@ public class Usuario extends EntidadeComum implements Serializable {
     private String senha;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "pessoa_id")
+    @JoinColumn(name = "pessoa")
     private Pessoa pessoa;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "grupo_id")
+    @JoinColumn(name = "grupo")
     private Grupo grupo;
 
     @Column(nullable = false)
