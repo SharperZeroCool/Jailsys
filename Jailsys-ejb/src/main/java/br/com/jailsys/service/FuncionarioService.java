@@ -1,6 +1,7 @@
 package br.com.jailsys.service;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -18,17 +19,50 @@ public class FuncionarioService implements AbstractService<EntidadeComum>,
     @Inject
     FuncionarioDAO funcionarioDao;
 
+    private final String PONTO = ".";
+
+    private final int REMOVE_PONTO = 1;
+
+    private final String HIFEN = "-";
+
+    private final String VAZIO = "";
+
     @Override
     public void salvar(EntidadeComum entidade) {
         Funcionario funcionario = (Funcionario) entidade;
         funcionario.setAtivo(Boolean.TRUE);
         funcionario.setCelular("(32)9999-9999");
-        funcionario.setCodigo("123");
         funcionario.setCpf("100.209.306-66");
         funcionario.setDataNasc(new Date());
         funcionario.setEmail("email@email.com");
         funcionario.setNome("Nome Pessoa");
+        funcionario.setCodigo(geradorDeCodigo((Funcionario) entidade));
         funcionarioDao.salvar((Funcionario) entidade);
+    }
+
+    /**
+     * Gera o codigo do funcionario no seguinte formato: ANO DE NASCIMENTO + 5
+     * ULTIMOS DIGITOS DO CPF + ANO DE ENTRADA + MES DE ENTRADA.
+     * 
+     * @param funcionario
+     * @return Codigo do funcionario no formato correto.
+     */
+    public String geradorDeCodigo(Funcionario funcionario) {
+        StringBuilder codigo = new StringBuilder();
+
+        // Pega o ano de nascimento do funcionario
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(funcionario.getDataNasc());
+        codigo.append(calendario.get(Calendar.YEAR));
+
+        // Pega os ultimos 5 digitos do cpf do funcionario
+        codigo.append(funcionario.getCpf().substring(funcionario.getCpf().lastIndexOf(PONTO) + REMOVE_PONTO).replace(HIFEN, VAZIO));
+
+        // Pega o ano e mes de entrada do funcionario
+        calendario.setTime(funcionario.getDataEntrada());
+        codigo.append(calendario.get(Calendar.YEAR));
+        codigo.append(calendario.get(Calendar.MONTH));
+        return codigo.toString();
     }
 
     @Override
