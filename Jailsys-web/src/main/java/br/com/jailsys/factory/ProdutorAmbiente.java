@@ -19,7 +19,7 @@ public class ProdutorAmbiente {
     @AmbienteBean
     public Ambiente produzirAmbiente() {
         Ambiente ambiente = new Ambiente();
-        String id = FacesUtil.getRequestParameter("id");
+        String id = FacesUtil.getRequestParameter("idambiente");
 
         if (!Strings.isNullOrEmpty(id)) {
             Long idLong = new Long(id);

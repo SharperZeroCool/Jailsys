@@ -56,8 +56,9 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
     @Override
     public String editar() {
-        // TODO Auto-generated method stub
-        return null;
+        ambienteService.editar(ambienteView.getAmbiente());
+        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EDICAO);
+        return TELA_CONSULTA;
     }
 
     @Override
@@ -80,8 +81,7 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
     @Override
     public String prepararEdicao() {
-        // TODO Auto-generated method stub
-        return null;
+        return TELA_EDICAO;
     }
 
     public AmbienteView getAmbienteView() {

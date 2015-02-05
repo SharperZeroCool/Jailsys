@@ -62,19 +62,19 @@
 				</p:column>
 
 				<p:column headerText="Opções">
-					<p:commandButton
-						value="#{msg['jailsysweb.ambiente.form.consulta.botao.visualizar']}"
+					<p:commandButton title = "#{msg['jailsysweb.ambiente.form.consulta.botao.visualizar']}"
+						icon = "ui-icon-image"
 						action="#{ambienteBean.visualizar()}" ajax="false">
 						<f:param name="idambiente" value="#{ambiente.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton
-						value="#{msg['jailsysweb.ambiente.form.consulta.botao.editar']}"
-						action="#{ambienteBean.prepararEdicao()}" ajax="false">
+					<p:commandButton title = "#{msg['jailsysweb.ambiente.form.consulta.botao.editar']}"
+						icon = "ui-icon-pencil"
+						action = "#{ambienteBean.prepararEdicao()}" ajax="false">
 						<f:param name="idambiente" value="#{ambiente.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton
-						value="#{msg['jailsysweb.ambiente.form.consulta.botao.excluir']}"
-						action="#{ambienteBean.excluir(ambiente)}" ajax="false">
+					<p:commandButton title="#{msg['jailsysweb.ambiente.form.consulta.botao.excluir']}"
+						icon = "ui-icon-trash"
+						action = "#{ambienteBean.excluir(ambiente)}" ajax="false">
 						<f:param name="idambiente" value="#{ambiente.id}"></f:param>
 					</p:commandButton>
 				</p:column>

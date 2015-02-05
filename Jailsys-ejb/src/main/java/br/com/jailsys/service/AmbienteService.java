@@ -34,7 +34,7 @@ public class AmbienteService implements AbstractService<EntidadeComum>,
 
     @Override
     public void editar(EntidadeComum entidade) {
-        // TODO Auto-generated method stub
+        ambienteDao.editar((Ambiente) entidade);
 
     }
 
@@ -52,8 +52,7 @@ public class AmbienteService implements AbstractService<EntidadeComum>,
 
     @Override
     public EntidadeComum buscar(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        return ambienteDao.buscar(id);
     }
 
 }
