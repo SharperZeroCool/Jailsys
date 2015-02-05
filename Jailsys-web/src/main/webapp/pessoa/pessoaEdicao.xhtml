@@ -7,15 +7,15 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
-		#{msg['jailsysweb.pessoa.titulo.cadastro.label']}
+		#{msg['jailsysweb.pessoa.titulo.edicao.label']}
 	</ui:define>
 	<ui:define name="cabecalho">
-		#{msg['jailsysweb.pessoa.titulo.cadastro.label']}
+		#{msg['jailsysweb.pessoa.titulo.edicao.label']}
+	</ui:define>
+	<ui:define name="botao">
+		<p:commandButton
+			value="#{msg['jailsysweb.pessoa.form.cadastro.botao.editar']}"
+			action="#{pessoaBean.editar()}" ajax="false" />
 	</ui:define>
 
-	<ui:define name="botao">
-		<p:commandButton action="#{pessoaBean.salvar()}"
-			value="#{msg['jailsysweb.pessoa.form.cadastro.botao.salvar']}"
-			ajax="false" />
-	</ui:define>
 </ui:composition>
