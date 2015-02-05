@@ -31,9 +31,11 @@
 						action="/pessoa/pessoaConsulta" />
 				</p:submenu>
 				<p:submenu label="Funcionario">
-					<p:menuitem value="#{msg['jailsysweb.funcionario.menu.cadastro.label']}"
+					<p:menuitem
+						value="#{msg['jailsysweb.funcionario.menu.cadastro.label']}"
 						action="/funcionario/funcionarioCadastro" />
-					<p:menuitem value="#{msg['jailsysweb.funcionario.menu.consulta.label']}"
+					<p:menuitem
+						value="#{msg['jailsysweb.funcionario.menu.consulta.label']}"
 						action="/funcionario/funcionarioConsulta" />
 				</p:submenu>
 				<p:submenu label="Preso">
@@ -42,10 +44,12 @@
 					<p:menuitem value="Consultar Preso"
 						action="/preso/funcionarioPreso" />
 				</p:submenu>
-				<p:submenu label="Ambiente">
-					<p:menuitem value="Cadastrar Ambiente"
+				<p:submenu label="#{msg['jailsysweb.ambiente.menu.label']}">
+					<p:menuitem
+						value="#{msg['jailsysweb.ambiente.menu.cadastro.label']}"
 						action="/ambiente/ambienteCadastro" />
-					<p:menuitem value="Consultar Ambiente"
+					<p:menuitem
+						value="#{msg['jailsysweb.ambiente.menu.consulta.label']}"
 						action="/ambiente/ambienteConsulta" />
 				</p:submenu>
 				<p:submenu label="Atividade">
