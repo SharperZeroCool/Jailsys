@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">#{msg['jailsysweb.funcionario.titulo.consulta.label']}</ui:define>
+
+	<ui:define name="corpo">
+		<h:form prependId="false">
+			<p:dataTable var="funcionario" value="#{funcionarioBean.listar()}"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column
+					headerText="#{msg['jailsysweb.funcionario.grid.consulta.label.nome']}"
+					sortBy="#{funcionario.nome}" filterBy="#{funcionario.nome}"
+					filterMatchMode="contains">
+					<h:outputText value="#{funcionario.nome}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.funcionario.grid.consulta.label.codigo']}"
+					sortBy="#{funcionario.codigo}" filterBy="#{funcionario.codigo}"
+					filterMatchMode="contains">
+					<h:outputText value="#{funcionario.codigo}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.funcionario.grid.consulta.label.cpf']}"
+					sortBy="#{funcionario.cpf}" filterBy="#{funcionario.cpf}"
+					filterMatchMode="contains">
+					<h:outputText value="#{funcionario.cpf}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.funcionario.grid.consulta.label.dataEntrada']}"
+					sortBy="#{funcionario.dataEntrada}">
+					<h:outputText value="#{funcionario.dataEntrada}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.funcionario.grid.consulta.label.ativo']}"
+					sortBy="#{funcionario.ativo}">
+					<h:outputText value="#{funcionario.ativo}" />
+				</p:column>
+
+				<p:column
+					headerText="#{msg['jailsysweb.funcionario.grid.consulta.label.opcoes']}"
+					style="width:310px;">
+					<p:commandButton
+						value="#{msg['jailsysweb.funcionario.grid.consulta.botao.visualizar']}"
+						action="#{funcionarioBean.visualizar()}" ajax="false">
+						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
+					</p:commandButton>
+					<p:commandButton
+						value="#{msg['jailsysweb.funcionario.grid.consulta.botao.editar']}"
+						action="#{funcionarioBean.prepararEdicao()}" ajax="false">
+						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
+					</p:commandButton>
+					<p:commandButton
+						value="#{msg['jailsysweb.funcionario.grid.consulta.botao.excluir']}"
+						action="#{funcionarioBean.excluir(funcionario)}" ajax="false">
+						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

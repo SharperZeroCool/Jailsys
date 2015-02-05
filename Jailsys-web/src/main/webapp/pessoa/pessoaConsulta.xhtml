@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">#{msg['jailsysweb.pessoa.titulo.consulta.label']}</ui:define>
+
+	<ui:define name="corpo">
+		<h:form>
+			<p:dataTable paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				var="pessoa" value="#{pessoaBean.listar()}">
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}">
+					<h:outputText value="#{pessoa.nome}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.cpf']}">
+					<h:outputText value="#{pessoa.cpf}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.email']}">
+					<h:outputText value="#{pessoa.email}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}">
+					<h:outputText value="#{pessoa.dataNasc}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.celular']}">
+					<h:outputText value="#{pessoa.celular}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

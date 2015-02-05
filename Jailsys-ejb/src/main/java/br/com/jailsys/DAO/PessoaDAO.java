@@ -2,9 +2,12 @@ package br.com.jailsys.DAO;
 
 import java.io.Serializable;
 
-import br.com.jailsys.model.EntidadeComum;
+import javax.ejb.Stateless;
 
-public class PessoaDAO extends GenericDAO<EntidadeComum> implements
+import br.com.jailsys.model.Pessoa;
+
+@Stateless
+public class PessoaDAO extends GenericDAO<Pessoa> implements
         Serializable {
 
     /**
