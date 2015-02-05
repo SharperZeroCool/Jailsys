@@ -9,16 +9,21 @@
 	<ui:define name="corpo">
 		<h:form>
 			<p:panelGrid columns="2">
-				<p:outputLabel value="Data de Entrada" for="dataEntrada" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.funcionario.form.cadastro.label.dataEntrada']}"
+					for="dataEntrada" />
 				<p:calendar id="dataEntrada"
 					value="#{funcionarioBean.funcionarioView.funcionario.dataEntrada}"
 					pattern="dd-MM-yyyy" mask="true" />
-				<p:outputLabel value="Carga Horaria" for="cargaHoraria" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.funcionario.form.cadastro.label.cargaHoraria']}"
+					for="cargaHoraria" />
 				<p:calendar id="cargaHoraria"
 					value="#{funcionarioBean.funcionarioView.funcionario.cargaHoraria}"
 					pattern="HH:mm" timeOnly="true" />
-
-				<p:outputLabel value="Horario de Entrada" for="horarioEntrada" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.funcionario.form.cadastro.label.horarioEntrada']}"
+					for="horarioEntrada" />
 				<p:calendar id="horarioEntrada"
 					value="#{funcionarioBean.funcionarioView.funcionario.horarioEntrada}"
 					pattern="HH:mm" timeOnly="true" />

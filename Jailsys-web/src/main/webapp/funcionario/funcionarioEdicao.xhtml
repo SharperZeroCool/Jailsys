@@ -6,10 +6,11 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Editar Funcionário</ui:define>
+	<ui:define name="titulo">#{msg['jailsysweb.funcionario.titulo.editar.label']}</ui:define>
 	<ui:define name="botao">
 		<p:outputLabel />
-		<p:commandButton value="Submit" action="#{funcionarioBean.editar()}"
-			ajax="false" />
+		<p:commandButton
+			value="#{msg['jailsysweb.funcionario.form.editar.botao.editar']}"
+			action="#{funcionarioBean.editar()}" ajax="false" />
 	</ui:define>
 </ui:composition>
