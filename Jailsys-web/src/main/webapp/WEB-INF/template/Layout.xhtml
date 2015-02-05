@@ -9,7 +9,7 @@
 </h:head>
 <h:body>
 	<f:loadBundle basename="messages" var="msg" />
-	<div id="conteudo">
+	<div id="conteudo" align="center">
 		<h1>
 			<h:outputText value="#{msg['jailsysweb.template.header']}" />
 		</h1>
@@ -39,10 +39,10 @@
 						action="/funcionario/funcionarioConsulta" />
 				</p:submenu>
 				<p:submenu label="Preso">
-					<p:menuitem value="Cadastrar Preso"
-						action="/preso/funcionarioPreso" />
-					<p:menuitem value="Consultar Preso"
-						action="/preso/funcionarioPreso" />
+					<p:menuitem value="#{msg['jailsysweb.preso.menu.cadastro.label']}"
+						action="/preso/presoCadastro" />
+					<p:menuitem value="#{msg['jailsysweb.preso.menu.consulta.label']}"
+						action="/preso/presoConsulta" />
 				</p:submenu>
 				<p:submenu label="#{msg['jailsysweb.ambiente.menu.label']}">
 					<p:menuitem
