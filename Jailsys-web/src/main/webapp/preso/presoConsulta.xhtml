@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">
+		#{msg['jailsysweb.preso.titulo.consulta.label']}
+	</ui:define>
+
+	<ui:define name="corpo">
+		<h:form prependId="false">
+			<p:dataTable var="preso" value="#{presoBean.listar()}"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				
+				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.id']}" sortBy="#{preso.id}">
+					<h:outputText value="#{preso.id}" />
+				</p:column>
+				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}" sortBy="#{preso.nome}">
+					<h:outputText value="#{preso.nome}" />
+				</p:column>
+				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.cpf']}" sortBy="#{preso.cpf}">
+					<h:outputText value="#{preso.cpf}" />
+				</p:column>
+				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}" sortBy="#{preso.dataNasc}">
+					<h:outputText value="#{preso.dataNasc}"> <f:convertDateTime pattern="dd/MM/yyyy"/> </h:outputText>
+				</p:column>
+				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.dataPrisao']}" sortBy="#{preso.dataPrisao}">
+					<h:outputText value="#{preso.dataPrisao}"> <f:convertDateTime pattern="dd/MM/yyyy"/> </h:outputText>
+				</p:column>
+				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.codigo']}" sortBy="#{preso.codigo}">
+					<h:outputText value="#{preso.codigo}" />
+				</p:column>
+
+				<p:column headerText="Opções">
+					<p:commandButton value="Visualizar"
+						action="#{presoBean.visualizar()}" ajax="false">
+						<f:param name="idPreso" value="#{preso.id}"></f:param>
+					</p:commandButton>
+					<p:commandButton value="Editar"
+						action="#{presoBean.prepararEdicao()}" ajax="false">
+						<f:param name="idPreso" value="#{preso.id}"></f:param>
+					</p:commandButton>
+					<p:commandButton value="Excluir"
+						action="#{presoBean.excluir(preso)}" ajax="false">
+						<f:param value="#{preso.id}"></f:param>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -16,7 +16,7 @@
 		</h1>
 
 		<h:form prependId="false">
-			<p:dataTable var="ambiente" value="#{ambienteBean.atualizarView()}"
+			<p:dataTable var="ambiente" value="#{ambienteBean.listar()}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">

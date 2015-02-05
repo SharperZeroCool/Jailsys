@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="corpo">
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel
+					value="#{msg['jailsysweb.preso.form.cadastro.label.dataPrisao']}"
+					for="dataPrisao" />
+				<p:calendar id="dataPrisao" value="#{presoBean.presoView.preso.dataPrisao}" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.pessoa.form.cadastro.label.dataSaida']}"
+					for="dataSaida" />
+				<p:calendar id="dataSaida" value="#{presoBean.presoView.preso.dataSaida}" />
+			</p:panelGrid>
+			<ui:insert name="botao" />
+		</h:form>
+	</ui:define>
+	
+</ui:composition>

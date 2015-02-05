@@ -1,6 +1,7 @@
 package br.com.jailsys.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -16,6 +17,10 @@ public class AmbienteService implements AbstractService<EntidadeComum>,
     @Inject
     AmbienteDAO ambienteDao;
 
+    public List<Ambiente> listar(){
+        return ambienteDao.listar();
+    }
+    
     @Override
     public void salvar(EntidadeComum entidade) {
         ambienteDao.salvar((Ambiente) entidade);
