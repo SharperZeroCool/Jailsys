@@ -1,12 +1,14 @@
 package br.com.jailsys.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import br.com.jailsys.bean.basic.AbstractBean;
+import br.com.jailsys.model.Ambiente;
 import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.service.AmbienteService;
 import br.com.jailsys.util.FacesUtil;
@@ -31,6 +33,13 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
     private final String MENSAGEM_EDICAO = "jailsysweb.ambiente.edicao.sucesso";
     private final String MENSAGEM_EXCLUSAO = "jailsysweb.ambiente.exclusao.sucesso";
 
+    public List<Ambiente> listar(){
+        if(ambienteView.getAmbientes().isEmpty()){
+            ambienteView.setAmbientes(ambienteService.listar());
+        }
+        return ambienteView.getAmbientes();
+    }
+    
     @Override
     public String salvar() {
         ambienteService.salvar(ambienteView.getAmbiente());
@@ -41,7 +50,7 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
     @Override
     public void atualizarView() {
-        // TODO Auto-generated method stub
+        ambienteView.setAmbientes(ambienteService.listar());
 
     }
 
