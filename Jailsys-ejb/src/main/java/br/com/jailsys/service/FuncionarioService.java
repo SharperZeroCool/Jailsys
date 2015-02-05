@@ -36,7 +36,7 @@ public class FuncionarioService implements AbstractService<EntidadeComum>,
         funcionario.setDataNasc(new Date());
         funcionario.setEmail("email@email.com");
         funcionario.setNome("Nome Pessoa");
-        funcionario.setCodigo(geradorDeCodigo((Funcionario) entidade));
+        ((Funcionario) entidade).setCodigo(geradorDeCodigo((Funcionario) entidade));
         funcionarioDao.salvar((Funcionario) entidade);
     }
 
@@ -67,11 +67,13 @@ public class FuncionarioService implements AbstractService<EntidadeComum>,
 
     @Override
     public EntidadeComum salvarERetornar(EntidadeComum entidade) {
+        ((Funcionario) entidade).setCodigo(geradorDeCodigo((Funcionario) entidade));
         return funcionarioDao.salvarERetornar((Funcionario) entidade);
     }
 
     @Override
     public void editar(EntidadeComum entidade) {
+        ((Funcionario) entidade).setCodigo(geradorDeCodigo((Funcionario) entidade));
         funcionarioDao.editar((Funcionario) entidade);
     }
 

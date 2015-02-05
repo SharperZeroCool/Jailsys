@@ -14,19 +14,19 @@
 					for="dataEntrada" />
 				<p:calendar id="dataEntrada"
 					value="#{funcionarioBean.funcionarioView.funcionario.dataEntrada}"
-					pattern="dd-MM-yyyy" mask="true" />
+					pattern="dd-MM-yyyy" mask="true" required="true" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.funcionario.form.cadastro.label.cargaHoraria']}"
 					for="cargaHoraria" />
 				<p:calendar id="cargaHoraria"
 					value="#{funcionarioBean.funcionarioView.funcionario.cargaHoraria}"
-					pattern="HH:mm" timeOnly="true" />
+					pattern="HH:mm" timeOnly="true" required="true" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.funcionario.form.cadastro.label.horarioEntrada']}"
 					for="horarioEntrada" />
 				<p:calendar id="horarioEntrada"
 					value="#{funcionarioBean.funcionarioView.funcionario.horarioEntrada}"
-					pattern="HH:mm" timeOnly="true" />
+					pattern="HH:mm" timeOnly="true" required="true" />
 				<ui:insert name="botao" />
 			</p:panelGrid>
 		</h:form>

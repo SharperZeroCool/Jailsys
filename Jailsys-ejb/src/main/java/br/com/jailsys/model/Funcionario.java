@@ -24,6 +24,7 @@ public class Funcionario extends Pessoa {
     private Date dataEntrada;
 
     @Temporal(TemporalType.TIME)
+    @Column(nullable = false)
     private Date horarioEntrada;
 
     public String getCodigo() {
