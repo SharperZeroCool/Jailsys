@@ -15,16 +15,16 @@ public class Funcionario extends Pessoa {
     @Column(length = 45, nullable = false, unique = true)
     private String codigo;
 
-    @Temporal(TemporalType.TIME)
     @Column(nullable = false)
+    @Temporal(TemporalType.TIME)
     private Date cargaHoraria;
 
-    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date dataEntrada;
 
-    @Temporal(TemporalType.TIME)
     @Column(nullable = false)
+    @Temporal(TemporalType.TIME)
     private Date horarioEntrada;
 
     public String getCodigo() {
