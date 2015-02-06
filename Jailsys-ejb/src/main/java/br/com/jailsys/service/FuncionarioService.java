@@ -30,14 +30,19 @@ public class FuncionarioService implements AbstractService<EntidadeComum>,
     @Override
     public void salvar(EntidadeComum entidade) {
         Funcionario funcionario = (Funcionario) entidade;
+        mockPessoa(funcionario);
+        funcionario.setCodigo(geradorDeCodigo(funcionario));
+        funcionarioDao.salvar(funcionario);
+    }
+
+    private void mockPessoa(EntidadeComum entidade) {
+        Funcionario funcionario = (Funcionario) entidade;
         funcionario.setAtivo(Boolean.TRUE);
         funcionario.setCelular("(32)9999-9999");
         funcionario.setCpf("100.209.306-66");
         funcionario.setDataNasc(new Date());
         funcionario.setEmail("email@email.com");
         funcionario.setNome("Nome Pessoa");
-        ((Funcionario) entidade).setCodigo(geradorDeCodigo((Funcionario) entidade));
-        funcionarioDao.salvar((Funcionario) entidade);
     }
 
     /**
@@ -96,6 +101,10 @@ public class FuncionarioService implements AbstractService<EntidadeComum>,
 
     public List<Funcionario> listar() {
         return funcionarioDao.listar();
+    }
+    
+    public List<Funcionario> listarItensAtivos(){
+        return funcionarioDao.listarItensAtivos();
     }
 
 }

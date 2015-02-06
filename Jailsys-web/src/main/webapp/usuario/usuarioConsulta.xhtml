@@ -23,15 +23,15 @@
 				</p:column>
 
 				<p:column headerText="Opções">
-					<p:commandButton value="Visualizar"
+					<p:commandButton icon="ui-icon-image"
 						action="#{usuarioBean.visualizar()}" ajax="false">
 						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton value="Editar"
+					<p:commandButton icon="ui-icon-pencil"
 						action="#{usuarioBean.prepararEdicao()}" ajax="false">
 						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton value="Excluir"
+					<p:commandButton icon="ui-icon-trash"
 						action="#{usuarioBean.excluir(usuario)}" ajax="false">
 						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>

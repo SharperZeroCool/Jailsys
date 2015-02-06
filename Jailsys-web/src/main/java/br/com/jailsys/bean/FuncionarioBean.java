@@ -34,7 +34,7 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
     @Inject
     FuncionarioView funcionarioView;
 
-    public List<Funcionario> listar() {
+    public List<Funcionario> listarItensAtivos() {
         if (funcionarioView.getFuncionarios().isEmpty()) {
             this.atualizarView();
         }
@@ -61,7 +61,7 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
 
     @Override
     public void atualizarView() {
-        funcionarioView.setFuncionarios(service.listar());
+        funcionarioView.setFuncionarios(service.listarItensAtivos());
     }
 
     @Override
