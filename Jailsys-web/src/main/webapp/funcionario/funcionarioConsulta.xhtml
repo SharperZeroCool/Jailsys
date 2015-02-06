@@ -10,8 +10,9 @@
 
 	<ui:define name="corpo">
 		<h:form prependId="false">
-			<p:dataTable var="funcionario" value="#{funcionarioBean.listar()}"
-				paginator="true" rows="10"
+			<p:dataTable var="funcionario"
+				value="#{funcionarioBean.listarItensAtivos()}" paginator="true"
+				rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 				<p:column
@@ -44,20 +45,16 @@
 				</p:column>
 
 				<p:column
-					headerText="#{msg['jailsysweb.funcionario.grid.consulta.label.opcoes']}"
-					style="width:330px;">
-					<p:commandButton
-						value="#{msg['jailsysweb.funcionario.grid.consulta.botao.visualizar']}"
+					headerText="#{msg['jailsysweb.funcionario.grid.consulta.label.opcoes']}">
+					<p:commandButton icon="ui-icon-image"
 						action="#{funcionarioBean.visualizar()}" ajax="false">
 						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton
-						value="#{msg['jailsysweb.funcionario.grid.consulta.botao.editar']}"
+					<p:commandButton icon="ui-icon-pencil"
 						action="#{funcionarioBean.prepararEdicao()}" ajax="false">
 						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton
-						value="#{msg['jailsysweb.funcionario.grid.consulta.botao.excluir']}"
+					<p:commandButton icon="ui-icon-trash"
 						action="#{funcionarioBean.excluir(funcionario)}" ajax="false">
 						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
 					</p:commandButton>
