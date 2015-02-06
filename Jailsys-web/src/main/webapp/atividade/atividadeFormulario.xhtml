@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="corpo">
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome"
+					value="#{atividadeBean.atividadeView.atividade.nome}" />
+
+				<p:outputLabel value="Horário de Inicio" for="horarioInicio" />
+				<p:calendar id="horarioInicio"
+					value="#{atividadeBean.atividadeView.atividade.horarioInicio}"
+					pattern="HH:mm" timeOnly="true" required="true" />
+
+				<p:outputLabel value="Horário de Fim" for="horarioFim" />
+				<p:calendar id="horarioFim"
+					value="#{atividadeBean.atividadeView.atividade.horarioFim}"
+					pattern="HH:mm" timeOnly="true" required="true" />
+
+				<p:outputLabel value="Ativo" for="ativo" />
+				<p:selectBooleanCheckbox id="ativo"
+					value="#{atividadeBean.atividadeView.atividade.ativo}" />
+
+				<ui:insert name="botao" />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

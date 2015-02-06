@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Consulta de Atividades</ui:define>
+
+	<ui:define name="corpo">
+		<h:form prependId="false">
+			<p:dataTable var="atividade" value="#{atividadeBean.listar()}"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Nome" sortBy="#{atividade.nome}"
+					filterBy="#{atividade.nome}" filterMatchMode="contains">
+					<h:outputText value="#{atividade.nome}" />
+				</p:column>
+				<p:column headerText="Hora de Inicio"
+					sortBy="#{atividade.horarioInicio}"
+					filterBy="#{atividade.horarioInicio}" filterMatchMode="contains">
+					<h:outputText value="#{atividade.horarioInicio}" pattern="HH:mm" />
+				</p:column>
+				<p:column headerText="Hora de Fim" sortBy="#{atividade.horarioFim}"
+					filterBy="#{atividade.horarioFim}" filterMatchMode="contains">
+					<h:outputText value="#{atividade.horarioFim}" pattern="HH:mm" />
+				</p:column>
+				<p:column headerText="Ativo" sortBy="#{atividade.ativo}">
+					<h:outputText value="#{atividade.ativo}" />
+				</p:column>
+
+				<p:column headerText="Opções" style="width:310px;">
+					<p:commandButton value="Visualizar"
+						action="#{atividadeBean.visualizar()}" ajax="false">
+						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
+					</p:commandButton>
+					<p:commandButton value="Editar"
+						action="#{atividadeBean.prepararEdicao()}" ajax="false">
+						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
+					</p:commandButton>
+					<p:commandButton value="Excluir"
+						action="#{atividadeBean.excluir(atividade)}" ajax="false">
+						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
