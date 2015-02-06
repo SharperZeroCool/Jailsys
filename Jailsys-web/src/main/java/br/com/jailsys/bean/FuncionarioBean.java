@@ -10,7 +10,9 @@ import javax.inject.Inject;
 import br.com.jailsys.bean.basic.AbstractBean;
 import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Funcionario;
+import br.com.jailsys.model.Pessoa;
 import br.com.jailsys.service.FuncionarioService;
+import br.com.jailsys.util.Constantes;
 import br.com.jailsys.util.FacesUtil;
 import br.com.jailsys.view.FuncionarioView;
 
@@ -21,20 +23,13 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
 
     private static final long serialVersionUID = -6274814536790349940L;
 
-    private final String TELA_CADASTRO = "funcionarioCadastro.xhtml";
-    private final String TELA_CONSULTA = "funcionarioConsulta.xhtml";
-    private final String TELA_EDICAO = "funcionarioEdicao.xhtml";
-    private final String MENSAGEM_CADASTRO = "jailsysweb.funcionario.cadastro.sucesso";
-    private final String MENSAGEM_EDICAO = "jailsysweb.funcionario.edicao.sucesso";
-    private final String MENSAGEM_EXCLUSAO = "jailsysweb.funcionario.exclusao.sucesso";
-
     @Inject
     FuncionarioService service;
 
     @Inject
     FuncionarioView funcionarioView;
 
-    public List<Funcionario> listarItensAtivos() {
+    public List<Funcionario> listar() {
         if (funcionarioView.getFuncionarios().isEmpty()) {
             this.atualizarView();
         }
@@ -43,44 +38,52 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
 
     @Override
     public String prepararInclusao() {
-        return TELA_CADASTRO;
+        return Constantes.Funcionario.TELA_CADASTRO;
     }
 
     @Override
     public String prepararEdicao() {
-        return TELA_EDICAO;
+        return Constantes.Funcionario.TELA_EDICAO;
     }
 
     @Override
     public String salvar() {
         service.salvar(funcionarioView.getFuncionario());
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_CADASTRO);
+        FacesUtil.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_CADASTRO);
         this.atualizarView();
-        return TELA_CONSULTA;
+        return Constantes.Funcionario.TELA_CONSULTA;
+    }
+
+    public String salvar(Pessoa pessoa) {
+        this.populaItensDePessoa(pessoa);
+        service.salvar(funcionarioView.getFuncionario());
+        FacesUtil.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_CADASTRO);
+        this.atualizarView();
+        return Constantes.Funcionario.TELA_CONSULTA;
     }
 
     @Override
     public void atualizarView() {
-        funcionarioView.setFuncionarios(service.listarItensAtivos());
+        funcionarioView.setFuncionarios(service.listar());
     }
 
     @Override
     public String editar() {
         service.editar(funcionarioView.getFuncionario());
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EDICAO);
-        return TELA_CONSULTA;
+        FacesUtil.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_EDICAO);
+        return Constantes.Funcionario.TELA_CONSULTA;
     }
 
     @Override
     public String visualizar() {
-        return TELA_EDICAO;
+        return Constantes.Funcionario.TELA_EDICAO;
     }
 
     @Override
     public String excluir(EntidadeComum funcionario) {
         service.excluir(funcionario);
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EXCLUSAO);
-        return TELA_CONSULTA;
+        FacesUtil.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_EXCLUSAO);
+        return Constantes.Funcionario.TELA_CONSULTA;
     }
 
     public FuncionarioView getFuncionarioView() {
@@ -89,6 +92,17 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
 
     public void setFuncionarioView(FuncionarioView funcionarioView) {
         this.funcionarioView = funcionarioView;
+    }
+
+    public void populaItensDePessoa(Pessoa pessoa) {
+        Funcionario funcionario = funcionarioView.getFuncionario();
+        funcionario.setId(pessoa.getId());
+        funcionario.setNome(pessoa.getNome());
+        funcionario.setCpf(pessoa.getCpf());
+        funcionario.setEmail(pessoa.getEmail());
+        funcionario.setDataNasc(pessoa.getDataNasc());
+        funcionario.setCelular(pessoa.getCelular());
+        funcionario.setAtivo(pessoa.isAtivo());
     }
 
 }

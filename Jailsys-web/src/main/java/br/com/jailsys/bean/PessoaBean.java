@@ -1,16 +1,21 @@
 package br.com.jailsys.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 import br.com.jailsys.bean.basic.AbstractBean;
+import br.com.jailsys.enums.TipoPessoa;
 import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Pessoa;
 import br.com.jailsys.service.PessoaService;
+import br.com.jailsys.util.Constantes;
 import br.com.jailsys.util.FacesUtil;
 import br.com.jailsys.view.PessoaView;
 
@@ -28,14 +33,18 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 
     @Inject
     private PessoaService service;
+    
+    private List<SelectItem> paginas;
+    private String tipoPessoa;
 
-    private final String TELA_CONSULTA = "pessoaConsulta.xhtml";
-    private final String TELA_CADASTRO = "pessoaCadastro.xhtml";
-    private final String TELA_EDICAO = "pessoaEdicao.xhtml";
-    private final String MENSAGEM_CADASTRO = "jailsysweb.pessoa.cadastro.sucesso";
-    private final String MENSAGEM_EDICAO = "jailsysweb.pessoa.edicao.sucesso";
-    private final String MENSAGEM_EXCLUSAO = "jailsysweb.pessoa.exclusao.sucesso";
-
+    @PostConstruct
+    public void preenchePaginas() {
+        paginas = new ArrayList<SelectItem>();
+        for (TipoPessoa tipo : TipoPessoa.values()) {
+            paginas.add(new SelectItem(tipo.getPagina(), FacesUtil.getMessage(tipo.getLabel())));
+        }
+    }
+    
     public List<Pessoa> listar() {
         if (pessoaView.getPessoas().isEmpty())
             pessoaView.setPessoas(service.listar());
@@ -56,15 +65,15 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 
     @Override
     public String prepararEdicao() {
-        return TELA_EDICAO;
+        return Constantes.Pessoa.TELA_EDICAO;
     }
 
     @Override
     public String salvar() {
         service.salvar(pessoaView.getPessoa());
         this.atualizarView();
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_CADASTRO);
-        return TELA_CONSULTA;
+        FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_CADASTRO);
+        return Constantes.Pessoa.TELA_CONSULTA;
     }
 
     @Override
@@ -76,22 +85,37 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
     public String editar() {
         service.editar(pessoaView.getPessoa());
         this.atualizarView();
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EDICAO);
-        return TELA_CONSULTA;
+        FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_EDICAO);
+        return Constantes.Pessoa.TELA_CONSULTA;
     }
 
     @Override
     public String visualizar() {
-        // TODO Auto-generated method stub
-        return null;
+        return Constantes.Pessoa.TELA_EDICAO;
     }
 
     @Override
     public String excluir(EntidadeComum entidade) {
         service.excluir(entidade);
         this.atualizarView();
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EXCLUSAO);
-        return TELA_CONSULTA;
+        FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_EXCLUSAO);
+        return Constantes.Pessoa.TELA_CONSULTA;
+    }
+
+    public List<SelectItem> getPaginas() {
+        return paginas;
+    }
+
+    public void setPaginas(List<SelectItem> paginas) {
+        this.paginas = paginas;
+    }
+
+    public String getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(String tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
     }
 
     public PessoaView getPessoaView() {

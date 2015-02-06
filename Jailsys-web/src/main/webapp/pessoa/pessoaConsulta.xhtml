@@ -14,38 +14,40 @@
 			<p:dataTable paginator="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				var="pessoa" value="#{pessoaBean.listarItensAtivos()}">
-				<p:column
+				<p:column filterBy="#{pessoa.nome}" filterMatchMode="contains"
 					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.nome']}">
 					<h:outputText value="#{pessoa.nome}" />
 				</p:column>
-				<p:column
+				<p:column filterBy="#{pessoa.cpf}" filterMatchMode="contains"
 					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.cpf']}">
 					<h:outputText value="#{pessoa.cpf}" />
 				</p:column>
-				<p:column
+				<p:column filterBy="#{pessoa.email}" filterMatchMode="contains"
 					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.email']}">
 					<h:outputText value="#{pessoa.email}" />
 				</p:column>
-				<p:column
+				<p:column filterBy="#{pessoa.dataNasc}" filterMatchMode="contains"
 					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.dataNasc']}">
 					<h:outputText value="#{pessoa.dataNasc}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 				</p:column>
-				<p:column
+				<p:column filterBy="#{pessoa.celular}" filterMatchMode="contains"
 					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.celular']}">
 					<h:outputText value="#{pessoa.celular}" />
 				</p:column>
 				<p:column
 					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.opcoes']}">
+					<p:commandButton action="#{pessoaBean.visualizar()}"
+						icon="ui-icon-image" ajax="false">
+						<f:param name="idPessoa" value="#{pessoa.id}" />
+					</p:commandButton>
 					<p:commandButton action="#{pessoaBean.prepararEdicao()}"
-						value="#{msg['jailsysweb.pessoa.grid.consulta.botao.editar']}"
-						ajax="false">
+						icon="ui-icon-pencil" ajax="false">
 						<f:param name="idPessoa" value="#{pessoa.id}" />
 					</p:commandButton>
 					<p:commandButton action="#{pessoaBean.excluir(pessoa)}"
-						value="#{msg['jailsysweb.pessoa.grid.consulta.botao.excluir']}"
-						ajax="false" />
+						icon="ui-icon-trash" ajax="false" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

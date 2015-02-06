@@ -9,8 +9,10 @@ import javax.inject.Inject;
 
 import br.com.jailsys.bean.basic.AbstractBean;
 import br.com.jailsys.model.EntidadeComum;
+import br.com.jailsys.model.Pessoa;
 import br.com.jailsys.model.Preso;
 import br.com.jailsys.service.PresoService;
+import br.com.jailsys.util.Constantes;
 import br.com.jailsys.util.FacesUtil;
 import br.com.jailsys.view.PresoView;
 
@@ -19,17 +21,10 @@ import br.com.jailsys.view.PresoView;
 public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
 
     private static final long serialVersionUID = -8523743092556986021L;
-    
-    private final String TELA_CADASTRO = "presoCadastro.xhtml";
-    private final String TELA_CONSULTA = "presoConsulta.xhtml";
-    private final String TELA_EDICAO = "presoEdicao.xhtml";
-    private final String MENSAGEM_CADASTRO = "jailsysweb.preso.cadastro.sucesso";
-    private final String MENSAGEM_EDICAO = "jailsysweb.preso.edicao.sucesso";
-    private final String MENSAGEM_EXCLUSAO = "jailsysweb.preso.exclusao.sucesso";
-    
+
     @Inject
     PresoService service;
-    
+
     @Inject
     PresoView presoView;
 
@@ -41,13 +36,13 @@ public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
         this.presoView = presoView;
     }
 
-    public List<Preso> listar(){
-        if (presoView.getPresos().isEmpty()){
+    public List<Preso> listar() {
+        if (presoView.getPresos().isEmpty()) {
             this.atualizarView();
         }
-       return presoView.getPresos();
+        return presoView.getPresos();
     }
-    
+
     @Override
     public String prepararInclusao() {
         // TODO Auto-generated method stub
@@ -56,41 +51,59 @@ public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
 
     @Override
     public String prepararEdicao() {
-        return TELA_EDICAO;
+        return Constantes.Preso.TELA_EDICAO;
     }
 
     @Override
     public String salvar() {
         service.salvar(presoView.getPreso());
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_CADASTRO);
+        FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_CADASTRO);
         this.atualizarView();
-        return TELA_CONSULTA;
+        return Constantes.Preso.TELA_CONSULTA;
+    }
+
+    public String salvar(Pessoa pessoa) {
+        this.populaItensDePessoa(pessoa);
+        service.salvar(presoView.getPreso());
+        FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_CADASTRO);
+        this.atualizarView();
+        return Constantes.Preso.TELA_CONSULTA;
     }
 
     @Override
     public void atualizarView() {
         presoView.setPresos(service.listar());
-        
+
     }
 
     @Override
     public String editar() {
         service.editar(presoView.getPreso());
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EDICAO);
-        return TELA_CONSULTA;
+        FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_EDICAO);
+        return Constantes.Preso.TELA_CONSULTA;
     }
 
     @Override
     public String visualizar() {
-        return TELA_CADASTRO;
+        return Constantes.Preso.TELA_CADASTRO;
     }
 
     @Override
     public String excluir(EntidadeComum entidade) {
-       service.excluir(entidade);
-       FacesUtil.mostrarMensagemSucesso(MENSAGEM_EXCLUSAO);
-       return TELA_CONSULTA;
+        service.excluir(entidade);
+        FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_EXCLUSAO);
+        return Constantes.Preso.TELA_CONSULTA;
     }
-    
+
+    public void populaItensDePessoa(Pessoa pessoa) {
+        Preso preso = presoView.getPreso();
+        preso.setId(pessoa.getId());
+        preso.setNome(pessoa.getNome());
+        preso.setCpf(pessoa.getCpf());
+        preso.setEmail(pessoa.getEmail());
+        preso.setDataNasc(pessoa.getDataNasc());
+        preso.setCelular(pessoa.getCelular());
+        preso.setAtivo(pessoa.isAtivo());
+    }
 
 }

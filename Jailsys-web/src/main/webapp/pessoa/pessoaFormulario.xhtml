@@ -11,32 +11,32 @@
 			<ui:insert name="cabecalho" />
 		</h1>
 		<h:form>
-			<p:panelGrid columns="2">
+			<p:panelGrid columns="2" style="width:80%">
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}"
 					for="nome" />
-				<p:inputText id="nome" size="70"
-					value="#{pessoaBean.pessoaView.pessoa.nome}" />
+				<p:inputText id="nome" value="#{pessoaBean.pessoaView.pessoa.nome}"
+					required="true" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.cpf']}"
 					for="cpf" />
-				<p:inputMask id="cpf" size="70" mask="999.999.999-99"
+				<p:inputMask id="cpf" mask="999.999.999-99"
 					value="#{pessoaBean.pessoaView.pessoa.cpf}" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.email']}"
 					for="email" />
-				<p:inputText id="email" size="70"
+				<p:inputText id="email"
 					value="#{pessoaBean.pessoaView.pessoa.email}" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}"
 					for="dataNascimento" />
-				<p:calendar id="dataNascimento" size="12" pattern="dd/MM/yyyy"
+				<p:calendar id="dataNascimento" pattern="dd/MM/yyyy" required="true"
 					value="#{pessoaBean.pessoaView.pessoa.dataNasc}">
 				</p:calendar>
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.celular']}"
 					for="celular" />
-				<p:inputMask id="celular" size="70"
+				<p:inputMask id="celular"
 					value="#{pessoaBean.pessoaView.pessoa.celular}"
 					mask="+99 (99) 9999-9999?9" />
 				<p:outputLabel
@@ -44,7 +44,17 @@
 					for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"
 					value="#{pessoaBean.pessoaView.pessoa.ativo}" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.pessoa.form.cadastro.label.tipo']}" />
+				<p:selectOneRadio value="#{pessoaBean.tipoPessoa}">
+					<f:selectItems value="#{pessoaBean.paginas}"
+						var="pagina" itemLabel="#{pagina.description}" itemValue="#{pagina.label}" />
+					<f:ajax render="tipo" />
+				</p:selectOneRadio>
 			</p:panelGrid>
+			<h:panelGroup id="tipo" layout="block">
+				<ui:include src="#{pessoaBean.tipoPessoa}" />
+			</h:panelGroup>
 			<ui:insert name="botao" />
 		</h:form>
 	</ui:define>
