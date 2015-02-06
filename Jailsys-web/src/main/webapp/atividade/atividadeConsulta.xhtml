@@ -6,7 +6,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Consulta de Atividades</ui:define>
+	<ui:define name="titulo">#{msg['jailsysweb.atividade.titulo.consulta.label']}</ui:define>
 
 	<ui:define name="corpo">
 		<h:form prependId="false">
@@ -14,22 +14,22 @@
 				value="#{atividadeBean.listarPorAtivo()}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
-				<p:column headerText="Nome" sortBy="#{atividade.nome}"
+				
+				<p:column headerText="#{msg['jailsysweb.atividade.form.cadastro.label.nome']}" sortBy="#{atividade.nome}"
 					filterBy="#{atividade.nome}" filterMatchMode="contains">
 					<h:outputText value="#{atividade.nome}" />
 				</p:column>
-				<p:column headerText="Hora de Inicio"
+				<p:column headerText="#{msg['jailsysweb.atividade.form.cadastro.label.horarioInicio']}"
 					sortBy="#{atividade.horarioInicio}"
 					filterBy="#{atividade.horarioInicio}" filterMatchMode="contains">
 					<h:outputText value="#{atividade.horarioInicio}" pattern="HH:mm" />
 				</p:column>
-				<p:column headerText="Hora de Fim" sortBy="#{atividade.horarioFim}"
+				<p:column headerText="#{msg['jailsysweb.atividade.form.cadastro.label.horarioFim']}" sortBy="#{atividade.horarioFim}"
 					filterBy="#{atividade.horarioFim}" filterMatchMode="contains">
 					<h:outputText value="#{atividade.horarioFim}" pattern="HH:mm" />
 				</p:column>
 
-
-				<p:column headerText="Opções" style="width:310px;">
+				<p:column headerText="#{msg['jailsysweb.atividade.form.consulta.label.opcoes']}" style="width:310px;">
 					<p:commandButton icon="ui-icon-image"
 						action="#{atividadeBean.visualizar()}" ajax="false">
 						<f:param name="idAtividade" value="#{atividade.id}"></f:param>

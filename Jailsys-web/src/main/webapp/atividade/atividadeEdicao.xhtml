@@ -6,11 +6,11 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Editar Atividade</ui:define>
+	<ui:define name="titulo">#{msg['jailsysweb.ambiente.titulo.consulta.label']}</ui:define>
 	<ui:define name="botao">
 		<p:outputLabel />
 		<p:commandButton
-			value="Editar"
+			value="#{msg['jailsysweb.atividade.form.editar.botao.editar']}"
 			action="#{atividadeBean.editar()}" ajax="false" />
 	</ui:define>
 </ui:composition>

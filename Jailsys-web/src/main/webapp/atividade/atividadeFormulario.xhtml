@@ -9,21 +9,29 @@
 	<ui:define name="corpo">
 		<h:form>
 			<p:panelGrid columns="2">
-				<p:outputLabel value="Nome" for="nome" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.atividade.form.cadastro.label.nome']}"
+					for="nome" />
 				<p:inputText id="nome"
 					value="#{atividadeBean.atividadeView.atividade.nome}" />
 
-				<p:outputLabel value="Horário de Inicio" for="horarioInicio" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.atividade.form.cadastro.label.horarioInicio']}"
+					for="horarioInicio" />
 				<p:calendar id="horarioInicio"
 					value="#{atividadeBean.atividadeView.atividade.horarioInicio}"
 					pattern="HH:mm" timeOnly="true" required="true" />
 
-				<p:outputLabel value="Horário de Fim" for="horarioFim" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.atividade.form.cadastro.label.horarioFim']}"
+					for="horarioFim" />
 				<p:calendar id="horarioFim"
 					value="#{atividadeBean.atividadeView.atividade.horarioFim}"
 					pattern="HH:mm" timeOnly="true" required="true" />
 
-				<p:outputLabel value="Ativo" for="ativo" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.atividade.grid.cadastro.label.ativo']}"
+					for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"
 					value="#{atividadeBean.atividadeView.atividade.ativo}" />
 
