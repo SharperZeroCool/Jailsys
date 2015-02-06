@@ -10,8 +10,8 @@
 
 	<ui:define name="corpo">
 		<h:form prependId="false">
-			<p:dataTable var="atividade" value="#{atividadeBean.listar()}"
-				paginator="true" rows="10"
+			<p:dataTable var="atividade"
+				value="#{atividadeBean.listarPorAtivo()}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 				<p:column headerText="Nome" sortBy="#{atividade.nome}"
@@ -27,20 +27,18 @@
 					filterBy="#{atividade.horarioFim}" filterMatchMode="contains">
 					<h:outputText value="#{atividade.horarioFim}" pattern="HH:mm" />
 				</p:column>
-				<p:column headerText="Ativo" sortBy="#{atividade.ativo}">
-					<h:outputText value="#{atividade.ativo}" />
-				</p:column>
+
 
 				<p:column headerText="Opções" style="width:310px;">
-					<p:commandButton value="Visualizar"
+					<p:commandButton icon="ui-icon-image"
 						action="#{atividadeBean.visualizar()}" ajax="false">
 						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton value="Editar"
+					<p:commandButton icon = "ui-icon-pencil"
 						action="#{atividadeBean.prepararEdicao()}" ajax="false">
 						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton value="Excluir"
+					<p:commandButton icon = "ui-icon-trash"
 						action="#{atividadeBean.excluir(atividade)}" ajax="false">
 						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
 					</p:commandButton>
