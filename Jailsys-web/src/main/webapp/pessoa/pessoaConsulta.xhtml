@@ -9,29 +9,43 @@
 	<ui:define name="titulo">#{msg['jailsysweb.pessoa.titulo.consulta.label']}</ui:define>
 
 	<ui:define name="corpo">
-		<h:form>
+		<h1>#{msg['jailsysweb.pessoa.titulo.consulta.label']}</h1>
+		<h:form prependId="false">
 			<p:dataTable paginator="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				var="pessoa" value="#{pessoaBean.listar()}">
+				var="pessoa" value="#{pessoaBean.listarItensAtivos()}">
 				<p:column
-					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}">
+					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.nome']}">
 					<h:outputText value="#{pessoa.nome}" />
 				</p:column>
 				<p:column
-					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.cpf']}">
+					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.cpf']}">
 					<h:outputText value="#{pessoa.cpf}" />
 				</p:column>
 				<p:column
-					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.email']}">
+					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.email']}">
 					<h:outputText value="#{pessoa.email}" />
 				</p:column>
 				<p:column
-					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}">
-					<h:outputText value="#{pessoa.dataNasc}" />
+					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.dataNasc']}">
+					<h:outputText value="#{pessoa.dataNasc}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
 				</p:column>
 				<p:column
-					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.celular']}">
+					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.celular']}">
 					<h:outputText value="#{pessoa.celular}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.opcoes']}">
+					<p:commandButton action="#{pessoaBean.prepararEdicao()}"
+						value="#{msg['jailsysweb.pessoa.grid.consulta.botao.editar']}"
+						ajax="false">
+						<f:param name="idPessoa" value="#{pessoa.id}" />
+					</p:commandButton>
+					<p:commandButton action="#{pessoaBean.excluir(pessoa)}"
+						value="#{msg['jailsysweb.pessoa.grid.consulta.botao.excluir']}"
+						ajax="false" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

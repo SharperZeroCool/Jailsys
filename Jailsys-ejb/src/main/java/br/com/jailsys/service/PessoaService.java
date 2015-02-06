@@ -9,16 +9,17 @@ import br.com.jailsys.DAO.PessoaDAO;
 import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Pessoa;
 
-public class PessoaService implements AbstractService<EntidadeComum>, Serializable {
+public class PessoaService implements AbstractService<EntidadeComum>,
+        Serializable {
 
     /**
      * 
      */
     private static final long serialVersionUID = 6623540764664272252L;
-    
+
     @Inject
     PessoaDAO pessoaDao;
-    
+
     @Override
     public void salvar(EntidadeComum entidade) {
         pessoaDao.salvar((Pessoa) entidade);
@@ -32,8 +33,7 @@ public class PessoaService implements AbstractService<EntidadeComum>, Serializab
 
     @Override
     public void editar(EntidadeComum entidade) {
-        // TODO Auto-generated method stub
-
+        pessoaDao.editar((Pessoa) entidade);
     }
 
     @Override
@@ -44,18 +44,21 @@ public class PessoaService implements AbstractService<EntidadeComum>, Serializab
 
     @Override
     public void excluir(EntidadeComum entidade) {
-        // TODO Auto-generated method stub
-
+        ((Pessoa) entidade).setAtivo(Boolean.FALSE);
+        pessoaDao.editar((Pessoa) entidade);
     }
 
     @Override
     public EntidadeComum buscar(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        return pessoaDao.buscar(id);
     }
-    
+
     public List<Pessoa> listar() {
         return pessoaDao.listar();
+    }
+    
+    public List<Pessoa> listarItensAtivos() {
+        return pessoaDao.listarItensAtivos();
     }
 
 }

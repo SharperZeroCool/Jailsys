@@ -14,6 +14,6 @@ import javax.inject.Qualifier;
 @Retention(RUNTIME)
 @Target({ TYPE, METHOD, FIELD, PARAMETER })
 @Qualifier
-public @interface PessoaBean {
-    
+public @interface PresoBean {
+
 }

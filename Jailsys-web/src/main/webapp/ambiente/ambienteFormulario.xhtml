@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="corpo">
+		<h1>
+			<ui:insert name="cabecalho" />
+		</h1>
+		
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="#{msg['jailsysweb.ambiente.form.label.nome']}"
+					for="nome" />
+				<p:inputText id="nome" size="45"
+					value="#{ambienteBean.ambienteView.ambiente.nome}" required="true" />
+
+				<p:outputLabel
+					value="#{msg['jailsysweb.ambiente.form.label.descricao']}"
+					for="descricao" />
+				<p:inputText id="descricao" size="45"
+					value="#{ambienteBean.ambienteView.ambiente.descricao}"
+					required="true" />
+
+				<p:outputLabel
+					value="#{msg['jailsysweb.ambiente.form.label.lotacao']}"
+					for="lotacaoPessoas" />
+				<p:inputText id="lotacaoPessoas" size="15"
+					value="#{ambienteBean.ambienteView.ambiente.lotacaoPessoas}"
+					required="true" />
+
+				<p:outputLabel
+					value="#{msg['jailsysweb.ambiente.form.label.horarioInicio']}"
+					for="horarioInicio" />
+				<p:calendar id="horarioInicio"
+					value="#{ambienteBean.ambienteView.ambiente.horarioInicio}"
+					pattern="HH:mm a" timeOnly="true" required="true" />
+
+				<p:outputLabel
+					value="#{msg['jailsysweb.ambiente.form.label.horarioFim']}"
+					for="horarioFim" />
+				<p:calendar id="horarioFim"
+					value="#{ambienteBean.ambienteView.ambiente.horarioFim}"
+					pattern="HH:mm a" timeOnly="true" required="true" />
+
+				<p:outputLabel
+					value="#{msg['jailsysweb.ambiente.form.label.severidade']}"
+					for="severidade" />
+				<p:selectOneMenu id="severidade" size="15"
+					value="#{ambienteBean.ambienteView.ambiente.severidade}"
+					required="true">
+					<f:selectItem itemLabel="Selecione" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Baixa" itemValue="Baixa"/>
+					<f:selectItem itemLabel="Média" itemValue="Media"/>
+					<f:selectItem itemLabel="Alta" itemValue="Alta"/>
+				</p:selectOneMenu>
+
+				<p:outputLabel
+					value="#{msg['jailsysweb.ambiente.form.label.ativo']}" for="ativo" />
+				<p:selectBooleanCheckbox id="ativo"
+					value="#{ambienteBean.ambienteView.ambiente.ativo}" required="true" />
+				<ui:insert name="botao" />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<ui:composition template="/pessoa/pessoaFormulario.xhtml"
+<ui:composition template="/preso/presoFormulario.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -7,15 +7,12 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
-		#{msg['jailsysweb.pessoa.titulo.cadastro.label']}
+		#{msg['jailsysweb.preso.titulo.cadastro.label']}
 	</ui:define>
-	<ui:define name="cabecalho">
-		#{msg['jailsysweb.pessoa.titulo.cadastro.label']}
-	</ui:define>
-
 	<ui:define name="botao">
-		<p:commandButton action="#{pessoaBean.salvar()}"
-			value="#{msg['jailsysweb.pessoa.form.cadastro.botao.salvar']}"
+		<p:outputLabel />
+		<p:commandButton value="Submit" action="#{presoBean.editar()}"
 			ajax="false" />
 	</ui:define>
+		
 </ui:composition>
