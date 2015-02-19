@@ -13,37 +13,37 @@ import br.com.jailsys.qualifier.UsuarioBean;
 @Named
 public class UsuarioView implements Serializable {
 
-    private static final long serialVersionUID = 693074166910643443L;
+	private static final long serialVersionUID = 693074166910643443L;
 
-    @Inject
-    @UsuarioBean
-    private Usuario usuario;
+	@Inject
+	@UsuarioBean
+	private Usuario usuario;
 
-    private List<Usuario> usuarios = new ArrayList<Usuario>();
+	private List<Usuario> usuarios = new ArrayList<Usuario>();
 
-    private String confirmacaoSenha;
+	private String confirmacaoSenha;
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 
-    public String getConfirmacaoSenha() {
-        return confirmacaoSenha;
-    }
+	public String getConfirmacaoSenha() {
+		return confirmacaoSenha;
+	}
 
-    public void setConfirmacaoSenha(String confirmacaoSenha) {
-        this.confirmacaoSenha = confirmacaoSenha;
-    }
+	public void setConfirmacaoSenha(String confirmacaoSenha) {
+		this.confirmacaoSenha = confirmacaoSenha;
+	}
 }

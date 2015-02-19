@@ -18,70 +18,72 @@ import br.com.jailsys.view.UsuarioView;
 @ViewScoped
 public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 
-    private static final long serialVersionUID = 2256641221649626781L;
+	private static final long serialVersionUID = 2256641221649626781L;
 
-    @Inject
-    private UsuarioService service;
+	@Inject
+	private UsuarioService service;
 
-    @Inject
-    private UsuarioView usuarioView;
+	@Inject
+	private UsuarioView usuarioView;
 
-    private final String TELA_CADASTRO = "usuarioCadastro.xhtml";
-    private final String TELA_CONSULTA = "usuarioConsulta.xhtml";
-    private final String TELA_EDICAO = "usuarioEdicao.xhtml";
-    private final String MUDAR_URL = "?faces-redirect=true";
-    private final String MENSAGEM_CADASTRO = "jailsysweb.usuario.cadastro.sucesso";
-    private final String MENSAGEM_EDICAO = "jailsysweb.usuario.edicao.sucesso";
-    private final String MENSAGEM_EXCLUSAO = "jailsysweb.usuario.exclusao.sucesso";
+	private final String TELA_CADASTRO = "usuarioCadastro.xhtml";
+	private final String TELA_CONSULTA = "usuarioConsulta.xhtml";
+	private final String TELA_EDICAO = "usuarioEdicao.xhtml";
+	private final String MUDAR_URL = "?faces-redirect=true";
+	private final String MENSAGEM_CADASTRO = "jailsysweb.usuario.cadastro.sucesso";
+	private final String MENSAGEM_EDICAO = "jailsysweb.usuario.edicao.sucesso";
+	private final String MENSAGEM_EXCLUSAO = "jailsysweb.usuario.exclusao.sucesso";
 
-    public List<Usuario> listar() {
-        if (usuarioView.getUsuarios().isEmpty()) {
-            this.atualizarView();
-        }
-        return usuarioView.getUsuarios();
-    }
+	public List<Usuario> listar() {
+		if (usuarioView.getUsuarios().isEmpty()) {
+			this.atualizarView();
+		}
+		return usuarioView.getUsuarios();
+	}
 
-    public String prepararInclusao() {
-        return TELA_CADASTRO;
-    }
+	@Override
+	public String salvar() {
+		service.salvar(usuarioView.getUsuario());
+		FacesUtil.mostrarMensagemSucesso(MENSAGEM_CADASTRO);
+		this.atualizarView();
+		return TELA_CONSULTA;
+	}
 
-    public String prepararEdicao() {
-        return TELA_EDICAO;
-    }
+	@Override
+	public String prepararEdicao() {
+		return TELA_EDICAO;
+	}
 
-    public String salvar() {
-        service.salvar(usuarioView.getUsuario());
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_CADASTRO);
-        this.atualizarView();
-        return TELA_CONSULTA;
-    }
+	@Override
+	public void atualizarView() {
+		usuarioView.setUsuarios(service.listar());
+	}
 
-    public void atualizarView() {
-        usuarioView.setUsuarios(service.listar());
-    }
+	@Override
+	public String editar() {
+		service.editar(usuarioView.getUsuario());
+		FacesUtil.mostrarMensagemSucesso(MENSAGEM_EDICAO);
+		return TELA_CONSULTA;
+	}
 
-    public String editar() {
-        service.editar(usuarioView.getUsuario());
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EDICAO);
-        return TELA_CONSULTA;
-    }
+	@Override
+	public String visualizar() {
+		return TELA_EDICAO;
+	}
 
-    public String visualizar() {
-        return TELA_EDICAO;
-    }
+	@Override
+	public String excluir(EntidadeComum usuario) {
+		service.excluir(usuario);
+		FacesUtil.mostrarMensagemSucesso(MENSAGEM_EXCLUSAO);
+		return TELA_CONSULTA;
+	}
 
-    public String excluir(EntidadeComum usuario) {
-        service.excluir(usuario);
-        FacesUtil.mostrarMensagemSucesso(MENSAGEM_EXCLUSAO);
-        return TELA_CONSULTA;
-    }
+	public UsuarioView getUsuarioView() {
+		return usuarioView;
+	}
 
-    public UsuarioView getUsuarioView() {
-        return usuarioView;
-    }
-
-    public void setUsuarioView(UsuarioView usuarioView) {
-        this.usuarioView = usuarioView;
-    }
+	public void setUsuarioView(UsuarioView usuarioView) {
+		this.usuarioView = usuarioView;
+	}
 
 }

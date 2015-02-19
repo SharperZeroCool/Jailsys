@@ -14,31 +14,38 @@
 				value="#{atividadeBean.listarPorAtivo()}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
-				
-				<p:column headerText="#{msg['jailsysweb.atividade.form.cadastro.label.nome']}" sortBy="#{atividade.nome}"
-					filterBy="#{atividade.nome}" filterMatchMode="contains">
+
+				<p:column
+					headerText="#{msg['jailsysweb.atividade.form.cadastro.label.nome']}"
+					sortBy="#{atividade.nome}" filterBy="#{atividade.nome}"
+					filterMatchMode="contains">
 					<h:outputText value="#{atividade.nome}" />
 				</p:column>
-				<p:column headerText="#{msg['jailsysweb.atividade.form.cadastro.label.horarioInicio']}"
+				<p:column
+					headerText="#{msg['jailsysweb.atividade.form.cadastro.label.horarioInicio']}"
 					sortBy="#{atividade.horarioInicio}"
 					filterBy="#{atividade.horarioInicio}" filterMatchMode="contains">
 					<h:outputText value="#{atividade.horarioInicio}" pattern="HH:mm" />
 				</p:column>
-				<p:column headerText="#{msg['jailsysweb.atividade.form.cadastro.label.horarioFim']}" sortBy="#{atividade.horarioFim}"
-					filterBy="#{atividade.horarioFim}" filterMatchMode="contains">
+				<p:column
+					headerText="#{msg['jailsysweb.atividade.form.cadastro.label.horarioFim']}"
+					sortBy="#{atividade.horarioFim}" filterBy="#{atividade.horarioFim}"
+					filterMatchMode="contains">
 					<h:outputText value="#{atividade.horarioFim}" pattern="HH:mm" />
 				</p:column>
 
-				<p:column headerText="#{msg['jailsysweb.atividade.form.consulta.label.opcoes']}" style="width:310px;">
+				<p:column
+					headerText="#{msg['jailsysweb.atividade.form.consulta.label.opcoes']}"
+					style="width:310px;">
 					<p:commandButton icon="ui-icon-image"
 						action="#{atividadeBean.visualizar()}" ajax="false">
 						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton icon = "ui-icon-pencil"
+					<p:commandButton icon="ui-icon-pencil"
 						action="#{atividadeBean.prepararEdicao()}" ajax="false">
 						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton icon = "ui-icon-trash"
+					<p:commandButton icon="ui-icon-trash"
 						action="#{atividadeBean.excluir(atividade)}" ajax="false">
 						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
 					</p:commandButton>

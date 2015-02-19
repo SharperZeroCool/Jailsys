@@ -47,8 +47,8 @@
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.tipo']}" />
 				<p:selectOneRadio value="#{pessoaBean.tipoPessoa}">
-					<f:selectItems value="#{pessoaBean.paginas}"
-						var="pagina" itemLabel="#{pagina.description}" itemValue="#{pagina.label}" />
+					<f:selectItems value="#{pessoaBean.paginas}" var="pagina"
+						itemLabel="#{pagina.description}" itemValue="#{pagina.label}" />
 					<f:ajax render="tipo" />
 				</p:selectOneRadio>
 			</p:panelGrid>

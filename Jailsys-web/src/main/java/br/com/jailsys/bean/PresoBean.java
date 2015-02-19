@@ -20,90 +20,84 @@ import br.com.jailsys.view.PresoView;
 @ViewScoped
 public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
 
-    private static final long serialVersionUID = -8523743092556986021L;
+	private static final long serialVersionUID = -8523743092556986021L;
 
-    @Inject
-    PresoService service;
+	@Inject
+	PresoService service;
 
-    @Inject
-    PresoView presoView;
+	@Inject
+	PresoView presoView;
 
-    public PresoView getPresoView() {
-        return presoView;
-    }
+	public PresoView getPresoView() {
+		return presoView;
+	}
 
-    public void setPresoView(PresoView presoView) {
-        this.presoView = presoView;
-    }
+	public void setPresoView(PresoView presoView) {
+		this.presoView = presoView;
+	}
 
-    public List<Preso> listar() {
-        if (presoView.getPresos().isEmpty()) {
-            this.atualizarView();
-        }
-        return presoView.getPresos();
-    }
+	public List<Preso> listarItensAtivos() {
+		if (presoView.getPresos().isEmpty()) {
+			this.atualizarView();
+		}
+		return presoView.getPresos();
+	}
 
-    @Override
-    public String prepararInclusao() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public String prepararEdicao() {
+		return Constantes.Preso.TELA_EDICAO;
+	}
 
-    @Override
-    public String prepararEdicao() {
-        return Constantes.Preso.TELA_EDICAO;
-    }
+	@Override
+	public String salvar() {
+		service.salvar(presoView.getPreso());
+		FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_CADASTRO);
+		this.atualizarView();
+		return Constantes.Preso.TELA_CONSULTA;
+	}
 
-    @Override
-    public String salvar() {
-        service.salvar(presoView.getPreso());
-        FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_CADASTRO);
-        this.atualizarView();
-        return Constantes.Preso.TELA_CONSULTA;
-    }
+	public String salvar(Pessoa pessoa) {
+		this.populaItensDePessoa(pessoa);
+		service.salvar(presoView.getPreso());
+		FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_CADASTRO);
+		this.atualizarView();
+		return Constantes.Preso.TELA_CONSULTA;
+	}
 
-    public String salvar(Pessoa pessoa) {
-        this.populaItensDePessoa(pessoa);
-        service.salvar(presoView.getPreso());
-        FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_CADASTRO);
-        this.atualizarView();
-        return Constantes.Preso.TELA_CONSULTA;
-    }
+	@Override
+	public void atualizarView() {
+		presoView.setPresos(service.listarItensAtivos());
 
-    @Override
-    public void atualizarView() {
-        presoView.setPresos(service.listar());
+	}
 
-    }
+	@Override
+	public String editar() {
+		service.editar(presoView.getPreso());
+		FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_EDICAO);
+		return Constantes.Preso.TELA_CONSULTA;
+	}
 
-    @Override
-    public String editar() {
-        service.editar(presoView.getPreso());
-        FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_EDICAO);
-        return Constantes.Preso.TELA_CONSULTA;
-    }
+	@Override
+	public String visualizar() {
+		return Constantes.Preso.TELA_CADASTRO;
+	}
 
-    @Override
-    public String visualizar() {
-        return Constantes.Preso.TELA_CADASTRO;
-    }
+	@Override
+	public String excluir(EntidadeComum entidade) {
+		service.excluir(entidade);
+		FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_EXCLUSAO);
+		return Constantes.Preso.TELA_CONSULTA;
+	}
 
-    @Override
-    public String excluir(EntidadeComum entidade) {
-        service.excluir(entidade);
-        FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_EXCLUSAO);
-        return Constantes.Preso.TELA_CONSULTA;
-    }
-
-    public void populaItensDePessoa(Pessoa pessoa) {
-        Preso preso = presoView.getPreso();
-        preso.setId(pessoa.getId());
-        preso.setNome(pessoa.getNome());
-        preso.setCpf(pessoa.getCpf());
-        preso.setEmail(pessoa.getEmail());
-        preso.setDataNasc(pessoa.getDataNasc());
-        preso.setCelular(pessoa.getCelular());
-        preso.setAtivo(pessoa.isAtivo());
-    }
+	public void populaItensDePessoa(Pessoa pessoa) {
+		Preso preso = presoView.getPreso();
+		preso.setId(pessoa.getId());
+		preso.setNome(pessoa.getNome());
+		preso.setCpf(pessoa.getCpf());
+		preso.setEmail(pessoa.getEmail());
+		preso.setDataNasc(pessoa.getDataNasc());
+		preso.setCelular(pessoa.getCelular());
+		preso.setAtivo(pessoa.isAtivo());
+	}
 
 }

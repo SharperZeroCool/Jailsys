@@ -19,90 +19,89 @@ import br.com.jailsys.view.FuncionarioView;
 @ManagedBean
 @ViewScoped
 public class FuncionarioBean implements AbstractBean<EntidadeComum>,
-        Serializable {
+		Serializable {
 
-    private static final long serialVersionUID = -6274814536790349940L;
+	private static final long serialVersionUID = -6274814536790349940L;
 
-    @Inject
-    FuncionarioService service;
+	@Inject
+	FuncionarioService service;
 
-    @Inject
-    FuncionarioView funcionarioView;
+	@Inject
+	FuncionarioView funcionarioView;
 
-    public List<Funcionario> listar() {
-        if (funcionarioView.getFuncionarios().isEmpty()) {
-            this.atualizarView();
-        }
-        return funcionarioView.getFuncionarios();
-    }
+	public List<Funcionario> listarItensAtivos() {
+		if (funcionarioView.getFuncionarios().isEmpty()) {
+			this.atualizarView();
+		}
+		return funcionarioView.getFuncionarios();
+	}
 
-    @Override
-    public String prepararInclusao() {
-        return Constantes.Funcionario.TELA_CADASTRO;
-    }
+	@Override
+	public String prepararEdicao() {
+		return Constantes.Funcionario.TELA_EDICAO;
+	}
 
-    @Override
-    public String prepararEdicao() {
-        return Constantes.Funcionario.TELA_EDICAO;
-    }
+	@Override
+	public String salvar() {
+		service.salvar(funcionarioView.getFuncionario());
+		FacesUtil
+				.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_CADASTRO);
+		this.atualizarView();
+		return Constantes.Funcionario.TELA_CONSULTA;
+	}
 
-    @Override
-    public String salvar() {
-        service.salvar(funcionarioView.getFuncionario());
-        FacesUtil.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_CADASTRO);
-        this.atualizarView();
-        return Constantes.Funcionario.TELA_CONSULTA;
-    }
+	public String salvar(Pessoa pessoa) {
+		this.populaItensDePessoa(pessoa);
+		service.salvar(funcionarioView.getFuncionario());
+		FacesUtil
+				.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_CADASTRO);
+		this.atualizarView();
+		return Constantes.Funcionario.TELA_CONSULTA;
+	}
 
-    public String salvar(Pessoa pessoa) {
-        this.populaItensDePessoa(pessoa);
-        service.salvar(funcionarioView.getFuncionario());
-        FacesUtil.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_CADASTRO);
-        this.atualizarView();
-        return Constantes.Funcionario.TELA_CONSULTA;
-    }
+	@Override
+	public void atualizarView() {
+		funcionarioView.setFuncionarios(service.listarItensAtivos());
+	}
 
-    @Override
-    public void atualizarView() {
-        funcionarioView.setFuncionarios(service.listar());
-    }
+	@Override
+	public String editar() {
+		service.editar(funcionarioView.getFuncionario());
+		FacesUtil
+				.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_EDICAO);
+		return Constantes.Funcionario.TELA_CONSULTA;
+	}
 
-    @Override
-    public String editar() {
-        service.editar(funcionarioView.getFuncionario());
-        FacesUtil.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_EDICAO);
-        return Constantes.Funcionario.TELA_CONSULTA;
-    }
+	@Override
+	public String visualizar() {
+		return Constantes.Funcionario.TELA_EDICAO;
+	}
 
-    @Override
-    public String visualizar() {
-        return Constantes.Funcionario.TELA_EDICAO;
-    }
+	@Override
+	public String excluir(EntidadeComum funcionario) {
+		service.excluir(funcionario);
+		FacesUtil
+				.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_EXCLUSAO);
+		return Constantes.Funcionario.TELA_CONSULTA;
+	}
 
-    @Override
-    public String excluir(EntidadeComum funcionario) {
-        service.excluir(funcionario);
-        FacesUtil.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_EXCLUSAO);
-        return Constantes.Funcionario.TELA_CONSULTA;
-    }
+	public FuncionarioView getFuncionarioView() {
+		return funcionarioView;
+	}
 
-    public FuncionarioView getFuncionarioView() {
-        return funcionarioView;
-    }
+	public void setFuncionarioView(FuncionarioView funcionarioView) {
+		this.funcionarioView = funcionarioView;
+	}
 
-    public void setFuncionarioView(FuncionarioView funcionarioView) {
-        this.funcionarioView = funcionarioView;
-    }
-
-    public void populaItensDePessoa(Pessoa pessoa) {
-        Funcionario funcionario = funcionarioView.getFuncionario();
-        funcionario.setId(pessoa.getId());
-        funcionario.setNome(pessoa.getNome());
-        funcionario.setCpf(pessoa.getCpf());
-        funcionario.setEmail(pessoa.getEmail());
-        funcionario.setDataNasc(pessoa.getDataNasc());
-        funcionario.setCelular(pessoa.getCelular());
-        funcionario.setAtivo(pessoa.isAtivo());
-    }
+	public void populaItensDePessoa(Pessoa pessoa) {
+		Funcionario funcionario = funcionarioView.getFuncionario();
+		funcionario.setId(pessoa.getId());
+		funcionario.setNome(pessoa.getNome());
+		funcionario.setCpf(pessoa.getCpf());
+		funcionario.setEmail(pessoa.getEmail());
+		funcionario.setDataNasc(pessoa.getDataNasc());
+		funcionario.setCelular(pessoa.getCelular());
+		funcionario.setAtivo(pessoa.isAtivo());
+	}
 
 }

@@ -15,7 +15,7 @@ public class AtividadeView {
 	@Inject
 	@AtividadeBean
 	private Atividade atividade;
-	
+
 	private List<Atividade> atividades = new ArrayList<Atividade>();
 
 	public Atividade getAtividade() {
@@ -33,7 +33,5 @@ public class AtividadeView {
 	public void setAtividades(List<Atividade> atividades) {
 		this.atividades = atividades;
 	}
-	
-	
-	
+
 }

@@ -12,19 +12,20 @@ import com.google.common.base.Strings;
 
 public class ProdutorAtividade {
 
-    @Inject
-    private AtividadeService atividadeService;
+	@Inject
+	private AtividadeService atividadeService;
 
-    @Produces
-    @AtividadeBean
-    public Atividade produzirAtividade() {
-        Atividade atividade = new Atividade();
-        String id = FacesUtil.getRequestParameter("idAtividade");
-        if (!Strings.isNullOrEmpty(id)) {
-            Long idLong = new Long(id);
-            atividade = (Atividade) atividadeService.buscar(idLong);
-        }
-        return atividade;
-    }
+	@Produces
+	@AtividadeBean
+	public Atividade produzirAtividade() {
+		Atividade atividade = new Atividade();
+		atividade.setAtivo(Boolean.TRUE);
+		String id = FacesUtil.getRequestParameter("idAtividade");
+		if (!Strings.isNullOrEmpty(id)) {
+			Long idLong = new Long(id);
+			atividade = (Atividade) atividadeService.buscar(idLong);
+		}
+		return atividade;
+	}
 
 }

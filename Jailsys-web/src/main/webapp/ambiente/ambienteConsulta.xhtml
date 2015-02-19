@@ -62,20 +62,23 @@
 				</p:column>
 
 				<p:column headerText="Opções">
-					<p:commandButton title = "#{msg['jailsysweb.ambiente.form.consulta.botao.visualizar']}"
-						icon = "ui-icon-image"
-						action="#{ambienteBean.visualizar()}" ajax="false">
-						<f:param name="idambiente" value="#{ambiente.id}"></f:param>
+					<p:commandButton
+						title="#{msg['jailsysweb.ambiente.form.consulta.botao.visualizar']}"
+						icon="ui-icon-image" action="#{ambienteBean.visualizar()}"
+						ajax="false">
+						<f:param name="idAmbiente" value="#{ambiente.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton title = "#{msg['jailsysweb.ambiente.form.consulta.botao.editar']}"
-						icon = "ui-icon-pencil"
-						action = "#{ambienteBean.prepararEdicao()}" ajax="false">
-						<f:param name="idambiente" value="#{ambiente.id}"></f:param>
+					<p:commandButton
+						title="#{msg['jailsysweb.ambiente.form.consulta.botao.editar']}"
+						icon="ui-icon-pencil" action="#{ambienteBean.prepararEdicao()}"
+						ajax="false">
+						<f:param name="idAmbiente" value="#{ambiente.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton title="#{msg['jailsysweb.ambiente.form.consulta.botao.excluir']}"
-						icon = "ui-icon-trash"
-						action = "#{ambienteBean.excluir(ambiente)}" ajax="false">
-						<f:param name="idambiente" value="#{ambiente.id}"></f:param>
+					<p:commandButton
+						title="#{msg['jailsysweb.ambiente.form.consulta.botao.excluir']}"
+						icon="ui-icon-trash" action="#{ambienteBean.excluir(ambiente)}"
+						ajax="false">
+						<f:param name="idAmbiente" value="#{ambiente.id}"></f:param>
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>

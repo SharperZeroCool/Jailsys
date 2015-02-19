@@ -13,27 +13,27 @@ import br.com.jailsys.qualifier.AmbienteBean;
 @Named
 public class AmbienteView implements Serializable {
 
-    private static final long serialVersionUID = 6307050706770313961L;
+	private static final long serialVersionUID = 6307050706770313961L;
 
-    @Inject
-    @AmbienteBean
-    private Ambiente ambiente;
+	@Inject
+	@AmbienteBean
+	private Ambiente ambiente;
 
-    private List<Ambiente> ambientes = new ArrayList<Ambiente>();
+	private List<Ambiente> ambientes = new ArrayList<Ambiente>();
 
-    public Ambiente getAmbiente() {
-        return ambiente;
-    }
+	public Ambiente getAmbiente() {
+		return ambiente;
+	}
 
-    public void setAmbiente(Ambiente ambiente) {
-        this.ambiente = ambiente;
-    }
+	public void setAmbiente(Ambiente ambiente) {
+		this.ambiente = ambiente;
+	}
 
-    public List<Ambiente> getAmbientes() {
-        return ambientes;
-    }
+	public List<Ambiente> getAmbientes() {
+		return ambientes;
+	}
 
-    public void setAmbientes(List<Ambiente> ambientes) {
-        this.ambientes = ambientes;
-    }
+	public void setAmbientes(List<Ambiente> ambientes) {
+		this.ambientes = ambientes;
+	}
 }

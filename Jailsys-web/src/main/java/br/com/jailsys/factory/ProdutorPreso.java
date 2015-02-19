@@ -11,19 +11,20 @@ import br.com.jailsys.service.PresoService;
 import br.com.jailsys.util.FacesUtil;
 
 public class ProdutorPreso {
-    @Inject
-    PresoService presoService;
-    
-    @Produces
-    @PresoBean
-    public Preso produzirPreso(){
-        Preso preso = new Preso();
-        String id = FacesUtil.getRequestParameter("idPreso");
-        if (!Strings.isNullOrEmpty(id)){
-            Long idLong = new Long(id);
-            preso = (Preso) presoService.buscar(idLong);
-        }
-        return preso;
-    }
-    
+	@Inject
+	PresoService presoService;
+
+	@Produces
+	@PresoBean
+	public Preso produzirPreso() {
+		Preso preso = new Preso();
+		preso.setAtivo(Boolean.TRUE);
+		String id = FacesUtil.getRequestParameter("idPreso");
+		if (!Strings.isNullOrEmpty(id)) {
+			Long idLong = new Long(id);
+			preso = (Preso) presoService.buscar(idLong);
+		}
+		return preso;
+	}
+
 }

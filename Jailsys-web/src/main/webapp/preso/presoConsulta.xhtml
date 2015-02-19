@@ -12,29 +12,41 @@
 
 	<ui:define name="corpo">
 		<h:form prependId="false">
-			<p:dataTable var="preso" value="#{presoBean.listar()}"
+			<p:dataTable var="preso" value="#{presoBean.listarItensAtivos()}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
-				
-				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.id']}" sortBy="#{preso.id}">
-					<h:outputText value="#{preso.id}" />
-				</p:column>
-				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}" sortBy="#{preso.nome}">
+
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}"
+					sortBy="#{preso.nome}" filterBy="#{preso.nome}">
 					<h:outputText value="#{preso.nome}" />
 				</p:column>
-				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.cpf']}" sortBy="#{preso.cpf}">
-					<h:outputText value="#{preso.cpf}" />
-				</p:column>
-				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}" sortBy="#{preso.dataNasc}">
-					<h:outputText value="#{preso.dataNasc}"> <f:convertDateTime pattern="dd/MM/yyyy"/> </h:outputText>
-				</p:column>
-				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.dataPrisao']}" sortBy="#{preso.dataPrisao}">
-					<h:outputText value="#{preso.dataPrisao}"> <f:convertDateTime pattern="dd/MM/yyyy"/> </h:outputText>
-				</p:column>
-				<p:column headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.codigo']}" sortBy="#{preso.codigo}">
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.codigo']}"
+					sortBy="#{preso.codigo}" filterBy="#{preso.codigo}">
 					<h:outputText value="#{preso.codigo}" />
 				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.cpf']}"
+					sortBy="#{preso.cpf}" filterBy="#{preso.cpf}">
+					<h:outputText value="#{preso.cpf}" />
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.dataPrisao']}"
+					sortBy="#{preso.dataPrisao}">
+					<h:outputText value="#{preso.dataPrisao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+				<p:column
+					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}"
+					sortBy="#{preso.dataNasc}">
+					<h:outputText value="#{preso.dataNasc}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+
 
 				<p:column headerText="Opções">
 					<p:commandButton value="Visualizar"

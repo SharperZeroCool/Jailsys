@@ -1,5 +1,6 @@
 
-<p:panelGrid columns="2" style="width:80%" xmlns="http://www.w3.org/1999/xhtml"
+<p:panelGrid columns="2" style="width:80%"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -8,7 +9,7 @@
 		value="#{msg['jailsysweb.preso.form.cadastro.label.dataPrisao']}"
 		for="dataPrisao" />
 	<p:calendar id="dataPrisao"
-		value="#{presoBean.presoView.preso.dataPrisao}" />
+		value="#{presoBean.presoView.preso.dataPrisao}" required="true" />
 	<p:outputLabel
 		value="#{msg['jailsysweb.pessoa.form.cadastro.label.dataSaida']}"
 		for="dataSaida" />
@@ -16,5 +17,6 @@
 		value="#{presoBean.presoView.preso.dataSaida}" />
 	<p:commandButton
 		value="#{msg['jailsysweb.preso.form.cadastro.botao.salvar']}"
-		action="#{presoBean.salvar(pessoaBean.pessoaView.pessoa)}" ajax="false" />
+		action="#{presoBean.salvar(pessoaBean.pessoaView.pessoa)}"
+		ajax="false" />
 </p:panelGrid>

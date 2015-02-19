@@ -11,18 +11,19 @@ import br.com.jailsys.util.FacesUtil;
 import com.google.common.base.Strings;
 
 public class ProdutorFuncionario {
-    @Inject
-    private FuncionarioService funcionarioService;
+	@Inject
+	private FuncionarioService funcionarioService;
 
-    @Produces
-    @FuncionarioBean
-    public Funcionario produzirFuncionario() {
-        Funcionario funcionario = new Funcionario();
-        String id = FacesUtil.getRequestParameter("idFuncionario");
-        if (!Strings.isNullOrEmpty(id)) {
-            Long idLong = new Long(id);
-            funcionario = (Funcionario) funcionarioService.buscar(idLong);
-        }
-        return funcionario;
-    }
+	@Produces
+	@FuncionarioBean
+	public Funcionario produzirFuncionario() {
+		Funcionario funcionario = new Funcionario();
+		funcionario.setAtivo(Boolean.TRUE);
+		String id = FacesUtil.getRequestParameter("idFuncionario");
+		if (!Strings.isNullOrEmpty(id)) {
+			Long idLong = new Long(id);
+			funcionario = (Funcionario) funcionarioService.buscar(idLong);
+		}
+		return funcionario;
+	}
 }

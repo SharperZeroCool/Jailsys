@@ -23,107 +23,103 @@ import br.com.jailsys.view.PessoaView;
 @ViewScoped
 public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 
-    /**
+	/**
      * 
      */
-    private static final long serialVersionUID = -1474196752557439140L;
+	private static final long serialVersionUID = -1474196752557439140L;
 
-    @Inject
-    private PessoaView pessoaView;
+	@Inject
+	private PessoaView pessoaView;
 
-    @Inject
-    private PessoaService service;
-    
-    private List<SelectItem> paginas;
-    private String tipoPessoa;
+	@Inject
+	private PessoaService service;
 
-    @PostConstruct
-    public void preenchePaginas() {
-        paginas = new ArrayList<SelectItem>();
-        for (TipoPessoa tipo : TipoPessoa.values()) {
-            paginas.add(new SelectItem(tipo.getPagina(), FacesUtil.getMessage(tipo.getLabel())));
-        }
-    }
-    
-    public List<Pessoa> listar() {
-        if (pessoaView.getPessoas().isEmpty())
-            pessoaView.setPessoas(service.listar());
-        return pessoaView.getPessoas();
-    }
-    
-    public List<Pessoa> listarItensAtivos() {
-        if (pessoaView.getPessoas().isEmpty())
-            this.atualizarView();
-        return pessoaView.getPessoas();
-    }
+	private List<SelectItem> paginas;
+	
+	private String tipoPessoa;
 
-    @Override
-    public String prepararInclusao() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@PostConstruct
+	public void preenchePaginas() {
+		paginas = new ArrayList<SelectItem>();
+		for (TipoPessoa tipo : TipoPessoa.values()) {
+			paginas.add(new SelectItem(tipo.getPagina(), FacesUtil
+					.getMessage(tipo.getLabel())));
+		}
+	}
 
-    @Override
-    public String prepararEdicao() {
-        return Constantes.Pessoa.TELA_EDICAO;
-    }
+	public List<Pessoa> listar() {
+		if (pessoaView.getPessoas().isEmpty())
+			pessoaView.setPessoas(service.listar());
+		return pessoaView.getPessoas();
+	}
 
-    @Override
-    public String salvar() {
-        service.salvar(pessoaView.getPessoa());
-        this.atualizarView();
-        FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_CADASTRO);
-        return Constantes.Pessoa.TELA_CONSULTA;
-    }
+	public List<Pessoa> listarItensAtivos() {
+		if (pessoaView.getPessoas().isEmpty())
+			this.atualizarView();
+		return pessoaView.getPessoas();
+	}
 
-    @Override
-    public void atualizarView() {
-        pessoaView.setPessoas(service.listarItensAtivos());
-    }
+	@Override
+	public String prepararEdicao() {
+		return Constantes.Pessoa.TELA_EDICAO;
+	}
 
-    @Override
-    public String editar() {
-        service.editar(pessoaView.getPessoa());
-        this.atualizarView();
-        FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_EDICAO);
-        return Constantes.Pessoa.TELA_CONSULTA;
-    }
+	@Override
+	public String salvar() {
+		service.salvar(pessoaView.getPessoa());
+		this.atualizarView();
+		FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_CADASTRO);
+		return Constantes.Pessoa.TELA_CONSULTA;
+	}
 
-    @Override
-    public String visualizar() {
-        return Constantes.Pessoa.TELA_EDICAO;
-    }
+	@Override
+	public void atualizarView() {
+		pessoaView.setPessoas(service.listarItensAtivos());
+	}
 
-    @Override
-    public String excluir(EntidadeComum entidade) {
-        service.excluir(entidade);
-        this.atualizarView();
-        FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_EXCLUSAO);
-        return Constantes.Pessoa.TELA_CONSULTA;
-    }
+	@Override
+	public String editar() {
+		service.editar(pessoaView.getPessoa());
+		this.atualizarView();
+		FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_EDICAO);
+		return Constantes.Pessoa.TELA_CONSULTA;
+	}
 
-    public List<SelectItem> getPaginas() {
-        return paginas;
-    }
+	@Override
+	public String visualizar() {
+		return Constantes.Pessoa.TELA_EDICAO;
+	}
 
-    public void setPaginas(List<SelectItem> paginas) {
-        this.paginas = paginas;
-    }
+	@Override
+	public String excluir(EntidadeComum entidade) {
+		service.excluir(entidade);
+		this.atualizarView();
+		FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_EXCLUSAO);
+		return Constantes.Pessoa.TELA_CONSULTA;
+	}
 
-    public String getTipoPessoa() {
-        return tipoPessoa;
-    }
+	public List<SelectItem> getPaginas() {
+		return paginas;
+	}
 
-    public void setTipoPessoa(String tipoPessoa) {
-        this.tipoPessoa = tipoPessoa;
-    }
+	public void setPaginas(List<SelectItem> paginas) {
+		this.paginas = paginas;
+	}
 
-    public PessoaView getPessoaView() {
-        return pessoaView;
-    }
+	public String getTipoPessoa() {
+		return tipoPessoa;
+	}
 
-    public void setPessoaView(PessoaView pessoaView) {
-        this.pessoaView = pessoaView;
-    }
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
+	}
+
+	public PessoaView getPessoaView() {
+		return pessoaView;
+	}
+
+	public void setPessoaView(PessoaView pessoaView) {
+		this.pessoaView = pessoaView;
+	}
 
 }

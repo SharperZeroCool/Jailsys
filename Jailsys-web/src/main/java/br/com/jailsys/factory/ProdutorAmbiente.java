@@ -12,19 +12,20 @@ import br.com.jailsys.util.FacesUtil;
 
 public class ProdutorAmbiente {
 
-    @Inject
-    AmbienteService ambienteService;
+	@Inject
+	AmbienteService ambienteService;
 
-    @Produces
-    @AmbienteBean
-    public Ambiente produzirAmbiente() {
-        Ambiente ambiente = new Ambiente();
-        String id = FacesUtil.getRequestParameter("idambiente");
+	@Produces
+	@AmbienteBean
+	public Ambiente produzirAmbiente() {
+		Ambiente ambiente = new Ambiente();
+		ambiente.setAtivo(Boolean.TRUE);
+		String id = FacesUtil.getRequestParameter("idAmbiente");
+		if (!Strings.isNullOrEmpty(id)) {
+			Long idLong = new Long(id);
+			ambiente = (Ambiente) ambienteService.buscar(idLong);
+		}
 
-        if (!Strings.isNullOrEmpty(id)) {
-            Long idLong = new Long(id);
-            ambiente = (Ambiente) ambienteService.buscar(idLong);
-        }
-        return ambiente;
-    }
+		return ambiente;
+	}
 }
