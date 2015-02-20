@@ -11,7 +11,7 @@
 			<ui:insert name="cabecalho" />
 		</h1>
 		<h:form>
-			<p:panelGrid id="tipo" columns="2" style="width:80%">
+			<p:panelGrid id="tipo" columns="2" style="width:100%;">
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.tipo']}" />
 				<p:selectOneRadio value="#{pessoaBean.tipoPessoa}">
@@ -27,7 +27,8 @@
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.cpf']}"
 					for="cpf" />
-				<p:inputMask id="cpf" mask="999.999.999-99" required="#{pessoaBean.isFuncionario()}"
+				<p:inputMask id="cpf" mask="999.999.999-99"
+					required="#{pessoaBean.isFuncionario()}"
 					value="#{pessoaBean.pessoaView.pessoa.cpf}" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.email']}"

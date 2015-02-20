@@ -35,7 +35,7 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 	private PessoaService service;
 
 	private List<SelectItem> paginas;
-	
+
 	private String tipoPessoa;
 
 	@PostConstruct
@@ -121,8 +121,8 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 	public void setPessoaView(PessoaView pessoaView) {
 		this.pessoaView = pessoaView;
 	}
-	
-	public boolean isFuncionario(){
+
+	public boolean isFuncionario() {
 		return Constantes.Pessoa.PAGINA_FUNCIONARIO.equals(tipoPessoa);
 	}
 

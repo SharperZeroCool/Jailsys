@@ -9,23 +9,23 @@
 	<ui:define name="corpo">
 
 		<h:form>
-			<p:panelGrid columns="2">
+			<p:panelGrid columns="2" style="width:100%;">
 				<p:outputLabel value="#{msg['jailsysweb.ambiente.form.label.nome']}"
 					for="nome" />
-				<p:inputText id="nome" size="45"
+				<p:inputText id="nome"
 					value="#{ambienteBean.ambienteView.ambiente.nome}" required="true" />
 
 				<p:outputLabel
 					value="#{msg['jailsysweb.ambiente.form.label.descricao']}"
 					for="descricao" />
-				<p:inputText id="descricao" size="45"
+				<p:inputText id="descricao"
 					value="#{ambienteBean.ambienteView.ambiente.descricao}"
 					required="true" />
 
 				<p:outputLabel
 					value="#{msg['jailsysweb.ambiente.form.label.lotacao']}"
 					for="lotacaoPessoas" />
-				<p:inputText id="lotacaoPessoas" size="15"
+				<p:inputText id="lotacaoPessoas"
 					value="#{ambienteBean.ambienteView.ambiente.lotacaoPessoas}"
 					required="true" />
 

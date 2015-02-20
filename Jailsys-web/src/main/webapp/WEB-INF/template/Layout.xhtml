@@ -7,60 +7,66 @@
 <h:head>
 	<link type="text/css" rel="stylesheet"
 		href="/project/faces/javax.faces.resource/theme.css?ln=primefaces-home" />
+	<h:outputStylesheet name="css/Style.css" />
 	<title><ui:insert name="titulo">Jailsys</ui:insert></title>
 </h:head>
 <h:body>
 	<f:loadBundle basename="messages" var="msg" />
 	<div id="conteudo" align="center">
-		<h1>
-			<h:outputText value="#{msg['jailsysweb.template.header']}" />
-		</h1>
-		<h:form prependId="false">
-			<p:menubar style="margin-top: -20px; margin-bottom: 20px">
-				<p:menuitem value="Início" outcome="/index" />
-				<p:submenu label="#{msg['jailsysweb.usuario.menu.label']}">
-					<p:menuitem
-						value="#{msg['jailsysweb.usuario.menu.cadastro.label']}"
-						action="/usuario/usuarioCadastro" />
-					<p:menuitem
-						value="#{msg['jailsysweb.usuario.menu.consulta.label']}"
-						action="/usuario/usuarioConsulta" />
-				</p:submenu>
-				<p:submenu label="#{msg['jailsysweb.pessoa.menu.label']}">
-					<p:menuitem value="#{msg['jailsysweb.pessoa.menu.cadastro.label']}"
-						action="/pessoa/pessoaFormulario" />
-					<p:menuitem value="#{msg['jailsysweb.pessoa.menu.consulta.label']}"
-						action="/pessoa/pessoaConsulta" />
-				</p:submenu>
-				<p:submenu label="#{msg['jailsysweb.funcionario.menu.label']}">
-					<p:menuitem
-						value="#{msg['jailsysweb.funcionario.menu.consulta.label']}"
-						action="/funcionario/funcionarioConsulta" />
-				</p:submenu>
-				<p:submenu label="Preso">
-					<p:menuitem value="#{msg['jailsysweb.preso.menu.consulta.label']}"
-						action="/preso/presoConsulta" />
-				</p:submenu>
-				<p:submenu label="#{msg['jailsysweb.ambiente.menu.label']}">
-					<p:menuitem
-						value="#{msg['jailsysweb.ambiente.menu.cadastro.label']}"
-						action="/ambiente/ambienteCadastro" />
-					<p:menuitem
-						value="#{msg['jailsysweb.ambiente.menu.consulta.label']}"
-						action="/ambiente/ambienteConsulta" />
-				</p:submenu>
-				<p:submenu label="Atividade">
-					<p:menuitem value="Cadastrar Atividade"
-						action="/atividade/atividadeCadastro" />
-					<p:menuitem value="Consultar Atividade"
-						action="/atividade/atividadeConsulta" />
-				</p:submenu>
-			</p:menubar>
-			<p:messages id="messages" />
-		</h:form>
+		<header>
+			<h1 class="title ui-widget-header ui-corner-all">
+				<h:outputText value="#{msg['jailsysweb.template.header']}" />
+			</h1>
+			<h:form prependId="false">
+				<p:menubar style="margin-top: -20px; margin-bottom: 20px">
+					<p:menuitem value="Início" outcome="/index" />
+					<p:submenu label="#{msg['jailsysweb.usuario.menu.label']}">
+						<p:menuitem
+							value="#{msg['jailsysweb.usuario.menu.cadastro.label']}"
+							action="/usuario/usuarioCadastro" />
+						<p:menuitem
+							value="#{msg['jailsysweb.usuario.menu.consulta.label']}"
+							action="/usuario/usuarioConsulta" />
+					</p:submenu>
+					<p:submenu label="#{msg['jailsysweb.pessoa.menu.label']}">
+						<p:menuitem
+							value="#{msg['jailsysweb.pessoa.menu.cadastro.label']}"
+							action="/pessoa/pessoaFormulario" />
+						<p:menuitem
+							value="#{msg['jailsysweb.pessoa.menu.consulta.label']}"
+							action="/pessoa/pessoaConsulta" />
+					</p:submenu>
+					<p:submenu label="#{msg['jailsysweb.funcionario.menu.label']}">
+						<p:menuitem
+							value="#{msg['jailsysweb.funcionario.menu.consulta.label']}"
+							action="/funcionario/funcionarioConsulta" />
+					</p:submenu>
+					<p:submenu label="Preso">
+						<p:menuitem value="#{msg['jailsysweb.preso.menu.consulta.label']}"
+							action="/preso/presoConsulta" />
+					</p:submenu>
+					<p:submenu label="#{msg['jailsysweb.ambiente.menu.label']}">
+						<p:menuitem
+							value="#{msg['jailsysweb.ambiente.menu.cadastro.label']}"
+							action="/ambiente/ambienteCadastro" />
+						<p:menuitem
+							value="#{msg['jailsysweb.ambiente.menu.consulta.label']}"
+							action="/ambiente/ambienteConsulta" />
+					</p:submenu>
+					<p:submenu label="Atividade">
+						<p:menuitem value="Cadastrar Atividade"
+							action="/atividade/atividadeCadastro" />
+						<p:menuitem value="Consultar Atividade"
+							action="/atividade/atividadeConsulta" />
+					</p:submenu>
+				</p:menubar>
+				<p:messages id="messages" />
+			</h:form>
+		</header>
 		<ui:insert name="corpo" />
 	</div>
-	<footer>
+	<footer class="title ui-widget-header ui-corner-all"
+		style="text-align: center;">
 		<h:outputText value="#{msg['jailsysweb.template.footer']}" />
 	</footer>
 </h:body>
