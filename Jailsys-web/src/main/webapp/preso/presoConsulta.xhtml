@@ -39,25 +39,18 @@
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 				</p:column>
-				<p:column
-					headerText="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}"
-					sortBy="#{preso.dataNasc}">
-					<h:outputText value="#{preso.dataNasc}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-				</p:column>
 
 
 				<p:column headerText="Opções">
-					<p:commandButton value="Visualizar"
+					<p:commandButton icon="ui-icon-image"
 						action="#{presoBean.visualizar()}" ajax="false">
 						<f:param name="idPreso" value="#{preso.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton value="Editar"
+					<p:commandButton icon="ui-icon-pencil"
 						action="#{presoBean.prepararEdicao()}" ajax="false">
 						<f:param name="idPreso" value="#{preso.id}"></f:param>
 					</p:commandButton>
-					<p:commandButton value="Excluir"
+					<p:commandButton icon="ui-icon-trash"
 						action="#{presoBean.excluir(preso)}" ajax="false">
 						<f:param value="#{preso.id}"></f:param>
 					</p:commandButton>
