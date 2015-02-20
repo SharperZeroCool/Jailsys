@@ -13,6 +13,13 @@
 		<h:form>
 			<p:panelGrid id="tipo" columns="2" style="width:80%">
 				<p:outputLabel
+					value="#{msg['jailsysweb.pessoa.form.cadastro.label.tipo']}" />
+				<p:selectOneRadio value="#{pessoaBean.tipoPessoa}">
+					<f:selectItems value="#{pessoaBean.paginas}" var="pagina"
+						itemLabel="#{pagina.description}" itemValue="#{pagina.label}" />
+					<f:ajax render="tipo" />
+				</p:selectOneRadio>
+				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}"
 					for="nome" />
 				<p:inputText id="nome" value="#{pessoaBean.pessoaView.pessoa.nome}"
@@ -44,13 +51,6 @@
 					for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"
 					value="#{pessoaBean.pessoaView.pessoa.ativo}" />
-				<p:outputLabel
-					value="#{msg['jailsysweb.pessoa.form.cadastro.label.tipo']}" />
-				<p:selectOneRadio value="#{pessoaBean.tipoPessoa}">
-					<f:selectItems value="#{pessoaBean.paginas}" var="pagina"
-						itemLabel="#{pagina.description}" itemValue="#{pagina.label}" />
-					<f:ajax render="tipo" />
-				</p:selectOneRadio>
 				<ui:include src="#{pessoaBean.tipoPessoa}" />
 			</p:panelGrid>
 		</h:form>
