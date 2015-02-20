@@ -11,7 +11,7 @@
 			<ui:insert name="cabecalho" />
 		</h1>
 		<h:form>
-			<p:panelGrid columns="2" style="width:80%">
+			<p:panelGrid id="tipo" columns="2" style="width:80%">
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}"
 					for="nome" />
@@ -51,11 +51,8 @@
 						itemLabel="#{pagina.description}" itemValue="#{pagina.label}" />
 					<f:ajax render="tipo" />
 				</p:selectOneRadio>
-			</p:panelGrid>
-			<h:panelGroup id="tipo" layout="block">
 				<ui:include src="#{pessoaBean.tipoPessoa}" />
-			</h:panelGroup>
-			<ui:insert name="botao" />
+			</p:panelGrid>
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -1,27 +1,29 @@
-<p:panelGrid columns="2" style="width:80%" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<p:outputLabel
-		value="#{msg['jailsysweb.funcionario.form.cadastro.label.dataEntrada']}"
-		for="dataEntrada" />
-	<p:calendar id="dataEntrada"
-		value="#{funcionarioBean.funcionarioView.funcionario.dataEntrada}"
-		pattern="dd-MM-yyyy" mask="true" required="true" />
-	<p:outputLabel
-		value="#{msg['jailsysweb.funcionario.form.cadastro.label.cargaHoraria']}"
-		for="cargaHoraria" />
-	<p:calendar id="cargaHoraria"
-		value="#{funcionarioBean.funcionarioView.funcionario.cargaHoraria}"
-		pattern="HH:mm" timeOnly="true" required="true" />
-	<p:outputLabel
-		value="#{msg['jailsysweb.funcionario.form.cadastro.label.horarioEntrada']}"
-		for="horarioEntrada" />
-	<p:calendar id="horarioEntrada"
-		value="#{funcionarioBean.funcionarioView.funcionario.horarioEntrada}"
-		pattern="HH:mm" timeOnly="true" required="true" />
-	<p:commandButton
-		value="#{msg['jailsysweb.funcionario.form.cadastro.botao.salvar']}"
-		action="#{funcionarioBean.salvar(pessoaBean.pessoaView.pessoa)}" ajax="false" />
-</p:panelGrid>
+<p:outputLabel
+	value="#{msg['jailsysweb.funcionario.form.cadastro.label.dataEntrada']}"
+	for="dataEntrada" />
+<p:calendar id="dataEntrada"
+	value="#{funcionarioBean.funcionarioView.funcionario.dataEntrada}"
+	pattern="dd-MM-yyyy" mask="true" required="true" />
+<p:outputLabel
+	value="#{msg['jailsysweb.funcionario.form.cadastro.label.cargaHoraria']}"
+	for="cargaHoraria" />
+<p:calendar id="cargaHoraria"
+	value="#{funcionarioBean.funcionarioView.funcionario.cargaHoraria}"
+	pattern="HH:mm" timeOnly="true" required="true" />
+<p:outputLabel
+	value="#{msg['jailsysweb.funcionario.form.cadastro.label.horarioEntrada']}"
+	for="horarioEntrada" />
+<p:calendar id="horarioEntrada"
+	value="#{funcionarioBean.funcionarioView.funcionario.horarioEntrada}"
+	pattern="HH:mm" timeOnly="true" required="true" />
+<p:outputLabel />
+<p:commandButton
+	value="#{msg['jailsysweb.funcionario.form.cadastro.botao.salvar']}"
+	action="#{funcionarioBean.salvar(pessoaBean.pessoaView.pessoa)}"
+	ajax="false" />
+</ui:composition>

@@ -1,10 +1,10 @@
-<p:panelGrid columns="2" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
+	<p:outputLabel />
 	<p:commandButton action="#{pessoaBean.salvar()}"
 		value="#{msg['jailsysweb.pessoa.form.cadastro.botao.salvar']}"
 		ajax="false" />
-</p:panelGrid>
+</ui:composition>
