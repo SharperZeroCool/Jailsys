@@ -27,7 +27,7 @@
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.cpf']}"
 					for="cpf" />
-				<p:inputMask id="cpf" mask="999.999.999-99"
+				<p:inputMask id="cpf" mask="999.999.999-99" required="#{pessoaBean.isFuncionario()}"
 					value="#{pessoaBean.pessoaView.pessoa.cpf}" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.email']}"
