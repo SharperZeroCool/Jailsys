@@ -7,9 +7,6 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="corpo">
-		<h1>
-			<ui:insert name="cabecalho" />
-		</h1>
 
 		<h:form>
 			<p:panelGrid columns="2">
@@ -49,7 +46,7 @@
 				<p:outputLabel
 					value="#{msg['jailsysweb.ambiente.form.label.severidade']}"
 					for="severidade" />
-				<p:selectOneMenu id="severidade" size="15"
+				<h:selectOneMenu id="severidade"
 					value="#{ambienteBean.ambienteView.ambiente.severidade}"
 					required="true">
 					<f:selectItem itemLabel="Selecione" itemValue=""
@@ -57,7 +54,7 @@
 					<f:selectItem itemLabel="Baixa" itemValue="Baixa" />
 					<f:selectItem itemLabel="Média" itemValue="Media" />
 					<f:selectItem itemLabel="Alta" itemValue="Alta" />
-				</p:selectOneMenu>
+				</h:selectOneMenu>
 
 				<p:outputLabel
 					value="#{msg['jailsysweb.ambiente.form.label.ativo']}" for="ativo" />
