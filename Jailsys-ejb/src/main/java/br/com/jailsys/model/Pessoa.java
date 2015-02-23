@@ -10,74 +10,79 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.br.CPF;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa extends EntidadeComum implements Serializable {
 
-    private static final long serialVersionUID = -7205815321884922764L;
+	private static final long serialVersionUID = -7205815321884922764L;
 
-    @Column(length = 100, nullable = false)
-    private String nome;
+	@Column(length = 100, nullable = false)
+	private String nome;
 
-    @Column(length = 20, nullable = false, unique = true)
-    private String cpf;
+	@Column(length = 20, nullable = false, unique = true)
+	@CPF
+	private String cpf;
 
-    @Column(length = 100, nullable = false)
-    private String email;
+	@Column(length = 100, nullable = false)
+	@Email
+	private String email;
 
-    @Temporal(TemporalType.DATE)
-    private Date dataNasc;
+	@Temporal(TemporalType.DATE)
+	private Date dataNasc;
 
-    @Column(length = 20, unique = true)
-    private String celular;
+	@Column(length = 20)
+	private String celular;
 
-    private boolean ativo;
+	private boolean ativo;
 
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public Date getDataNasc() {
-        return dataNasc;
-    }
+	public Date getDataNasc() {
+		return dataNasc;
+	}
 
-    public void setDataNasc(Date dataNasc) {
-        this.dataNasc = dataNasc;
-    }
+	public void setDataNasc(Date dataNasc) {
+		this.dataNasc = dataNasc;
+	}
 
-    public String getCelular() {
-        return celular;
-    }
+	public String getCelular() {
+		return celular;
+	}
 
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
 
-    public boolean isAtivo() {
-        return ativo;
-    }
+	public boolean isAtivo() {
+		return ativo;
+	}
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
 }
