@@ -75,7 +75,7 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
 
 	@Override
 	public String visualizar() {
-		return Constantes.Funcionario.TELA_EDICAO;
+		return Constantes.Funcionario.TELA_VISUALIZAR;
 	}
 
 	@Override

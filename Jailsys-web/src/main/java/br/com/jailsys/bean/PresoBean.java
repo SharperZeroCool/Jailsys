@@ -79,7 +79,7 @@ public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	@Override
 	public String visualizar() {
-		return Constantes.Preso.TELA_CADASTRO;
+		return Constantes.Preso.TELA_VISUALIZAR;
 	}
 
 	@Override

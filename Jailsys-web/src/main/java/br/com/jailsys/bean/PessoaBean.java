@@ -88,7 +88,7 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	@Override
 	public String visualizar() {
-		return Constantes.Pessoa.TELA_EDICAO;
+		return Constantes.Pessoa.TELA_VISUALIZAR;
 	}
 
 	@Override

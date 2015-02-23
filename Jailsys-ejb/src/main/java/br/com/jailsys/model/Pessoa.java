@@ -22,12 +22,12 @@ public class Pessoa extends EntidadeComum implements Serializable {
 	@Column(length = 100, nullable = false)
 	private String nome;
 
-	@Column(length = 20, nullable = false, unique = true)
 	@CPF
+	@Column(length = 20, nullable = false, unique = true)
 	private String cpf;
 
-	@Column(length = 100, nullable = false)
 	@Email
+	@Column(length = 100, nullable = false)
 	private String email;
 
 	@Temporal(TemporalType.DATE)

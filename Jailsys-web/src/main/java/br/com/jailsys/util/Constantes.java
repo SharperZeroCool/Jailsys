@@ -4,6 +4,7 @@ public class Constantes {
 	public static final class Pessoa {
 		public static final String TELA_CONSULTA = "/pessoa/pessoaConsulta.xhtml";
 		public static final String TELA_CADASTRO = "/pessoa/pessoaCadastro.xhtml";
+		public static final String TELA_VISUALIZAR = "/pessoa/pessoaInclude.xhtml";
 		public static final String TELA_EDICAO = "/pessoa/pessoaEdicao.xhtml";
 		public static final String MENSAGEM_CADASTRO = "jailsysweb.pessoa.cadastro.sucesso";
 		public static final String MENSAGEM_EDICAO = "jailsysweb.pessoa.edicao.sucesso";
@@ -21,6 +22,7 @@ public class Constantes {
 	public static final class Funcionario {
 		public static final String TELA_CADASTRO = "/funcionario/funcionarioCadastro.xhtml";
 		public static final String TELA_CONSULTA = "/funcionario/funcionarioConsulta.xhtml";
+		public static final String TELA_VISUALIZAR = "/funcionario/funcionarioInclude.xhtml";
 		public static final String TELA_EDICAO = "/funcionario/funcionarioEdicao.xhtml";
 		public static final String MENSAGEM_CADASTRO = "jailsysweb.funcionario.cadastro.sucesso";
 		public static final String MENSAGEM_EDICAO = "jailsysweb.funcionario.edicao.sucesso";
@@ -31,6 +33,7 @@ public class Constantes {
 		public static final String TELA_CADASTRO = "/preso/presoCadastro.xhtml";
 		public static final String TELA_CONSULTA = "/preso/presoConsulta.xhtml";
 		public static final String TELA_EDICAO = "/preso/presoEdicao.xhtml";
+		public static final String TELA_VISUALIZAR = "/preso/presoInclude.xhtml";
 		public static final String MENSAGEM_CADASTRO = "jailsysweb.preso.cadastro.sucesso";
 		public static final String MENSAGEM_EDICAO = "jailsysweb.preso.edicao.sucesso";
 		public static final String MENSAGEM_EXCLUSAO = "jailsysweb.preso.exclusao.sucesso";
