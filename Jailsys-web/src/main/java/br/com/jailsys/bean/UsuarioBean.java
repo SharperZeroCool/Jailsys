@@ -59,7 +59,6 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 		usuarioView.setUsuarios(service.listar());
 	}
 
-	@Override
 	public String editar() {
 		service.editar(usuarioView.getUsuario());
 		FacesUtil.mostrarMensagemSucesso(MENSAGEM_EDICAO);

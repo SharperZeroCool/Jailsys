@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<ui:composition template="/preso/presoFormulario.xhtml"
+<ui:composition template="/preso/presoInclude.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -9,9 +9,10 @@
 	<ui:define name="titulo">
 		#{msg['jailsysweb.preso.titulo.cadastro.label']}
 	</ui:define>
-	<ui:define name="botao">
+	<ui:define name="botaoPreso">
 		<p:outputLabel />
-		<p:commandButton value="Submit" action="#{presoBean.editar()}"
+		<p:commandButton value="Editar"
+			action="#{presoBean.editar(pessoaBean.pessoaView.pessoa)}"
 			ajax="false" />
 	</ui:define>
 

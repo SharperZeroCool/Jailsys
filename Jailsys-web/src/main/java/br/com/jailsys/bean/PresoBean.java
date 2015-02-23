@@ -70,8 +70,8 @@ public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	}
 
-	@Override
-	public String editar() {
+	public String editar(Pessoa pessoa) {
+		this.populaItensDePessoa(pessoa);
 		service.editar(presoView.getPreso());
 		FacesUtil.mostrarMensagemSucesso(Constantes.Preso.MENSAGEM_EDICAO);
 		return Constantes.Preso.TELA_CONSULTA;

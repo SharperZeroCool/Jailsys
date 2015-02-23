@@ -25,13 +25,6 @@ public interface AbstractBean<T extends EntidadeComum> {
 	public void atualizarView();
 
 	/**
-	 * Altera os dados da entidade correspondente no banco de dados.
-	 * 
-	 * @return
-	 */
-	public String editar();
-
-	/**
 	 * Visualiza os dados da entidade correspondente sem permitir a edicao da
 	 * mesma.
 	 * 

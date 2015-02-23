@@ -3,10 +3,9 @@ package br.com.jailsys.enums;
 import br.com.jailsys.util.Constantes;
 
 public enum TipoPessoa {
-	FUNCIONARIO(Constantes.Pessoa.FUNCIONARIO,
-			Constantes.Pessoa.PAGINA_FUNCIONARIO), PRESO(
-			Constantes.Pessoa.PRESO, Constantes.Pessoa.PAGINA_PRESO), VISITANTE(
-			Constantes.Pessoa.VISITANTE, Constantes.Pessoa.PAGINA_VISITANTE);
+	FUNCIONARIO(Constantes.Pessoa.FUNCIONARIO, Constantes.Pessoa.PAGINA_FUNCIONARIO),
+	PRESO(Constantes.Pessoa.PRESO, Constantes.Pessoa.PAGINA_PRESO),
+	VISITANTE(Constantes.Pessoa.VISITANTE, Constantes.Pessoa.PAGINA_VISITANTE);
 
 	private String label;
 	private String pagina;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<ui:composition template="/funcionario/funcionarioFormulario.xhtml"
+<ui:composition template="/funcionario/funcionarioInclude.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -7,10 +7,11 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">#{msg['jailsysweb.funcionario.titulo.editar.label']}</ui:define>
-	<ui:define name="botao">
+	<ui:define name="botaoFuncionario">
 		<p:outputLabel />
 		<p:commandButton
-			value="#{msg['jailsysweb.funcionario.form.editar.botao.editar']}"
-			action="#{funcionarioBean.editar()}" ajax="false" />
+			value="Editar"
+			action="#{funcionarioBean.editar(pessoaBean.pessoaView.pessoa)}"
+			ajax="false" />
 	</ui:define>
 </ui:composition>

@@ -9,13 +9,13 @@
 	<ui:define name="titulo">
 		#{msg['jailsysweb.pessoa.titulo.cadastro.label']}
 	</ui:define>
-	<ui:define name="cabecalho">
-		#{msg['jailsysweb.pessoa.titulo.cadastro.label']}
-	</ui:define>
-
-	<ui:define name="botao">
-		<p:commandButton action="#{pessoaBean.salvar()}"
-			value="#{msg['jailsysweb.pessoa.form.cadastro.botao.salvar']}"
-			ajax="false" />
+	<ui:define name="selectTipoCadastro">
+		<p:outputLabel
+			value="#{msg['jailsysweb.pessoa.form.cadastro.label.tipo']}" />
+		<p:selectOneRadio value="#{pessoaBean.tipoPessoa}">
+			<f:selectItems value="#{pessoaBean.paginas}" var="pagina"
+				itemLabel="#{pagina.description}" itemValue="#{pagina.label}" />
+			<f:ajax render="tipo" />
+		</p:selectOneRadio>
 	</ui:define>
 </ui:composition>

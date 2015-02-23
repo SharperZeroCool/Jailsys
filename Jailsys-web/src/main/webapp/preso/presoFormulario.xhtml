@@ -13,9 +13,5 @@
 		for="dataSaida" />
 	<p:calendar id="dataSaida"
 		value="#{presoBean.presoView.preso.dataSaida}" />
-	<p:outputLabel />
-	<p:commandButton
-		value="#{msg['jailsysweb.preso.form.cadastro.botao.salvar']}"
-		action="#{presoBean.salvar(pessoaBean.pessoaView.pessoa)}"
-		ajax="false" />
+	<ui:insert name="botaoPreso" />
 </ui:composition>

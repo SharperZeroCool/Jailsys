@@ -10,6 +10,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
+import com.google.common.base.Strings;
+
 import br.com.jailsys.bean.basic.AbstractBean;
 import br.com.jailsys.enums.TipoPessoa;
 import br.com.jailsys.model.EntidadeComum;
@@ -77,7 +79,6 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 		pessoaView.setPessoas(service.listarItensAtivos());
 	}
 
-	@Override
 	public String editar() {
 		service.editar(pessoaView.getPessoa());
 		this.atualizarView();
@@ -96,6 +97,12 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 		this.atualizarView();
 		FacesUtil.mostrarMensagemSucesso(Constantes.Pessoa.MENSAGEM_EXCLUSAO);
 		return Constantes.Pessoa.TELA_CONSULTA;
+	}
+
+	public boolean isFuncionario() {
+		return Constantes.Pessoa.PAGINA_FUNCIONARIO.equals(tipoPessoa)
+				|| !Strings.isNullOrEmpty(FacesUtil
+						.getRequestParameter("idFuncionario"));
 	}
 
 	public List<SelectItem> getPaginas() {
@@ -120,10 +127,6 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	public void setPessoaView(PessoaView pessoaView) {
 		this.pessoaView = pessoaView;
-	}
-
-	public boolean isFuncionario() {
-		return Constantes.Pessoa.PAGINA_FUNCIONARIO.equals(tipoPessoa);
 	}
 
 }

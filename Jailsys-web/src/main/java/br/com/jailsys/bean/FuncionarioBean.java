@@ -64,11 +64,12 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
 		funcionarioView.setFuncionarios(service.listarItensAtivos());
 	}
 
-	@Override
-	public String editar() {
+	public String editar(Pessoa pessoa) {
+		this.populaItensDePessoa(pessoa);
 		service.editar(funcionarioView.getFuncionario());
 		FacesUtil
 				.mostrarMensagemSucesso(Constantes.Funcionario.MENSAGEM_EDICAO);
+		this.atualizarView();
 		return Constantes.Funcionario.TELA_CONSULTA;
 	}
 

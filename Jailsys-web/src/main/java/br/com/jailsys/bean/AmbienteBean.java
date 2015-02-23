@@ -53,7 +53,6 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	}
 
-	@Override
 	public String editar() {
 		service.editar(ambienteView.getAmbiente());
 		FacesUtil.mostrarMensagemSucesso(Constantes.Ambiente.MENSAGEM_EDICAO);

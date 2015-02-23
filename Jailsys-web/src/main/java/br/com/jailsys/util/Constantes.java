@@ -2,9 +2,9 @@ package br.com.jailsys.util;
 
 public class Constantes {
 	public static final class Pessoa {
-		public static final String TELA_CONSULTA = "pessoaConsulta.xhtml";
-		public static final String TELA_CADASTRO = "pessoaCadastro.xhtml";
-		public static final String TELA_EDICAO = "pessoaEdicao.xhtml";
+		public static final String TELA_CONSULTA = "/pessoa/pessoaConsulta.xhtml";
+		public static final String TELA_CADASTRO = "/pessoa/pessoaCadastro.xhtml";
+		public static final String TELA_EDICAO = "/pessoa/pessoaEdicao.xhtml";
 		public static final String MENSAGEM_CADASTRO = "jailsysweb.pessoa.cadastro.sucesso";
 		public static final String MENSAGEM_EDICAO = "jailsysweb.pessoa.edicao.sucesso";
 		public static final String MENSAGEM_EXCLUSAO = "jailsysweb.pessoa.exclusao.sucesso";
@@ -13,8 +13,8 @@ public class Constantes {
 		public static final String PRESO = "jailsysweb.pessoa.form.cadastro.label.preso";
 		public static final String VISITANTE = "jailsysweb.pessoa.form.cadastro.label.visitante";
 
-		public static final String PAGINA_FUNCIONARIO = "../funcionario/funcionarioFormulario.xhtml";
-		public static final String PAGINA_PRESO = "../preso/presoFormulario.xhtml";
+		public static final String PAGINA_FUNCIONARIO = "../funcionario/funcionarioCadastro.xhtml";
+		public static final String PAGINA_PRESO = "../preso/presoCadastro.xhtml";
 		public static final String PAGINA_VISITANTE = "visitanteCadastro.xhtml";
 	}
 

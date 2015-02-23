@@ -53,7 +53,6 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 		atividadeView.setAtividades(service.listarPorAtivo());
 	}
 
-	@Override
 	public String editar() {
 		service.editar(atividadeView.getAtividade());
 		atualizarView();

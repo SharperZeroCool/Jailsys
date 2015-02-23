@@ -35,9 +35,9 @@ public class Ambiente extends EntidadeComum implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Severidade severidade;
-
+    
     @Column(nullable = false)
-    private boolean ativo;
+	private boolean ativo;
 
     /*
      * @ManyToMany
@@ -94,11 +94,12 @@ public class Ambiente extends EntidadeComum implements Serializable {
         this.severidade = severidade;
     }
 
-    public boolean isAtivo() {
-        return ativo;
-    }
+	public boolean isAtivo() {
+		return ativo;
+	}
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
 }
