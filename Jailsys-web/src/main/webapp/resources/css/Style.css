@@ -4,3 +4,7 @@ body {
 	width: 80%;
 	margin: 0px auto;
 }
+
+.ui-selectonemenu-label {
+	width: 90% !important;
+}

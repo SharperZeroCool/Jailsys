@@ -1,7 +1,6 @@
 package br.com.jailsys.service;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,7 +8,6 @@ import javax.inject.Inject;
 import br.com.jailsys.DAO.UsuarioDAO;
 import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Grupo;
-import br.com.jailsys.model.Pessoa;
 import br.com.jailsys.model.Usuario;
 
 public class UsuarioService implements AbstractService<EntidadeComum>,
@@ -21,18 +19,7 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 
 	@Override
 	public void salvar(EntidadeComum entidade) {
-		Pessoa pessoa = new Pessoa();
-		pessoa.setCpf("100.209.306-66");
-		pessoa.setDataNasc(new Date());
-		pessoa.setEmail("email@email.com");
-		pessoa.setNome("asdasd");
-		Grupo grupo = new Grupo();
-		grupo.setDescricao("aasdasd");
-		grupo.setNome("asdasd");
-		Usuario usuario = (Usuario) entidade;
-		usuario.setPessoa(pessoa);
-		usuario.setGrupo(grupo);
-		usuario.criptografarSenha();
+		((Usuario) entidade).criptografarSenha();
 		usuarioDao.salvar((Usuario) entidade);
 	}
 
@@ -69,6 +56,10 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 
 	public List<Usuario> listarItensAtivos() {
 		return usuarioDao.listarItensAtivos();
+	}
+
+	public List<Grupo> listarGrupos() {
+		return usuarioDao.listarGrupos();
 	}
 
 }

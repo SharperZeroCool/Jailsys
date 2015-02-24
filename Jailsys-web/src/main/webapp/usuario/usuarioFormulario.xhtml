@@ -21,6 +21,26 @@
 				<p:password id="confirmacaoSenha"
 					value="#{usuarioBean.usuarioView.confirmacaoSenha}" feedback="true"
 					inline="true" label="Confirmação de Senha" required="true" />
+				<p:outputLabel for="funcionario" value="Funcionário:" />
+				<p:selectOneMenu id="funcionario"
+					value="#{usuarioBean.usuarioView.usuario.pessoa}"
+					converter="genericConverter" effect="fade" filter="true"
+					filterMatchMode="startsWith" required="true">
+
+					<f:selectItems value="#{funcionarioBean.listarItensAtivos()}"
+						var="func" itemLabel="#{func.nome}" itemValue="#{func}" />
+
+				</p:selectOneMenu>
+				<p:outputLabel for="grupo" value="Grupo:" />
+				<p:selectOneMenu id="grupo"
+					value="#{usuarioBean.usuarioView.usuario.grupo}"
+					converter="genericConverter" effect="fade" filter="true"
+					filterMatchMode="startsWith" required="true">
+
+					<f:selectItems value="#{usuarioBean.listarGrupos()}" var="grupo"
+						itemLabel="#{grupo.nome}" itemValue="#{grupo}" />
+
+				</p:selectOneMenu>
 				<p:outputLabel value="Ativo" for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"
 					value="#{usuarioBean.usuarioView.usuario.ativo}" />

@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import br.com.jailsys.bean.basic.AbstractBean;
 import br.com.jailsys.model.EntidadeComum;
+import br.com.jailsys.model.Grupo;
 import br.com.jailsys.model.Usuario;
 import br.com.jailsys.service.UsuarioService;
 import br.com.jailsys.util.Constantes;
@@ -33,12 +34,16 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 		}
 		return usuarioView.getUsuarios();
 	}
-	
+
 	public List<Usuario> listarItensAtivos() {
 		if (usuarioView.getUsuarios().isEmpty()) {
 			this.atualizarView();
 		}
 		return usuarioView.getUsuarios();
+	}
+
+	public List<Grupo> listarGrupos() {
+		return service.listarGrupos();
 	}
 
 	@Override
