@@ -28,14 +28,6 @@ public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
 	@Inject
 	PresoView presoView;
 
-	public PresoView getPresoView() {
-		return presoView;
-	}
-
-	public void setPresoView(PresoView presoView) {
-		this.presoView = presoView;
-	}
-
 	public List<Preso> listarItensAtivos() {
 		if (presoView.getPresos().isEmpty()) {
 			this.atualizarView();
@@ -98,6 +90,14 @@ public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
 		preso.setDataNasc(pessoa.getDataNasc());
 		preso.setCelular(pessoa.getCelular());
 		preso.setAtivo(pessoa.isAtivo());
+	}
+
+	public PresoView getPresoView() {
+		return presoView;
+	}
+
+	public void setPresoView(PresoView presoView) {
+		this.presoView = presoView;
 	}
 
 }

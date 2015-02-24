@@ -12,7 +12,7 @@
 
 
 		<h:form prependId="false">
-			<p:dataTable var="ambiente" value="#{ambienteBean.listar()}"
+			<p:dataTable var="ambiente" value="#{ambienteBean.listarItensAtivos()}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
@@ -49,12 +49,6 @@
 					sortBy="#{ambiente.severidade}" filterBy="#{ambiente.severidade}"
 					filterMatchMode="contains">
 					<h:outputText value="#{ambiente.severidade}" />
-				</p:column>
-
-				<p:column
-					headerText="#{msg['jailsysweb.ambiente.form.label.ativo']}"
-					sortBy="#{ambiente.ativo}">
-					<h:outputText value="#{ambiente.ativo}" />
 				</p:column>
 
 				<p:column headerText="Opções">

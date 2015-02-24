@@ -10,55 +10,55 @@ import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Pessoa;
 
 public class PessoaService implements AbstractService<EntidadeComum>,
-        Serializable {
+		Serializable {
 
-    /**
+	/**
      * 
      */
-    private static final long serialVersionUID = 6623540764664272252L;
+	private static final long serialVersionUID = 6623540764664272252L;
 
-    @Inject
-    PessoaDAO pessoaDao;
+	@Inject
+	PessoaDAO pessoaDao;
 
-    @Override
-    public void salvar(EntidadeComum entidade) {
-        pessoaDao.salvar((Pessoa) entidade);
-    }
+	@Override
+	public void salvar(EntidadeComum entidade) {
+		pessoaDao.salvar((Pessoa) entidade);
+	}
 
-    @Override
-    public EntidadeComum salvarERetornar(EntidadeComum entidade) {
-        pessoaDao.salvarERetornar((Pessoa) entidade);
-        return (Pessoa) entidade;
-    }
+	@Override
+	public EntidadeComum salvarERetornar(EntidadeComum entidade) {
+		pessoaDao.salvarERetornar((Pessoa) entidade);
+		return (Pessoa) entidade;
+	}
 
-    @Override
-    public void editar(EntidadeComum entidade) {
-        pessoaDao.editar((Pessoa) entidade);
-    }
+	@Override
+	public void editar(EntidadeComum entidade) {
+		pessoaDao.editar((Pessoa) entidade);
+	}
 
-    @Override
-    public void excluir(Long id) {
-        // TODO Auto-generated method stub
+	@Override
+	public void excluir(Long id) {
+		Pessoa pessoa = pessoaDao.buscar(id);
+		excluir(pessoa);
+	}
 
-    }
+	@Override
+	public void excluir(EntidadeComum entidade) {
+		((Pessoa) entidade).setAtivo(Boolean.FALSE);
+		pessoaDao.editar((Pessoa) entidade);
+	}
 
-    @Override
-    public void excluir(EntidadeComum entidade) {
-        ((Pessoa) entidade).setAtivo(Boolean.FALSE);
-        pessoaDao.editar((Pessoa) entidade);
-    }
+	@Override
+	public EntidadeComum buscar(Long id) {
+		return pessoaDao.buscar(id);
+	}
 
-    @Override
-    public EntidadeComum buscar(Long id) {
-        return pessoaDao.buscar(id);
-    }
+	public List<Pessoa> listar() {
+		return pessoaDao.listar();
+	}
 
-    public List<Pessoa> listar() {
-        return pessoaDao.listar();
-    }
-    
-    public List<Pessoa> listarItensAtivos() {
-        return pessoaDao.listarItensAtivos();
-    }
+	public List<Pessoa> listarItensAtivos() {
+		return pessoaDao.listarItensAtivos();
+	}
 
 }

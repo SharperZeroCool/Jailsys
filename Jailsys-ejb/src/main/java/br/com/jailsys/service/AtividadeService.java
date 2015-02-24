@@ -10,48 +10,48 @@ import br.com.jailsys.model.EntidadeComum;
 
 public class AtividadeService implements AbstractService<EntidadeComum> {
 
-    @Inject
-    AtividadeDAO atividadeDAO;
+	@Inject
+	AtividadeDAO atividadeDAO;
 
-    public List<Atividade> listar() {
-        return atividadeDAO.listar();
-    }
-    
-    public List<Atividade> listarPorAtivo() {
-        return atividadeDAO.listarPorAtivo();
-    }
+	public List<Atividade> listar() {
+		return atividadeDAO.listar();
+	}
 
-    @Override
-    public void salvar(EntidadeComum entidade) {
-        atividadeDAO.salvar((Atividade) entidade);
+	public List<Atividade> listarItensAtivos() {
+		return atividadeDAO.listarItensAtivos();
+	}
 
-    }
+	@Override
+	public void salvar(EntidadeComum entidade) {
+		atividadeDAO.salvar((Atividade) entidade);
 
-    @Override
-    public EntidadeComum salvarERetornar(EntidadeComum entidade) {
-        return atividadeDAO.salvarERetornar((Atividade) entidade);
-    }
+	}
 
-    @Override
-    public void editar(EntidadeComum entidade) {
-        atividadeDAO.editar((Atividade) entidade);
-    }
+	@Override
+	public EntidadeComum salvarERetornar(EntidadeComum entidade) {
+		return atividadeDAO.salvarERetornar((Atividade) entidade);
+	}
 
-    @Override
-    public void excluir(Long id) {
-        Atividade atividade = atividadeDAO.buscar(id);
-        excluir(atividade);
-    }
+	@Override
+	public void editar(EntidadeComum entidade) {
+		atividadeDAO.editar((Atividade) entidade);
+	}
 
-    @Override
-    public void excluir(EntidadeComum entidade) {
-        ((Atividade) entidade).setAtivo(Boolean.FALSE);
-        atividadeDAO.editar((Atividade) entidade);
-    }
+	@Override
+	public void excluir(Long id) {
+		Atividade atividade = atividadeDAO.buscar(id);
+		excluir(atividade);
+	}
 
-    @Override
-    public EntidadeComum buscar(Long id) {
-        return atividadeDAO.buscar(id);
-    }
+	@Override
+	public void excluir(EntidadeComum entidade) {
+		((Atividade) entidade).setAtivo(Boolean.FALSE);
+		atividadeDAO.editar((Atividade) entidade);
+	}
+
+	@Override
+	public EntidadeComum buscar(Long id) {
+		return atividadeDAO.buscar(id);
+	}
 
 }

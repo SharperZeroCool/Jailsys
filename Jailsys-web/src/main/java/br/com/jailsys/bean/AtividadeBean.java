@@ -27,9 +27,9 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 	@Inject
 	private AtividadeView atividadeView;
 
-	public List<Atividade> listarPorAtivo() {
+	public List<Atividade> listarItensAtivos() {
 		if (atividadeView.getAtividades().isEmpty()) {
-			atualizarView();
+			this.atualizarView();
 		}
 		return atividadeView.getAtividades();
 	}
@@ -42,7 +42,7 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 	@Override
 	public String salvar() {
 		service.salvar(atividadeView.getAtividade());
-		atualizarView();
+		this.atualizarView();
 		FacesUtil
 				.mostrarMensagemSucesso(Constantes.Atividade.MENSAGEM_CADASTRO);
 		return Constantes.Atividade.TELA_CONSULTA;
@@ -50,25 +50,25 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 
 	@Override
 	public void atualizarView() {
-		atividadeView.setAtividades(service.listarPorAtivo());
+		atividadeView.setAtividades(service.listarItensAtivos());
 	}
 
 	public String editar() {
 		service.editar(atividadeView.getAtividade());
-		atualizarView();
+		this.atualizarView();
 		FacesUtil.mostrarMensagemSucesso(Constantes.Atividade.MENSAGEM_EDICAO);
 		return Constantes.Atividade.TELA_CONSULTA;
 	}
 
 	@Override
 	public String visualizar() {
-		return Constantes.Atividade.TELA_EDICAO;
+		return Constantes.Atividade.TELA_VISUALIZAR;
 	}
 
 	@Override
 	public String excluir(EntidadeComum entidade) {
 		service.excluir(entidade);
-		atualizarView();
+		this.atualizarView();
 		FacesUtil
 				.mostrarMensagemSucesso(Constantes.Atividade.MENSAGEM_EXCLUSAO);
 		return Constantes.Atividade.TELA_CONSULTA;

@@ -27,9 +27,9 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 	@Inject
 	private AmbienteView ambienteView;
 
-	public List<Ambiente> listar() {
+	public List<Ambiente> listarItensAtivos() {
 		if (ambienteView.getAmbientes().isEmpty()) {
-			ambienteView.setAmbientes(service.listar());
+			this.atualizarView();
 		}
 		return ambienteView.getAmbientes();
 	}
@@ -49,7 +49,7 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	@Override
 	public void atualizarView() {
-		ambienteView.setAmbientes(service.listar());
+		ambienteView.setAmbientes(service.listarItensAtivos());
 
 	}
 
@@ -61,7 +61,7 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	@Override
 	public String visualizar() {
-		return Constantes.Ambiente.TELA_EDICAO;
+		return Constantes.Ambiente.TELA_VISUALIZAR;
 	}
 
 	@Override

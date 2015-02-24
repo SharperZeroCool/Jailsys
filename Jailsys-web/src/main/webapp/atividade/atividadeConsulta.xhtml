@@ -11,7 +11,7 @@
 	<ui:define name="corpo">
 		<h:form prependId="false">
 			<p:dataTable var="atividade"
-				value="#{atividadeBean.listarPorAtivo()}" paginator="true" rows="10"
+				value="#{atividadeBean.listarItensAtivos()}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 

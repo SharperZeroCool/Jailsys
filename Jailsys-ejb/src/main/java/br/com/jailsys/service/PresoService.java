@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import br.com.jailsys.DAO.PresoDAO;
 import br.com.jailsys.model.EntidadeComum;
+import br.com.jailsys.model.Pessoa;
 import br.com.jailsys.model.Preso;
 
 public class PresoService implements AbstractService<EntidadeComum>,
@@ -67,9 +68,8 @@ public class PresoService implements AbstractService<EntidadeComum>,
 
 	@Override
 	public void excluir(EntidadeComum entidade) {
-		Preso preso = (Preso) entidade;
-		preso.setAtivo(Boolean.FALSE);
-		presoDao.editar(preso);
+		((Pessoa) entidade).setAtivo(Boolean.FALSE);
+		presoDao.editar((Preso) entidade);
 	}
 
 	@Override

@@ -10,49 +10,53 @@ import br.com.jailsys.model.Ambiente;
 import br.com.jailsys.model.EntidadeComum;
 
 public class AmbienteService implements AbstractService<EntidadeComum>,
-        Serializable {
+		Serializable {
 
-    private static final long serialVersionUID = -4724998597875963171L;
+	private static final long serialVersionUID = -4724998597875963171L;
 
-    @Inject
-    AmbienteDAO ambienteDao;
+	@Inject
+	AmbienteDAO ambienteDao;
 
-    public List<Ambiente> listar(){
-        return ambienteDao.listar();
-    }
-    
-    @Override
-    public void salvar(EntidadeComum entidade) {
-        ambienteDao.salvar((Ambiente) entidade);
-    }
+	public List<Ambiente> listar() {
+		return ambienteDao.listar();
+	}
 
-    @Override
-    public EntidadeComum salvarERetornar(EntidadeComum entidade) {
-        ambienteDao.salvarERetornar((Ambiente) entidade);
-        return (Ambiente) entidade;
-    }
+	public List<Ambiente> listarItensAtivos() {
+		return ambienteDao.listarItensAtivos();
+	}
 
-    @Override
-    public void editar(EntidadeComum entidade) {
-        ambienteDao.editar((Ambiente) entidade);
+	@Override
+	public void salvar(EntidadeComum entidade) {
+		ambienteDao.salvar((Ambiente) entidade);
+	}
 
-    }
+	@Override
+	public EntidadeComum salvarERetornar(EntidadeComum entidade) {
+		ambienteDao.salvarERetornar((Ambiente) entidade);
+		return (Ambiente) entidade;
+	}
 
-    @Override
-    public void excluir(Long id) {
-        // TODO Auto-generated method stub
+	@Override
+	public void editar(EntidadeComum entidade) {
+		ambienteDao.editar((Ambiente) entidade);
 
-    }
+	}
 
-    @Override
-    public void excluir(EntidadeComum entidade) {
-        // TODO Auto-generated method stub
+	@Override
+	public void excluir(Long id) {
+		Ambiente ambiente = ambienteDao.buscar(id);
+		excluir(ambiente);
+	}
 
-    }
+	@Override
+	public void excluir(EntidadeComum entidade) {
+		((Ambiente) entidade).setAtivo(Boolean.FALSE);
+		ambienteDao.editar((Ambiente) entidade);
+	}
 
-    @Override
-    public EntidadeComum buscar(Long id) {
-        return ambienteDao.buscar(id);
-    }
+	@Override
+	public EntidadeComum buscar(Long id) {
+		return ambienteDao.buscar(id);
+	}
 
 }

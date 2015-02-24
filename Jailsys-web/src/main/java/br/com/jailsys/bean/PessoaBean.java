@@ -49,12 +49,6 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 		}
 	}
 
-	public List<Pessoa> listar() {
-		if (pessoaView.getPessoas().isEmpty())
-			pessoaView.setPessoas(service.listar());
-		return pessoaView.getPessoas();
-	}
-
 	public List<Pessoa> listarItensAtivos() {
 		if (pessoaView.getPessoas().isEmpty())
 			this.atualizarView();
