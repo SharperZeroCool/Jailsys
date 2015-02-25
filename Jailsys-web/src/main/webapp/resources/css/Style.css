@@ -5,6 +5,14 @@ body {
 	margin: 0px auto;
 }
 
+.ui-selectonemenu {
+	width: 40% !important;
+}
+
 .ui-selectonemenu-label {
 	width: 90% !important;
+}
+
+.ui-menuitem:last {
+	float: right !important;
 }

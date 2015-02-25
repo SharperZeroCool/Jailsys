@@ -26,7 +26,8 @@
 					value="#{usuarioBean.usuarioView.usuario.pessoa}"
 					converter="genericConverter" effect="fade" filter="true"
 					filterMatchMode="startsWith" required="true">
-
+					<f:selectItem itemLabel="Selecione" itemValue=""
+						noSelectionOption="true" />
 					<f:selectItems value="#{funcionarioBean.listarItensAtivos()}"
 						var="func" itemLabel="#{func.nome}" itemValue="#{func}" />
 
@@ -36,7 +37,8 @@
 					value="#{usuarioBean.usuarioView.usuario.grupo}"
 					converter="genericConverter" effect="fade" filter="true"
 					filterMatchMode="startsWith" required="true">
-
+					<f:selectItem itemLabel="Selecione" itemValue=""
+						noSelectionOption="true" />
 					<f:selectItems value="#{usuarioBean.listarGrupos()}" var="grupo"
 						itemLabel="#{grupo.nome}" itemValue="#{grupo}" />
 

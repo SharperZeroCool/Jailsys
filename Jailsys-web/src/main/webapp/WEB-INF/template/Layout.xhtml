@@ -23,46 +23,58 @@
 					<p:submenu label="#{msg['jailsysweb.usuario.menu.label']}">
 						<p:menuitem
 							value="#{msg['jailsysweb.usuario.menu.cadastro.label']}"
-							action="/usuario/usuarioCadastro" />
+							action="/usuario/usuarioCadastro?faces-redirect=true" />
 						<p:menuitem
 							value="#{msg['jailsysweb.usuario.menu.consulta.label']}"
-							action="/usuario/usuarioConsulta" />
+							action="/usuario/usuarioConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.pessoa.menu.label']}">
 						<p:menuitem
 							value="#{msg['jailsysweb.pessoa.menu.cadastro.label']}"
-							action="/pessoa/pessoaCadastro" />
+							action="/pessoa/pessoaCadastro?faces-redirect=true" />
 						<p:menuitem
 							value="#{msg['jailsysweb.pessoa.menu.consulta.label']}"
-							action="/pessoa/pessoaConsulta" />
+							action="/pessoa/pessoaConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.funcionario.menu.label']}">
 						<p:menuitem
 							value="#{msg['jailsysweb.funcionario.menu.consulta.label']}"
-							action="/funcionario/funcionarioConsulta" />
+							action="/funcionario/funcionarioConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="Preso">
 						<p:menuitem value="#{msg['jailsysweb.preso.menu.consulta.label']}"
-							action="/preso/presoConsulta" />
+							action="/preso/presoConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.ambiente.menu.label']}">
 						<p:menuitem
 							value="#{msg['jailsysweb.ambiente.menu.cadastro.label']}"
-							action="/ambiente/ambienteCadastro" />
+							action="/ambiente/ambienteCadastro?faces-redirect=true" />
 						<p:menuitem
 							value="#{msg['jailsysweb.ambiente.menu.consulta.label']}"
-							action="/ambiente/ambienteConsulta" />
+							action="/ambiente/ambienteConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="Atividade">
 						<p:menuitem value="Cadastrar Atividade"
-							action="/atividade/atividadeCadastro" />
+							action="/atividade/atividadeCadastro?faces-redirect=true" />
 						<p:menuitem value="Consultar Atividade"
-							action="/atividade/atividadeConsulta" />
+							action="/atividade/atividadeConsulta?faces-redirect=true" />
 					</p:submenu>
+					<f:facet name="options">
+						<p:commandButton value="Sair" action="#{loginBean.sair()}"
+							icon="ui-icon-extlink" ajax="false" />
+					</f:facet>
 				</p:menubar>
 				<p:messages id="messages" />
 			</h:form>
 		</header>
+		<p:outputPanel class="ui-state-default"
+			rendered="#{loginBean.usuario.login != null}">
+			<p:outputLabel
+				value="#{'Olá '.concat(loginBean.usuario.pessoa.nome)}" />
+			<br />
+			<p:outputLabel
+				value="#{'Você está logado como: '.concat(loginBean.usuario.login)}" />
+		</p:outputPanel>
 		<ui:insert name="corpo" />
 	</div>
 	<footer class="title ui-widget-header ui-corner-all"

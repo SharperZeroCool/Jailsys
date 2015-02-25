@@ -26,11 +26,54 @@
 
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.xhtml</url-pattern>
-	</servlet-mapping>
+
+	<!-- Protected Areas -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Only admins</web-resource-name>
+			<url-pattern>/usuario/usuarioCadastro.xhtml</url-pattern>
+			<url-pattern>/usuario/usuarioEdicao.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Users and admins</web-resource-name>
+			<url-pattern>/ambiente/*</url-pattern>
+			<url-pattern>/atividade/*</url-pattern>
+			<url-pattern>/funcionario/*</url-pattern>
+			<url-pattern>/pessoa/*</url-pattern>
+			<url-pattern>/preso/*</url-pattern>
+			<url-pattern>/usuario/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN</role-name>
+			<role-name>USER</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- Validation By Form -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login/login.xhtml</form-login-page>
+			<form-error-page>/login/loginError.xhtml</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<!-- Allowed Roles -->
+	<security-role>
+		<role-name>ADMIN</role-name>
+	</security-role>
+	<security-role>
+		<role-name>USER</role-name>
+	</security-role>
+
+
 </web-app> 

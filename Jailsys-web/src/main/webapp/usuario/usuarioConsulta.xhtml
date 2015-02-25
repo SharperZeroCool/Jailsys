@@ -18,6 +18,10 @@
 					filterBy="#{usuario.login}" filterMatchMode="contains">
 					<h:outputText value="#{usuario.login}" />
 				</p:column>
+				<p:column headerText="Grupo" sortBy="#{usuario.grupo.descricao}"
+					filterBy="#{usuario.grupo.descricao}" filterMatchMode="contains">
+					<h:outputText value="#{usuario.grupo.descricao}" />
+				</p:column>
 
 				<p:column headerText="Opções">
 					<p:commandButton icon="ui-icon-image"

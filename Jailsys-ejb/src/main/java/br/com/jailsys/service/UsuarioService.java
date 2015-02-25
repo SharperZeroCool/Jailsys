@@ -43,8 +43,7 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 
 	@Override
 	public void excluir(EntidadeComum entidade) {
-		((Usuario) entidade).setAtivo(Boolean.FALSE);
-		usuarioDao.editar((Usuario) entidade);
+		usuarioDao.excluir((Usuario) entidade);
 	}
 
 	@Override
