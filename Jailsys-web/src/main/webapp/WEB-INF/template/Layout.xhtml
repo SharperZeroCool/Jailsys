@@ -61,7 +61,7 @@
 					</p:submenu>
 					<f:facet name="options">
 						<p:commandButton value="Sair" action="#{loginBean.sair()}"
-							rendered="#{loginBean.usuario.login != null}"
+							rendered="#{loginBean.estaLogado()}"
 							icon="ui-icon-extlink" ajax="false" />
 					</f:facet>
 				</p:menubar>
@@ -69,7 +69,7 @@
 			</h:form>
 		</header>
 		<p:outputPanel class="ui-state-default"
-			rendered="#{loginBean.usuario.login != null}">
+			rendered="#{loginBean.estaLogado()}">
 			<p:outputLabel
 				value="#{'Olá '.concat(loginBean.usuario.pessoa.nome)}" />
 			<br />
