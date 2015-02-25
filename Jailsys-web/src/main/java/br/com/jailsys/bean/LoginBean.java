@@ -59,8 +59,8 @@ public class LoginBean implements Serializable {
 		UtilitarioSeguranca.logout();
 		return "/index.xhtml?faces-redirect=true";
 	}
-	
-	public boolean estaLogado(){
+
+	public boolean estaLogado() {
 		return UtilitarioSeguranca.estaLogado();
 	}
 
