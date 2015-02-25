@@ -26,7 +26,8 @@ public class Usuario extends EntidadeComum implements Serializable {
 	@JoinColumn(name = "pessoa")
 	private Pessoa pessoa;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
 	@JoinColumn(name = "grupo")
 	private Grupo grupo;
 
@@ -37,7 +38,7 @@ public class Usuario extends EntidadeComum implements Serializable {
 		this.senha = getSenhaCriptografada();
 	}
 
-	private String getSenhaCriptografada() {
+	public String getSenhaCriptografada() {
 		return CriptografiaUtil.criptografar(this.getSenha());
 	}
 

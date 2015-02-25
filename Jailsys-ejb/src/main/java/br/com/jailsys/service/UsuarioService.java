@@ -17,6 +17,8 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 	@Inject
 	UsuarioDAO usuarioDao;
 
+	private final String LOGIN = "login";
+
 	@Override
 	public void salvar(EntidadeComum entidade) {
 		((Usuario) entidade).criptografarSenha();
@@ -48,6 +50,10 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 	@Override
 	public EntidadeComum buscar(Long id) {
 		return usuarioDao.buscar(id);
+	}
+
+	public Usuario buscarPorLogin(String login) {
+		return usuarioDao.buscarPor(LOGIN, login);
 	}
 
 	public List<Usuario> listar() {
