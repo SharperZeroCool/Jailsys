@@ -23,6 +23,8 @@ public class UsuarioView implements Serializable {
 
 	private String confirmacaoSenha;
 
+	private String senhaAnterior;
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -45,5 +47,13 @@ public class UsuarioView implements Serializable {
 
 	public void setConfirmacaoSenha(String confirmacaoSenha) {
 		this.confirmacaoSenha = confirmacaoSenha;
+	}
+
+	public String getSenhaAnterior() {
+		return senhaAnterior;
+	}
+
+	public void setSenhaAnterior(String senhaAnterior) {
+		this.senhaAnterior = senhaAnterior;
 	}
 }

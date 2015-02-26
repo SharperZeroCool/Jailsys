@@ -8,6 +8,12 @@
 
 
 	<ui:define name="titulo">Editar Usuário</ui:define>
+	<ui:define name="senhaAntiga">
+		<p:outputLabel value="Senha Anterior" for="senhaAnterior" />
+		<p:password id="senhaAnterior"
+			value="#{usuarioBean.usuarioView.senhaAnterior}"
+			label="Senha Anterior" required="true" />
+	</ui:define>
 	<ui:define name="botao">
 		<p:outputLabel />
 		<p:commandButton value="Submit" action="#{usuarioBean.editar()}"

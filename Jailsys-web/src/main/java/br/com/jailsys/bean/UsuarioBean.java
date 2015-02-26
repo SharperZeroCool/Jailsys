@@ -79,11 +79,19 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 	}
 
 	public String editar() {
-		service.editar(usuarioView.getUsuario());
-		enviarEmail(usuarioView.getUsuario(),
-				getConteudoEmailEditarUsuario(usuarioView.getUsuario()));
-		FacesUtil.mostrarMensagemSucesso(Constantes.Usuario.MENSAGEM_EDICAO);
-		return Constantes.Usuario.TELA_CONSULTA;
+		if (service.isSenhaCorreta(usuarioView.getUsuario(),
+				usuarioView.getSenhaAnterior())) {
+			service.editar(usuarioView.getUsuario());
+			enviarEmail(usuarioView.getUsuario(),
+					getConteudoEmailEditarUsuario(usuarioView.getUsuario()));
+			FacesUtil
+					.mostrarMensagemSucesso(Constantes.Usuario.MENSAGEM_EDICAO);
+			return Constantes.Usuario.TELA_CONSULTA;
+		} else {
+			FacesUtil
+					.mostrarMensagemSucesso(Constantes.Usuario.MENSAGEM_ERROR_EDICAO);
+			return null;
+		}
 	}
 
 	@Override

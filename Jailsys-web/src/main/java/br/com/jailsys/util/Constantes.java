@@ -66,6 +66,7 @@ public class Constantes {
 		public static final String TELA_VISUALIZAR = "/usuario/usuarioFormulario.xhtml";
 		public static final String MENSAGEM_CADASTRO = "jailsysweb.usuario.cadastro.sucesso";
 		public static final String MENSAGEM_EDICAO = "jailsysweb.usuario.edicao.sucesso";
+		public static final String MENSAGEM_ERROR_EDICAO = "jailsysweb.erro.mensagem.usuario.edicao.senhaErrada";
 		public static final String MENSAGEM_EXCLUSAO = "jailsysweb.usuario.exclusao.sucesso";
 		public static final String ASSUNTO_EMAIL = "Alteração de Cadastro no Sistema Jailsys";
 	}

@@ -9,6 +9,7 @@ import br.com.jailsys.DAO.UsuarioDAO;
 import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Grupo;
 import br.com.jailsys.model.Usuario;
+import br.com.jailsys.util.CriptografiaUtil;
 
 public class UsuarioService implements AbstractService<EntidadeComum>,
 		Serializable {
@@ -65,6 +66,12 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 
 	public List<Grupo> listarGrupos() {
 		return usuarioDao.listarGrupos();
+	}
+
+	public boolean isSenhaCorreta(Usuario usuario, String senhaAntiga) {
+		Usuario usuarioAntigo = (Usuario) buscar(usuario.getId());
+		return usuarioAntigo.getSenha().equals(
+				CriptografiaUtil.criptografar(senhaAntiga));
 	}
 
 }

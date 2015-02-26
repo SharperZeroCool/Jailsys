@@ -21,7 +21,7 @@ public final class UtilitarioSeguranca {
 
 	public static void login(Usuario usuario) throws ServletException {
 		FacesUtil.getServletRequest().login(usuario.getLogin(),
-				usuario.getSenhaCriptografada());
+				usuario.getSenha());
 	}
 
 	public static void logout() {

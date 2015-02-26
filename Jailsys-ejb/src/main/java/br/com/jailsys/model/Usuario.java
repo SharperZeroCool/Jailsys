@@ -38,10 +38,6 @@ public class Usuario extends EntidadeComum implements Serializable {
 		this.senha = getSenhaCriptografada();
 	}
 
-	public String getSenhaCriptografada() {
-		return CriptografiaUtil.criptografar(this.getSenha());
-	}
-
 	public String getLogin() {
 		return login;
 	}
@@ -80,6 +76,10 @@ public class Usuario extends EntidadeComum implements Serializable {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	private String getSenhaCriptografada() {
+		return CriptografiaUtil.criptografar(this.getSenha());
 	}
 
 }
