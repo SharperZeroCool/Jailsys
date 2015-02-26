@@ -100,6 +100,12 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 		return Constantes.Usuario.TELA_CONSULTA;
 	}
 
+	@Override
+	public boolean isVisualizar() {
+		return Boolean.parseBoolean(FacesUtil
+				.getRequestParameter("isVisualizar"));
+	}
+
 	public UsuarioView getUsuarioView() {
 		return usuarioView;
 	}

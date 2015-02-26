@@ -12,8 +12,9 @@
 
 
 		<h:form prependId="false">
-			<p:dataTable var="ambiente" value="#{ambienteBean.listarItensAtivos()}"
-				paginator="true" rows="10"
+			<p:dataTable var="ambiente"
+				value="#{ambienteBean.listarItensAtivos()}" paginator="true"
+				rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 
@@ -57,6 +58,7 @@
 						icon="ui-icon-image" action="#{ambienteBean.visualizar()}"
 						ajax="false">
 						<f:param name="idAmbiente" value="#{ambiente.id}"></f:param>
+						<f:param name="isVisualizar" value="true"></f:param>
 					</p:commandButton>
 					<p:commandButton
 						title="#{msg['jailsysweb.ambiente.form.consulta.botao.editar']}"

@@ -5,7 +5,7 @@ public class Constantes {
 		public static final String TELA_CONSULTA = "/pessoa/pessoaConsulta.xhtml";
 		public static final String TELA_CADASTRO = "/pessoa/pessoaCadastro.xhtml";
 		public static final String TELA_EDICAO = "/pessoa/pessoaEdicao.xhtml";
-		public static final String TELA_VISUALIZAR = "/pessoa/pessoaInclude.xhtml";
+		public static final String TELA_VISUALIZAR = "/pessoa/pessoaFormulario.xhtml";
 		public static final String MENSAGEM_CADASTRO = "jailsysweb.pessoa.cadastro.sucesso";
 		public static final String MENSAGEM_EDICAO = "jailsysweb.pessoa.edicao.sucesso";
 		public static final String MENSAGEM_EXCLUSAO = "jailsysweb.pessoa.exclusao.sucesso";

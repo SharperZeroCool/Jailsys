@@ -74,6 +74,12 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 		return Constantes.Atividade.TELA_CONSULTA;
 	}
 
+	@Override
+	public boolean isVisualizar() {
+		return Boolean.parseBoolean(FacesUtil
+				.getRequestParameter("isVisualizar"));
+	}
+
 	public AtividadeView getAtividadeView() {
 		return atividadeView;
 	}
@@ -81,5 +87,6 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 	public void setAtividadeView(AtividadeView atividadeView) {
 		this.atividadeView = atividadeView;
 	}
+
 
 }

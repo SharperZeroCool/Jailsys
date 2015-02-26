@@ -17,34 +17,37 @@
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.nome']}"
 					for="nome" />
 				<p:inputText id="nome" value="#{pessoaBean.pessoaView.pessoa.nome}"
-					required="true" />
+					disabled="#{pessoaBean.isVisualizar()}" required="true" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.cpf']}"
 					for="cpf" />
 				<p:inputMask id="cpf" mask="999.999.999-99"
+					disabled="#{pessoaBean.isVisualizar()}"
 					required="#{pessoaBean.isFuncionario()}"
 					value="#{pessoaBean.pessoaView.pessoa.cpf}" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.email']}"
 					for="email" />
-				<p:inputText id="email"
+				<p:inputText id="email" disabled="#{pessoaBean.isVisualizar()}"
 					value="#{pessoaBean.pessoaView.pessoa.email}" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.dataNasc']}"
 					for="dataNascimento" />
 				<p:calendar id="dataNascimento" pattern="dd/MM/yyyy" required="true"
+					disabled="#{pessoaBean.isVisualizar()}"
 					value="#{pessoaBean.pessoaView.pessoa.dataNasc}">
 				</p:calendar>
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.celular']}"
 					for="celular" />
-				<p:inputMask id="celular"
+				<p:inputMask id="celular" disabled="#{pessoaBean.isVisualizar()}"
 					value="#{pessoaBean.pessoaView.pessoa.celular}"
 					mask="+99 (99) 9999-9999?9" />
 				<p:outputLabel
 					value="#{msg['jailsysweb.pessoa.form.cadastro.label.ativo']}"
 					for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"
+					disabled="#{pessoaBean.isVisualizar()}"
 					value="#{pessoaBean.pessoaView.pessoa.ativo}" />
 				<ui:include src="#{pessoaBean.tipoPessoa}" />
 				<ui:insert name="funcionarioFormulario" />

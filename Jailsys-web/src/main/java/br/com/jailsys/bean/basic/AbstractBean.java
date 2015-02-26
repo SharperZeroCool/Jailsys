@@ -40,4 +40,11 @@ public interface AbstractBean<T extends EntidadeComum> {
 	 * @return
 	 */
 	public String excluir(T entidade);
+
+	/**
+	 * Utilizado para abilitar ou desabilitar os campos do formulario
+	 * 
+	 * @return se o usuario se encontra na tela de visualizar
+	 */
+	public boolean isVisualizar();
 }

@@ -86,12 +86,10 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
 		return Constantes.Funcionario.TELA_CONSULTA;
 	}
 
-	public FuncionarioView getFuncionarioView() {
-		return funcionarioView;
-	}
-
-	public void setFuncionarioView(FuncionarioView funcionarioView) {
-		this.funcionarioView = funcionarioView;
+	@Override
+	public boolean isVisualizar() {
+		return Boolean.parseBoolean(FacesUtil
+				.getRequestParameter("isVisualizar"));
 	}
 
 	public void populaItensDePessoa(Pessoa pessoa) {
@@ -103,6 +101,14 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
 		funcionario.setDataNasc(pessoa.getDataNasc());
 		funcionario.setCelular(pessoa.getCelular());
 		funcionario.setAtivo(pessoa.isAtivo());
+	}
+
+	public FuncionarioView getFuncionarioView() {
+		return funcionarioView;
+	}
+
+	public void setFuncionarioView(FuncionarioView funcionarioView) {
+		this.funcionarioView = funcionarioView;
 	}
 
 }

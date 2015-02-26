@@ -81,6 +81,12 @@ public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
 		return Constantes.Preso.TELA_CONSULTA;
 	}
 
+	@Override
+	public boolean isVisualizar() {
+		return Boolean.parseBoolean(FacesUtil
+				.getRequestParameter("isVisualizar"));
+	}
+
 	public void populaItensDePessoa(Pessoa pessoa) {
 		Preso preso = presoView.getPreso();
 		preso.setId(pessoa.getId());

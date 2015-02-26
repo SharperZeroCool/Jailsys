@@ -44,6 +44,7 @@
 					<p:commandButton icon="ui-icon-image"
 						action="#{funcionarioBean.visualizar()}" ajax="false">
 						<f:param name="idFuncionario" value="#{funcionario.id}"></f:param>
+						<f:param name="isVisualizar" value="true"></f:param>
 					</p:commandButton>
 					<p:commandButton icon="ui-icon-pencil"
 						action="#{funcionarioBean.prepararEdicao()}" ajax="false">

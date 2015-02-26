@@ -10,11 +10,10 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
-import com.google.common.base.Strings;
-
 import br.com.jailsys.bean.basic.AbstractBean;
 import br.com.jailsys.enums.TipoPessoa;
 import br.com.jailsys.model.EntidadeComum;
+import br.com.jailsys.model.Funcionario;
 import br.com.jailsys.model.Pessoa;
 import br.com.jailsys.service.PessoaService;
 import br.com.jailsys.util.Constantes;
@@ -93,10 +92,15 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 		return Constantes.Pessoa.TELA_CONSULTA;
 	}
 
+	@Override
+	public boolean isVisualizar() {
+		return Boolean.parseBoolean(FacesUtil
+				.getRequestParameter("isVisualizar"));
+	}
+
 	public boolean isFuncionario() {
 		return Constantes.Pessoa.PAGINA_FUNCIONARIO.equals(tipoPessoa)
-				|| !Strings.isNullOrEmpty(FacesUtil
-						.getRequestParameter("idFuncionario"));
+				|| pessoaView.getPessoa() instanceof Funcionario;
 	}
 
 	public List<SelectItem> getPaginas() {

@@ -10,19 +10,23 @@
 		<h:form>
 			<p:panelGrid columns="2" style="width:100%;">
 				<p:outputLabel value="Login" for="login" />
-				<p:inputText id="login"
+				<p:inputText id="login" disabled="#{usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.login}" required="true" />
-				<p:outputLabel value="Senha" for="senha" />
-				<p:password id="senha"
+				<p:outputLabel value="Senha"
+					rendered="#{!usuarioBean.isVisualizar()}" for="senha" />
+				<p:password id="senha" rendered="#{!usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.senha}" feedback="true"
 					inline="true" match="confirmacaoSenha" label="Senha"
 					required="true" />
-				<p:outputLabel value="Confirmação de Senha" for="confirmacaoSenha" />
+				<p:outputLabel value="Confirmação de Senha"
+					rendered="#{!usuarioBean.isVisualizar()}" for="confirmacaoSenha" />
 				<p:password id="confirmacaoSenha"
+					rendered="#{!usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.confirmacaoSenha}" feedback="true"
 					inline="true" label="Confirmação de Senha" required="true" />
 				<p:outputLabel for="funcionario" value="Funcionário:" />
 				<p:selectOneMenu id="funcionario"
+					disabled="#{usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.pessoa}"
 					converter="genericConverter" effect="fade" filter="true"
 					filterMatchMode="startsWith" required="true">
@@ -33,7 +37,7 @@
 
 				</p:selectOneMenu>
 				<p:outputLabel for="grupo" value="Grupo:" />
-				<p:selectOneMenu id="grupo"
+				<p:selectOneMenu id="grupo" disabled="#{usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.grupo}"
 					converter="genericConverter" effect="fade" filter="true"
 					filterMatchMode="startsWith" required="true">
@@ -45,6 +49,7 @@
 				</p:selectOneMenu>
 				<p:outputLabel value="Ativo" for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"
+					disabled="#{usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.ativo}" />
 				<ui:insert name="botao" />
 			</p:panelGrid>

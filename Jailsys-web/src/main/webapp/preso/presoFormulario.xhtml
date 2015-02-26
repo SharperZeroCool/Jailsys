@@ -6,12 +6,12 @@
 	<p:outputLabel
 		value="#{msg['jailsysweb.preso.form.cadastro.label.dataPrisao']}"
 		for="dataPrisao" />
-	<p:calendar id="dataPrisao"
+	<p:calendar id="dataPrisao" disabled="#{presoBean.isVisualizar()}"
 		value="#{presoBean.presoView.preso.dataPrisao}" required="true" />
 	<p:outputLabel
 		value="#{msg['jailsysweb.pessoa.form.cadastro.label.dataSaida']}"
 		for="dataSaida" />
-	<p:calendar id="dataSaida"
+	<p:calendar id="dataSaida" disabled="#{presoBean.isVisualizar()}"
 		value="#{presoBean.presoView.preso.dataSaida}" />
 	<ui:insert name="botaoPreso" />
 </ui:composition>

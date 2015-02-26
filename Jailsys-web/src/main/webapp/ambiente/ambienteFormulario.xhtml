@@ -12,13 +12,14 @@
 			<p:panelGrid columns="2" style="width:100%;">
 				<p:outputLabel value="#{msg['jailsysweb.ambiente.form.label.nome']}"
 					for="nome" />
-				<p:inputText id="nome"
+				<p:inputText id="nome" disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.nome}" required="true" />
 
 				<p:outputLabel
 					value="#{msg['jailsysweb.ambiente.form.label.descricao']}"
 					for="descricao" />
 				<p:inputText id="descricao"
+					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.descricao}"
 					required="true" />
 
@@ -26,6 +27,7 @@
 					value="#{msg['jailsysweb.ambiente.form.label.lotacao']}"
 					for="lotacaoPessoas" />
 				<p:inputText id="lotacaoPessoas"
+					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.lotacaoPessoas}"
 					required="true" />
 
@@ -33,6 +35,7 @@
 					value="#{msg['jailsysweb.ambiente.form.label.horarioInicio']}"
 					for="horarioInicio" />
 				<p:calendar id="horarioInicio"
+					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.horarioInicio}"
 					pattern="HH:mm a" timeOnly="true" required="true" />
 
@@ -40,6 +43,7 @@
 					value="#{msg['jailsysweb.ambiente.form.label.horarioFim']}"
 					for="horarioFim" />
 				<p:calendar id="horarioFim"
+					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.horarioFim}"
 					pattern="HH:mm a" timeOnly="true" required="true" />
 
@@ -47,6 +51,7 @@
 					value="#{msg['jailsysweb.ambiente.form.label.severidade']}"
 					for="severidade" />
 				<p:selectOneMenu id="severidade"
+					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.severidade}"
 					required="true">
 					<f:selectItem itemLabel="Selecione" itemValue=""
@@ -59,6 +64,7 @@
 				<p:outputLabel
 					value="#{msg['jailsysweb.ambiente.form.label.ativo']}" for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"
+					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.ativo}" required="true" />
 				<ui:insert name="botao" />
 			</p:panelGrid>

@@ -8,18 +8,21 @@
 		value="#{msg['jailsysweb.funcionario.form.cadastro.label.dataEntrada']}"
 		for="dataEntrada" />
 	<p:calendar id="dataEntrada"
+		disabled="#{funcionarioBean.isVisualizar()}"
 		value="#{funcionarioBean.funcionarioView.funcionario.dataEntrada}"
 		pattern="dd-MM-yyyy" mask="true" required="true" />
 	<p:outputLabel
 		value="#{msg['jailsysweb.funcionario.form.cadastro.label.cargaHoraria']}"
 		for="cargaHoraria" />
 	<p:calendar id="cargaHoraria"
+		disabled="#{funcionarioBean.isVisualizar()}"
 		value="#{funcionarioBean.funcionarioView.funcionario.cargaHoraria}"
 		pattern="HH:mm" timeOnly="true" required="true" />
 	<p:outputLabel
 		value="#{msg['jailsysweb.funcionario.form.cadastro.label.horarioEntrada']}"
 		for="horarioEntrada" />
 	<p:calendar id="horarioEntrada"
+		disabled="#{funcionarioBean.isVisualizar()}"
 		value="#{funcionarioBean.funcionarioView.funcionario.horarioEntrada}"
 		pattern="HH:mm" timeOnly="true" required="true" />
 	<ui:insert name="botaoFuncionario" />
