@@ -61,7 +61,8 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 	@Override
 	public String salvar() {
 		service.salvar(usuarioView.getUsuario());
-		enviarEmail(usuarioView.getUsuario());
+		enviarEmail(usuarioView.getUsuario(),
+				getConteudoEmailSalvarUsuario(usuarioView.getUsuario()));
 		FacesUtil.mostrarMensagemSucesso(Constantes.Usuario.MENSAGEM_CADASTRO);
 		this.atualizarView();
 		return Constantes.Usuario.TELA_CONSULTA;
@@ -79,6 +80,8 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	public String editar() {
 		service.editar(usuarioView.getUsuario());
+		enviarEmail(usuarioView.getUsuario(),
+				getConteudoEmailEditarUsuario(usuarioView.getUsuario()));
 		FacesUtil.mostrarMensagemSucesso(Constantes.Usuario.MENSAGEM_EDICAO);
 		return Constantes.Usuario.TELA_CONSULTA;
 	}
@@ -91,6 +94,8 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 	@Override
 	public String excluir(EntidadeComum usuario) {
 		service.excluir(usuario);
+		enviarEmail((Usuario) usuario,
+				getConteudoEmailDeletarUsuario((Usuario) usuario));
 		FacesUtil.mostrarMensagemSucesso(Constantes.Usuario.MENSAGEM_EXCLUSAO);
 		return Constantes.Usuario.TELA_CONSULTA;
 	}
@@ -103,7 +108,25 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 		this.usuarioView = usuarioView;
 	}
 
-	private void enviarEmail(Usuario usuario) {
+	private String getConteudoEmailSalvarUsuario(Usuario usuario) {
+		return "Parabéns " + usuario.getPessoa().getNome()
+				+ "!\nSua nova conta de usuário com o nome: "
+				+ usuario.getLogin() + " foi criada com sucesso!";
+	}
+
+	private String getConteudoEmailEditarUsuario(Usuario usuario) {
+		return "Caro " + usuario.getPessoa().getNome()
+				+ ",\nSua conta de usuário com o nome: " + usuario.getLogin()
+				+ " foi editada com sucesso!";
+	}
+
+	private String getConteudoEmailDeletarUsuario(Usuario usuario) {
+		return "Caro " + usuario.getPessoa().getNome()
+				+ ",\nSua conta de usuário com o nome: " + usuario.getLogin()
+				+ " foi excluida com sucesso!";
+	}
+
+	private void enviarEmail(Usuario usuario, String conteudo) {
 		if (possuiEmail(usuario)) {
 			String to = usuario.getPessoa().getEmail();
 
@@ -119,13 +142,9 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 				message.addRecipient(Message.RecipientType.TO,
 						new InternetAddress(to));
 
-				message.setSubject("Conta no Jailsys criada");
+				message.setSubject(Constantes.Usuario.ASSUNTO_EMAIL);
 
-				message.setContent(
-						"Parabéns " + usuario.getPessoa().getNome()
-								+ "!\nSua nova conta de usuário com o nome: "
-								+ usuario.getLogin()
-								+ " foi criada com sucesso!", "text/plain");
+				message.setContent(conteudo, "text/plain");
 
 				Transport.send(message);
 			} catch (MessagingException mex) {
