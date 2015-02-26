@@ -15,19 +15,20 @@
 
 				<ui:insert name="senhaAntiga" />
 
-				<p:outputLabel value="Senha"
+				<p:outputLabel value="Nova Senha"
 					rendered="#{!usuarioBean.isVisualizar()}" for="senha" />
 				<p:password id="senha" rendered="#{!usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.senha}" feedback="true"
-					inline="true" match="confirmacaoSenha" label="Senha"
-					required="true" />
+					inline="true" match="confirmacaoSenha" label="Nova Senha"
+					required="#{usuarioBean.isCadastrar()}" />
 
 				<p:outputLabel value="Confirmação de Senha"
 					rendered="#{!usuarioBean.isVisualizar()}" for="confirmacaoSenha" />
 				<p:password id="confirmacaoSenha"
 					rendered="#{!usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.confirmacaoSenha}" feedback="true"
-					inline="true" label="Confirmação de Senha" required="true" />
+					inline="true" label="Confirmação de Senha"
+					required="#{usuarioBean.isCadastrar()}" />
 
 				<p:outputLabel for="funcionario" value="Funcionário:" />
 				<p:selectOneMenu id="funcionario"

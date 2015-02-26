@@ -9,10 +9,10 @@
 
 	<ui:define name="titulo">Editar Usuário</ui:define>
 	<ui:define name="senhaAntiga">
-		<p:outputLabel value="Senha Anterior" for="senhaAnterior" />
-		<p:password id="senhaAnterior"
-			value="#{usuarioBean.usuarioView.senhaAnterior}"
-			label="Senha Anterior" required="true" />
+		<p:outputLabel value="Senha Atual" for="senhaAtual" />
+		<p:password id="senhaAtual"
+			value="#{usuarioBean.usuarioView.senhaAtual}" label="Senha Atual"
+			required="true" />
 	</ui:define>
 	<ui:define name="botao">
 		<p:outputLabel />

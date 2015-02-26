@@ -23,7 +23,7 @@ public class UsuarioView implements Serializable {
 
 	private String confirmacaoSenha;
 
-	private String senhaAnterior;
+	private String senhaAtual;
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -49,11 +49,11 @@ public class UsuarioView implements Serializable {
 		this.confirmacaoSenha = confirmacaoSenha;
 	}
 
-	public String getSenhaAnterior() {
-		return senhaAnterior;
+	public String getSenhaAtual() {
+		return senhaAtual;
 	}
 
-	public void setSenhaAnterior(String senhaAnterior) {
-		this.senhaAnterior = senhaAnterior;
+	public void setSenhaAtual(String senhaAtual) {
+		this.senhaAtual = senhaAtual;
 	}
 }

@@ -68,10 +68,10 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 		return usuarioDao.listarGrupos();
 	}
 
-	public boolean isSenhaCorreta(Usuario usuario, String senhaAntiga) {
+	public boolean isSenhaCorreta(Usuario usuario, String senhaAtual) {
 		Usuario usuarioAntigo = (Usuario) buscar(usuario.getId());
 		return usuarioAntigo.getSenha().equals(
-				CriptografiaUtil.criptografar(senhaAntiga));
+				CriptografiaUtil.criptografar(senhaAtual));
 	}
 
 }

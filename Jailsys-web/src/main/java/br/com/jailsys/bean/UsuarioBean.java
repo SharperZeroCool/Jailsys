@@ -80,7 +80,7 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	public String editar() {
 		if (service.isSenhaCorreta(usuarioView.getUsuario(),
-				usuarioView.getSenhaAnterior())) {
+				usuarioView.getSenhaAtual())) {
 			service.editar(usuarioView.getUsuario());
 			enviarEmail(usuarioView.getUsuario(),
 					getConteudoEmailEditarUsuario(usuarioView.getUsuario()));
@@ -112,6 +112,10 @@ public class UsuarioBean implements AbstractBean<EntidadeComum>, Serializable {
 	public boolean isVisualizar() {
 		return Boolean.parseBoolean(FacesUtil
 				.getRequestParameter("isVisualizar"));
+	}
+
+	public boolean isCadastrar() {
+		return usuarioView.getUsuario().getId() == null;
 	}
 
 	public UsuarioView getUsuarioView() {
