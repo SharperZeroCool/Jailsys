@@ -47,9 +47,9 @@
 
 				<p:column
 					headerText="#{msg['jailsysweb.ambiente.form.label.severidade']}"
-					sortBy="#{ambiente.severidade}" filterBy="#{ambiente.severidade}"
+					sortBy="#{ambiente.severidade.descricao}" filterBy="#{ambiente.severidade.descricao}"
 					filterMatchMode="contains">
-					<h:outputText value="#{ambiente.severidade}" />
+					<h:outputText value="#{ambiente.severidade.descricao}" />
 				</p:column>
 
 				<p:column
