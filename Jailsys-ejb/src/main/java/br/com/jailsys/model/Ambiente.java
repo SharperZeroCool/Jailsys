@@ -2,97 +2,100 @@ package br.com.jailsys.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 public class Ambiente extends EntidadeComum implements Serializable {
 
-    private static final long serialVersionUID = -304908605604137308L;
+	private static final long serialVersionUID = -304908605604137308L;
 
-    @Column(length = 45, nullable = false)
-    private String nome;
+	@Column(length = 45, nullable = false)
+	private String nome;
 
-    @Column(nullable = false)
-    private String descricao;
+	@Column(nullable = false)
+	private String descricao;
 
-    @Column(nullable = false)
-    private int lotacaoPessoas;
+	@Column(nullable = false)
+	private int lotacaoPessoas;
 
-    @Temporal(TemporalType.TIME)
-    @Column(nullable = false)
-    private Date horarioInicio;
+	@Temporal(TemporalType.TIME)
+	@Column(nullable = false)
+	private Date horarioInicio;
 
-    @Temporal(TemporalType.TIME)
-    @Column(nullable = false)
-    private Date horarioFim;
+	@Temporal(TemporalType.TIME)
+	@Column(nullable = false)
+	private Date horarioFim;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Severidade severidade;
-    
-    @Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private Severidade severidade;
+
+	@Column(nullable = false)
 	private boolean ativo;
 
-    /*
-     * @ManyToMany
-     * 
-     * @JoinTable(name = "atividadeAmbiente", joinColumns = @JoinColumn(name =
-     * "idAmbiente"), inverseJoinColumns = @JoinColumn(name = "idAtividade"))
-     * private List<Atividade> atividadeAmbiente;
-     */
-    public String getNome() {
-        return nome;
-    }
+	@ManyToMany
+	@JoinTable(name = "atividadeambiente",
+				joinColumns = @JoinColumn(name = "idAmbiente"), 
+				inverseJoinColumns = @JoinColumn(name = "idAtividade"))
+	private List<Atividade> atividades;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public String getDescricao() {
-        return descricao;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+	public String getDescricao() {
+		return descricao;
+	}
 
-    public int getLotacaoPessoas() {
-        return lotacaoPessoas;
-    }
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-    public void setLotacaoPessoas(int lotacaoPessoas) {
-        this.lotacaoPessoas = lotacaoPessoas;
-    }
+	public int getLotacaoPessoas() {
+		return lotacaoPessoas;
+	}
 
-    public Date getHorarioInicio() {
-        return horarioInicio;
-    }
+	public void setLotacaoPessoas(int lotacaoPessoas) {
+		this.lotacaoPessoas = lotacaoPessoas;
+	}
 
-    public void setHorarioInicio(Date horarioInicio) {
-        this.horarioInicio = horarioInicio;
-    }
+	public Date getHorarioInicio() {
+		return horarioInicio;
+	}
 
-    public Date getHorarioFim() {
-        return horarioFim;
-    }
+	public void setHorarioInicio(Date horarioInicio) {
+		this.horarioInicio = horarioInicio;
+	}
 
-    public void setHorarioFim(Date horarioFim) {
-        this.horarioFim = horarioFim;
-    }
+	public Date getHorarioFim() {
+		return horarioFim;
+	}
 
-    public Severidade getSeveridade() {
-        return severidade;
-    }
+	public void setHorarioFim(Date horarioFim) {
+		this.horarioFim = horarioFim;
+	}
 
-    public void setSeveridade(Severidade severidade) {
-        this.severidade = severidade;
-    }
+	public Severidade getSeveridade() {
+		return severidade;
+	}
+
+	public void setSeveridade(Severidade severidade) {
+		this.severidade = severidade;
+	}
 
 	public boolean isAtivo() {
 		return ativo;
@@ -100,6 +103,14 @@ public class Ambiente extends EntidadeComum implements Serializable {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public List<Atividade> getAtividades() {
+		return atividades;
+	}
+
+	public void setAtividades(List<Atividade> atividades) {
+		this.atividades = atividades;
 	}
 
 }
