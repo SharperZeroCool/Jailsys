@@ -12,66 +12,63 @@ import javax.persistence.TemporalType;
 @Entity
 public class Preso extends Pessoa {
 
+	private static final long serialVersionUID = -6281777558237784113L;
 
-    private static final long serialVersionUID = -6281777558237784113L;
+	@Column(length = 26, nullable = false)
+	private String codigo;
 
-    @Column(length = 26, nullable = false)
-    private String codigo;
-    
-    @Temporal(TemporalType.DATE)
-    @Column(nullable=false)
-    private Date dataPrisao;
-    
-    @Temporal(TemporalType.DATE)
-    private Date dataSaida;
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = false)
+	private Date dataPrisao;
 
-    public String getCodigo() {
-        return codigo;
-    }
+	@Temporal(TemporalType.DATE)
+	private Date dataSaida;
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+	public String getCodigo() {
+		return codigo;
+	}
 
-    public Date getDataPrisao() {
-        return dataPrisao;
-    }
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
-    public void setDataPrisao(Date dataPrisao) {
-        this.dataPrisao = dataPrisao;
-    }
+	public Date getDataPrisao() {
+		return dataPrisao;
+	}
 
-    public Date getDataSaida() {
-        return dataSaida;
-    }
+	public void setDataPrisao(Date dataPrisao) {
+		this.dataPrisao = dataPrisao;
+	}
 
-    public void setDataSaida(Date dataSaida) {
-        this.dataSaida = dataSaida;
-    }
-    
-    /**
-     * Gera o codigo do preso no seguinte formato: ANO DE NASCIMENTO + ANO DE
-     * PRISAO + MES DE PRISAO.
-     * 
-     * @param preso
-     * @return Codigo do preso no formato correto.
-     */
-    @PrePersist
-    public void geradorDeCodigo() {
-        StringBuilder codigo = new StringBuilder();
+	public Date getDataSaida() {
+		return dataSaida;
+	}
 
-        // Pega o ano de nascimento do preso
-        Calendar calendario = Calendar.getInstance();
-        calendario.setTime(super.getDataNasc());
-        codigo.append(calendario.get(Calendar.YEAR));
+	public void setDataSaida(Date dataSaida) {
+		this.dataSaida = dataSaida;
+	}
 
-        // Pega o ano e mes de prisao do preso
-        calendario.setTime(this.dataPrisao);
-        codigo.append(calendario.get(Calendar.YEAR));
-        codigo.append(calendario.get(Calendar.MONTH));
-        this.codigo= codigo.toString();
-    }
+	/**
+	 * Gera o codigo do preso no seguinte formato: ANO DE NASCIMENTO + ANO DE
+	 * PRISAO + MES DE PRISAO.
+	 * 
+	 * @param preso
+	 * @return Codigo do preso no formato correto.
+	 */
+	@PrePersist
+	public void gerarCodigo() {
+		StringBuilder codigo = new StringBuilder();
 
-    
-   
+		// Pega o ano de nascimento do preso
+		Calendar calendario = Calendar.getInstance();
+		calendario.setTime(super.getDataNasc());
+		codigo.append(calendario.get(Calendar.YEAR));
+
+		// Pega o ano e mes de prisao do preso
+		calendario.setTime(this.dataPrisao);
+		codigo.append(calendario.get(Calendar.YEAR));
+		codigo.append(calendario.get(Calendar.MONTH));
+		this.codigo = codigo.toString();
+	}
+
 }

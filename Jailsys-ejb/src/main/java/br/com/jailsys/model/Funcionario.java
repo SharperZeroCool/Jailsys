@@ -47,22 +47,22 @@ public class Funcionario extends Pessoa {
      * @return Codigo do funcionario no formato correto.
      */
     @PrePersist
-    public void geraCodigo() {
-        StringBuilder codigo = new StringBuilder();
+	public void gerarCodigo() {
+		StringBuilder codigo = new StringBuilder();
 
-        // Pega o ano de nascimento do funcionario
-        Calendar calendario = Calendar.getInstance();
-        calendario.setTime(super.getDataNasc());
-        codigo.append(calendario.get(Calendar.YEAR));
+		// Pega o ano de nascimento do funcionario
+		Calendar calendario = Calendar.getInstance();
+		calendario.setTime(super.getDataNasc());
+		codigo.append(calendario.get(Calendar.YEAR));
 
         // Pega os ultimos 5 digitos do cpf do funcionario
         codigo.append(super.getCpf().substring(super.getCpf().lastIndexOf(PONTO) + REMOVE_PONTO).replace(HIFEN, VAZIO));
 
-        // Pega o ano e mes de entrada do funcionario
-        calendario.setTime(this.dataEntrada);
-        codigo.append(calendario.get(Calendar.YEAR));
-        codigo.append(calendario.get(Calendar.MONTH));
-        this.codigo=codigo.toString();
+		// Pega o ano e mes de entrada do funcionario
+		calendario.setTime(this.dataEntrada);
+		codigo.append(calendario.get(Calendar.YEAR));
+		codigo.append(calendario.get(Calendar.MONTH));
+		this.codigo = codigo.toString();
     }
 
     public String getCodigo() {
