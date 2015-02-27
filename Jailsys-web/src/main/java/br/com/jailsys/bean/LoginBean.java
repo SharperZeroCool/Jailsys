@@ -12,6 +12,7 @@ import org.jboss.logging.Logger;
 
 import br.com.jailsys.model.Usuario;
 import br.com.jailsys.service.UsuarioService;
+import br.com.jailsys.util.Constantes;
 import br.com.jailsys.util.FacesUtil;
 import br.com.jailsys.util.UtilitarioSeguranca;
 
@@ -37,27 +38,28 @@ public class LoginBean implements Serializable {
 			login();
 		} catch (ServletException e) {
 			FacesUtil
-					.mostrarMensagemErro("jailsysweb.erro.mensagem.usuario.senha.invalidos");
+					.mostrarMensagemErro(Constantes.Login.MENSAGEM_USUARIO_SENHA_INVALIDO);
 			LOGGER.error(
 					FacesUtil
-							.getMessage("jailsysweb.erro.mensagem.usuario.senha.invalidos"),
+							.getMessage(Constantes.Login.MENSAGEM_USUARIO_SENHA_INVALIDO),
 					e);
 		}
 		String retorno = FacesUtil.getServletRequest().getHeader("Referer");
 		if (encalinhaPaginaSolicitada(retorno)) {
 			redirecionar(retorno);
 		} else {
-			redirecionar(FacesUtil.gerarUrl("/index.xhtml?faces-redirect=true"));
+			redirecionar(FacesUtil.gerarUrl(Constantes.Login.TELA_INICIAL));
 		}
 	}
 
 	public boolean encalinhaPaginaSolicitada(String retorno) {
-		return retorno.contains("/") && (!retorno.contains("login.xhtml"));
+		return retorno.contains("/")
+				&& (!retorno.contains(Constantes.Login.TELA_LOGIN));
 	}
 
 	public String sair() {
 		UtilitarioSeguranca.logout();
-		return "/index.xhtml?faces-redirect=true";
+		return Constantes.Login.TELA_INICIAL;
 	}
 
 	public boolean estaLogado() {
@@ -89,9 +91,10 @@ public class LoginBean implements Serializable {
 			FacesUtil.redirect(retorno);
 		} catch (IOException e) {
 			FacesUtil
-					.mostrarMensagemErro("jailsysweb.erro.mensagem.efetuar.login");
-			LOGGER.error(FacesUtil
-					.getMessage("jailsysweb.erro.mensagem.efetuar.login"), e);
+					.mostrarMensagemErro(Constantes.Login.MENSAGEM_ERROR_LOGIN);
+			LOGGER.error(
+					FacesUtil.getMessage(Constantes.Login.MENSAGEM_ERROR_LOGIN),
+					e);
 		}
 	}
 }

@@ -7,16 +7,20 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-	<ui:define name="titulo">Editar Usuário</ui:define>
+	<ui:define name="titulo">#{msg['jailsysweb.usuario.titulo.editar.label']}</ui:define>
 	<ui:define name="senhaAntiga">
-		<p:outputLabel value="Senha Atual" for="senhaAtual" />
+		<p:outputLabel
+			value="#{msg['jailsysweb.usuario.form.editar.label.senhaAtual']}"
+			for="senhaAtual" />
 		<p:password id="senhaAtual"
-			value="#{usuarioBean.usuarioView.senhaAtual}" label="Senha Atual"
+			value="#{usuarioBean.usuarioView.senhaAtual}"
+			label="#{msg['jailsysweb.usuario.form.editar.label.senhaAtual']}"
 			required="true" />
 	</ui:define>
 	<ui:define name="botao">
 		<p:outputLabel />
-		<p:commandButton value="Submit" action="#{usuarioBean.editar()}"
-			ajax="false" />
+		<p:commandButton
+			value="#{msg['jailsysweb.usuario.form.editar.botao.editar']}"
+			action="#{usuarioBean.editar()}" ajax="false" />
 	</ui:define>
 </ui:composition>

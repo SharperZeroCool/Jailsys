@@ -6,10 +6,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Cadastrar Usuário</ui:define>
+	<ui:define name="titulo">#{msg['jailsysweb.usuario.titulo.cadastro.label']}</ui:define>
 	<ui:define name="botao">
 		<p:outputLabel />
-		<p:commandButton value="Submit" action="#{usuarioBean.salvar()}"
+		<p:commandButton value="#{msg['jailsysweb.usuario.form.cadastro.botao.salvar']}" action="#{usuarioBean.salvar()}"
 			ajax="false" />
 	</ui:define>
 </ui:composition>

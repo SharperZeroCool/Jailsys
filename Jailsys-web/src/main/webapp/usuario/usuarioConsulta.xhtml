@@ -6,7 +6,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Consulta de Usuários</ui:define>
+	<ui:define name="titulo">#{msg['jailsysweb.usuario.titulo.consulta.label']}</ui:define>
 
 	<ui:define name="corpo">
 		<h:form prependId="false">
@@ -14,16 +14,21 @@
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
-				<p:column headerText="Login" sortBy="#{usuario.login}"
-					filterBy="#{usuario.login}" filterMatchMode="contains">
+				<p:column
+					headerText="#{msg['jailsysweb.usuario.form.consulta.label.login']}"
+					sortBy="#{usuario.login}" filterBy="#{usuario.login}"
+					filterMatchMode="contains">
 					<h:outputText value="#{usuario.login}" />
 				</p:column>
-				<p:column headerText="Grupo" sortBy="#{usuario.grupo.descricao}"
+				<p:column
+					headerText="#{msg['jailsysweb.usuario.form.consulta.label.grupo']}"
+					sortBy="#{usuario.grupo.descricao}"
 					filterBy="#{usuario.grupo.descricao}" filterMatchMode="contains">
 					<h:outputText value="#{usuario.grupo.descricao}" />
 				</p:column>
 
-				<p:column headerText="Opções">
+				<p:column
+					headerText="#{msg['jailsysweb.usuario.form.consulta.label.opcoes']}">
 					<p:commandButton icon="ui-icon-image"
 						action="#{usuarioBean.visualizar()}" ajax="false">
 						<f:param name="idUsuario" value="#{usuario.id}"></f:param>

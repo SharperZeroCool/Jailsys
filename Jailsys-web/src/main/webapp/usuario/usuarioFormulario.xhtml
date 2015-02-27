@@ -9,53 +9,65 @@
 	<ui:define name="corpo">
 		<h:form>
 			<p:panelGrid columns="2" style="width:100%;">
-				<p:outputLabel value="Login" for="login" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.usuario.menu.cadastro.label.login']}"
+					for="login" />
 				<p:inputText id="login" disabled="#{usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.login}" required="true" />
 
 				<ui:insert name="senhaAntiga" />
 
-				<p:outputLabel value="Nova Senha"
+				<p:outputLabel
+					value="#{msg['jailsysweb.usuario.menu.cadastro.label.senha']}"
 					rendered="#{!usuarioBean.isVisualizar()}" for="senha" />
 				<p:password id="senha" rendered="#{!usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.senha}" feedback="true"
-					inline="true" match="confirmacaoSenha" label="Nova Senha"
+					inline="true" match="confirmacaoSenha"
+					label="#{msg['jailsysweb.usuario.menu.cadastro.label.senha']}"
 					required="#{usuarioBean.isCadastrar()}" />
 
-				<p:outputLabel value="Confirmação de Senha"
+				<p:outputLabel
+					value="#{msg['jailsysweb.usuario.menu.cadastro.label.confirmacaoSenha']}"
 					rendered="#{!usuarioBean.isVisualizar()}" for="confirmacaoSenha" />
 				<p:password id="confirmacaoSenha"
 					rendered="#{!usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.confirmacaoSenha}" feedback="true"
-					inline="true" label="Confirmação de Senha"
+					inline="true"
+					label="#{msg['jailsysweb.usuario.menu.cadastro.label.confirmacaoSenha']}"
 					required="#{usuarioBean.isCadastrar()}" />
 
-				<p:outputLabel for="funcionario" value="Funcionário:" />
+				<p:outputLabel for="funcionario"
+					value="#{msg['jailsysweb.usuario.menu.cadastro.label.funcionario']}" />
 				<p:selectOneMenu id="funcionario"
 					disabled="#{usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.pessoa}"
 					converter="genericConverter" effect="fade" filter="true"
 					filterMatchMode="startsWith" required="true">
-					<f:selectItem itemLabel="Selecione" itemValue=""
-						noSelectionOption="true" />
+					<f:selectItem
+						itemLabel="#{msg['jailsysweb.usuario.menu.cadastro.label.selecione']}"
+						itemValue="" noSelectionOption="true" />
 					<f:selectItems value="#{funcionarioBean.listarItensAtivos()}"
 						var="func" itemLabel="#{func.nome}" itemValue="#{func}" />
 
 				</p:selectOneMenu>
 
-				<p:outputLabel for="grupo" value="Grupo:" />
+				<p:outputLabel for="grupo"
+					value="#{msg['jailsysweb.usuario.menu.cadastro.label.grupo']}" />
 				<p:selectOneMenu id="grupo" disabled="#{usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.grupo}"
 					converter="genericConverter" effect="fade" filter="true"
 					filterMatchMode="startsWith" required="true">
-					<f:selectItem itemLabel="Selecione" itemValue=""
-						noSelectionOption="true" />
+					<f:selectItem
+						itemLabel="#{msg['jailsysweb.usuario.menu.cadastro.label.selecione']}"
+						itemValue="" noSelectionOption="true" />
 					<f:selectItems value="#{usuarioBean.listarGrupos()}" var="grupo"
 						itemLabel="#{grupo.nome}" itemValue="#{grupo}" />
 
 				</p:selectOneMenu>
 
-				<p:outputLabel value="Ativo" for="ativo" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.usuario.menu.cadastro.label.ativo']}"
+					for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"
 					disabled="#{usuarioBean.isVisualizar()}"
 					value="#{usuarioBean.usuarioView.usuario.ativo}" />

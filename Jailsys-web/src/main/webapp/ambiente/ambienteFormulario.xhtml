@@ -54,11 +54,18 @@
 					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.severidade}"
 					required="true">
-					<f:selectItem itemLabel="Selecione" itemValue=""
-						noSelectionOption="true" />
-					<f:selectItem itemLabel="Baixa" itemValue="Baixa" />
-					<f:selectItem itemLabel="Média" itemValue="Media" />
-					<f:selectItem itemLabel="Alta" itemValue="Alta" />
+					<f:selectItem
+						itemLabel="#{msg['jailsysweb.ambiente.form.label.selecione']}"
+						itemValue="" noSelectionOption="true" />
+					<f:selectItem
+						itemLabel="#{msg['jailsysweb.ambiente.form.label.baixa']}"
+						itemValue="Baixa" />
+					<f:selectItem
+						itemLabel="#{msg['jailsysweb.ambiente.form.label.media']}"
+						itemValue="Media" />
+					<f:selectItem
+						itemLabel="#{msg['jailsysweb.ambiente.form.label.alta']}"
+						itemValue="Alta" />
 				</p:selectOneMenu>
 
 				<p:outputLabel

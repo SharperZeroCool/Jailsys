@@ -71,4 +71,11 @@ public class Constantes {
 		public static final String ASSUNTO_EMAIL = "Alteração de Cadastro no Sistema Jailsys";
 	}
 
+	public static final class Login {
+		public static final String MENSAGEM_USUARIO_SENHA_INVALIDO = "jailsysweb.erro.mensagem.usuario.senha.invalidos";
+		public static final String MENSAGEM_ERROR_LOGIN = "jailsysweb.erro.mensagem.efetuar.login";
+		public static final String TELA_INICIAL = "/index.xhtml?faces-redirect=true";
+		public static final String TELA_LOGIN = "login.xhtml";
+	}
+
 }

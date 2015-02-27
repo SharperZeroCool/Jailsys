@@ -6,19 +6,20 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Login</ui:define>
+	<ui:define name="titulo">#{msg['jailsysweb.login.titulo.cadastro.label']}</ui:define>
 	<ui:define name="corpo">
 		<h:form>
 			<p:panelGrid columns="2">
 				<f:facet name="header">
-					<h:outputText value="Logue para ter acesso às páginas do sistema:" />
+					<h:outputText
+						value="#{msg['jailsysweb.login.form.cadastro.label.logue']}" />
 				</f:facet>
-				<p:outputLabel for="login" value="Login:" />
+				<p:outputLabel for="login" value="#{msg['jailsysweb.login.form.cadastro.label.login']}" />
 				<p:inputText id="login" value="#{loginBean.usuario.login}" />
-				<p:outputLabel for="senha" value="Senha:" />
+				<p:outputLabel for="senha" value="#{msg['jailsysweb.login.form.cadastro.label.senha']}" />
 				<p:password id="senha" value="#{loginBean.usuario.senha}" />
 				<p:outputLabel />
-				<p:commandButton value="Submit"
+				<p:commandButton value="#{msg['jailsysweb.login.form.cadastro.botao.logar']}"
 					action="#{loginBean.acessarSistema()}" ajax="false" />
 			</p:panelGrid>
 		</h:form>

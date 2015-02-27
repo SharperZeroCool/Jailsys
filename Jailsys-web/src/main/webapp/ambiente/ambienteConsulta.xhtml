@@ -52,7 +52,8 @@
 					<h:outputText value="#{ambiente.severidade}" />
 				</p:column>
 
-				<p:column headerText="Opções">
+				<p:column
+					headerText="#{msg['jailsysweb.ambiente.form.label.opcoes']}">
 					<p:commandButton
 						title="#{msg['jailsysweb.ambiente.form.consulta.botao.visualizar']}"
 						icon="ui-icon-image" action="#{ambienteBean.visualizar()}"
