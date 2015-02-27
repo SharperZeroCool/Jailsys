@@ -28,11 +28,13 @@ public class UsuarioService implements AbstractService<EntidadeComum>,
 
 	@Override
 	public EntidadeComum salvarERetornar(EntidadeComum entidade) {
+		((Usuario) entidade).criptografarSenha();
 		return usuarioDao.salvarERetornar((Usuario) entidade);
 	}
 
 	@Override
 	public void editar(EntidadeComum entidade) {
+		((Usuario) entidade).criptografarSenha();
 		usuarioDao.editar((Usuario) entidade);
 	}
 
