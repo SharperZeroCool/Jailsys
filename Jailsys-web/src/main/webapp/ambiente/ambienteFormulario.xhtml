@@ -73,6 +73,17 @@
 				<p:selectBooleanCheckbox id="ativo"
 					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.ativo}" required="true" />
+
+				<p:outputLabel value="Atividades" for="atividades" />
+				<p:pickList id="atividades"
+					value="#{atividadeBean.atividadesDualList}"
+					var="atividade" itemLabel="#{atividade.nome}"
+					itemValue="#{atividade}" converter="genericConverter"
+					addLabel="Adicionar Atividade"
+					addAllLabel="Adicionar todas Atividades"
+					removeLabel="Remover Atividade"
+					removeAllLabel="Remover todas Atividades" />
+
 				<ui:insert name="botao" />
 			</p:panelGrid>
 		</h:form>

@@ -1,11 +1,14 @@
 package br.com.jailsys.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+
+import org.primefaces.model.DualListModel;
 
 import br.com.jailsys.bean.basic.AbstractBean;
 import br.com.jailsys.model.Atividade;
@@ -26,7 +29,9 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 
 	@Inject
 	private AtividadeView atividadeView;
-
+	
+	private DualListModel<Atividade> atividadesDualList;
+ 
 	public List<Atividade> listarItensAtivos() {
 		if (atividadeView.getAtividades().isEmpty()) {
 			this.atualizarView();
@@ -41,6 +46,8 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 
 	@Override
 	public String salvar() {
+		/*List<Atividade> atividadeASerVinculadas = atividadesDualList.getTarget();*/
+		
 		service.salvar(atividadeView.getAtividade());
 		this.atualizarView();
 		FacesUtil
@@ -88,5 +95,31 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 		this.atividadeView = atividadeView;
 	}
 
+	public DualListModel<Atividade> getAtividadesDualList() {
+		List<Atividade> atividadesDesvinculadas = service.listarItensAtivos();
+		List<Atividade> atividadesVinculadas = new ArrayList<Atividade>();
+		
+		return new DualListModel<Atividade>(atividadesDesvinculadas, atividadesVinculadas);
+		/*return atividadesDualList;*/
+	}
 
+	public void setAtividadesDualList(DualListModel<Atividade> atividadesDualList) {
+		this.atividadesDualList = atividadesDualList;
+	}
+	
+	public DualListModel<Atividade> atividadesDualListCadastro(){
+		List<Atividade> atividadesDesvinculadas = service.listarItensAtivos();
+		List<Atividade> atividadesVinculadas = new ArrayList<Atividade>();
+		
+		return new DualListModel<Atividade>(atividadesDesvinculadas, atividadesVinculadas);
+	}
+	
+	public DualListModel<Atividade> atividadesDualListEdicao(){
+		
+		List<Atividade> atividadesDesvinculadas = service.listarDesvinculadas(atividadeView.getAtividade().getId());
+		List<Atividade> atividadesVinculadas = service.listarVinculadas(atividadeView.getAtividade().getId());
+		
+		return new DualListModel<Atividade>(atividadesDesvinculadas, atividadesVinculadas);
+	}
+	
 }

@@ -53,6 +53,14 @@
 					<h:outputText value="#{msg[ambiente.severidade.descricao]}" />
 				</p:column>
 
+				<p:column headerText="Atividades Vinculadas"
+					sortBy="#{msg[ambiente.severidade.descricao]}"
+					filterBy="#{ambiente.atividades}">
+					<ui:repeat value="#{atividadeBean.atividadesDualList.target}" var="atividade">
+						<h:outputText value="#{atividade.nome}" styleClass="margin-left=5px"/><span> </span>
+					</ui:repeat>
+				</p:column>
+
 				<p:column
 					headerText="#{msg['jailsysweb.ambiente.form.label.opcoes']}">
 					<p:commandButton
