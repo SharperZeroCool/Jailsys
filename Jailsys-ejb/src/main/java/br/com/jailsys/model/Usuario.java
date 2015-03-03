@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import br.com.jailsys.util.CriptografiaUtil;
+import br.com.jailsys.util.EmailUtil;
 
 @Entity
 public class Usuario extends EntidadeComum implements Serializable {
@@ -34,8 +35,31 @@ public class Usuario extends EntidadeComum implements Serializable {
 	@Column(nullable = false)
 	private boolean ativo;
 
+	private static final String ASSUNTO_EMAIL_CRUD = "Alteração de Cadastro no Sistema Jailsys";
+	private static final String ASSUNTO_EMAIL_DIARIO = "Sistema Jailsys - Boletim";
+
 	public void criptografarSenha() {
 		this.senha = getSenhaCriptografada();
+	}
+
+	public void enviarEmailDiario() {
+		EmailUtil.enviarEmail(pessoa.getEmail(), ASSUNTO_EMAIL_DIARIO,
+				getConteudoEmailDiario());
+	}
+
+	public void enviarEmailCriacao() {
+		EmailUtil.enviarEmail(pessoa.getEmail(), ASSUNTO_EMAIL_CRUD,
+				getConteudoEmailSalvarUsuario());
+	}
+
+	public void enviarEmailEdicao() {
+		EmailUtil.enviarEmail(pessoa.getEmail(), ASSUNTO_EMAIL_CRUD,
+				getConteudoEmailEditarUsuario());
+	}
+
+	public void enviarEmailExclusao() {
+		EmailUtil.enviarEmail(pessoa.getEmail(), ASSUNTO_EMAIL_CRUD,
+				getConteudoEmailDeletarUsuario());
 	}
 
 	public String getLogin() {
@@ -80,6 +104,32 @@ public class Usuario extends EntidadeComum implements Serializable {
 
 	private String getSenhaCriptografada() {
 		return CriptografiaUtil.criptografar(this.getSenha());
+	}
+
+	private String getConteudoEmailDiario() {
+		// TODO trocar esta mensagem por um template do velocity
+		return "Caro " + pessoa.getNome() + ",\nEstá na hora de almoçar!";
+	}
+
+	private String getConteudoEmailSalvarUsuario() {
+		// TODO trocar esta mensagem por um template do velocity
+		return "Parabéns " + pessoa.getNome()
+				+ "!\nSua nova conta de usuário com o nome: " + login
+				+ " foi criada com sucesso!";
+	}
+
+	private String getConteudoEmailEditarUsuario() {
+		// TODO trocar esta mensagem por um template do velocity
+		return "Caro " + pessoa.getNome()
+				+ ",\nSua conta de usuário com o nome: " + login
+				+ " foi editada com sucesso!";
+	}
+
+	private String getConteudoEmailDeletarUsuario() {
+		// TODO trocar esta mensagem por um template do velocity
+		return "Caro " + pessoa.getNome()
+				+ ",\nSua conta de usuário com o nome: " + login
+				+ " foi excluida com sucesso!";
 	}
 
 }

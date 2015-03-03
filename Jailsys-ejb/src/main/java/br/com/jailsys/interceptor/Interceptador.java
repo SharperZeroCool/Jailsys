@@ -10,14 +10,14 @@ public class Interceptador {
 	public Object interceptador(InvocationContext ic) throws Exception {
 		String classe = ic.getTarget().getClass().getName();
 		String method = ic.getMethod().getName();
-		Logger LOGGER = Logger.getLogger(ic.getTarget().getClass());
-		LOGGER.info("Accessando:" + classe + "(" + method + ")");
+		Logger logger = Logger.getLogger(ic.getTarget().getClass());
+		logger.info("Accessando:" + classe + "(" + method + ")");
 		try {
 			Object result = ic.proceed();
-			LOGGER.info("Acesso realizado com sucesso!");
+			logger.info("Acesso realizado com sucesso!");
 			return result;
 		} catch (Exception e) {
-			LOGGER.error("Ocorreu um erro no servidor!");
+			logger.error("Ocorreu um erro no servidor!");
 			throw e;
 		}
 	}

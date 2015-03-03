@@ -46,12 +46,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>18.0</version>
-		</dependency>
-
 		<!-- Import the CDI API, we use provided scope as the API is included in 
 			JBoss WildFly -->
 		<dependency>
@@ -104,6 +98,18 @@
 			<groupId>org.jboss.spec.javax.interceptor</groupId>
 			<artifactId>jboss-interceptors-api_1.1_spec</artifactId>
 			<version>1.0.1.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>18.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
 		</dependency>
 		
 
