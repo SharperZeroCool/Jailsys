@@ -16,3 +16,15 @@ body {
 .ui-menuitem:last {
 	float: right !important;
 }
+
+#form {
+	margin: 30px !important;
+}
+
+.usersColumn {
+	width: 300px !important;
+}
+
+.chatlogs {
+	word-break: break-word !important;
+}
