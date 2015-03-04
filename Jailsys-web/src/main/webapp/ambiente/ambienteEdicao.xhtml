@@ -9,16 +9,16 @@
 
 	<ui:define name="titulo">#{msg['jailsysweb.ambiente.titulo.editar.label']}</ui:define>
 
-	<!-- <ui:define name="picklistAtividades">
+	<ui:define name="picklistAtividades">
 		<p:outputLabel value="Atividades" for="atividades" />
 		<p:pickList id="atividades"
-			value="#{atividadeBean.atividadesDualListEdicao()}" var="atividade"
+			value="#{ambienteBean.atividadesDualListEdicao()}" var="atividade"
 			itemLabel="#{atividade.nome}" itemValue="#{atividade}"
-			converter="genericConverter" addLabel="Adicionar Atividade"
+			converter="atividadeConverter" addLabel="Adicionar Atividade"
 			addAllLabel="Adicionar todas Atividades"
 			removeLabel="Remover Atividade"
 			removeAllLabel="Remover todas Atividades" />
-	</ui:define> -->
+	</ui:define>
 
 	<ui:define name="botao">
 		<p:outputLabel />

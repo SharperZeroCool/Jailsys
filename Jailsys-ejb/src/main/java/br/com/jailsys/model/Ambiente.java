@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -43,7 +44,7 @@ public class Ambiente extends EntidadeComum implements Serializable {
 	@Column(nullable = false)
 	private boolean ativo;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "atividadeambiente",
 				joinColumns = @JoinColumn(name = "idAmbiente"), 
 				inverseJoinColumns = @JoinColumn(name = "idAtividade"))

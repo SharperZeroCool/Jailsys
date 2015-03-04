@@ -21,12 +21,12 @@ public class AtividadeService implements AbstractService<EntidadeComum> {
 		return atividadeDAO.listarItensAtivos();
 	}
 
-	public List<Atividade> listarDesvinculadas(Long idAtividade) {
-		return atividadeDAO.listarDesvinculadas(idAtividade.toString());
+	public List<Atividade> listarDesvinculadas(Long idAmbiente) {
+		return atividadeDAO.listarDesvinculadas(idAmbiente.toString());
 	}
 	
-	public List<Atividade> listarVinculadas(Long idAtividade) {
-		return atividadeDAO.listarVinculadas(idAtividade.toString());
+	public List<Atividade> listarVinculadas(Long idAmbiente) {
+		return atividadeDAO.listarVinculadas(idAmbiente.toString());
 	}
 	
 	@Override
