@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.ejb.AfterBegin;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
@@ -33,17 +31,53 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	@Inject
 	private AmbienteView ambienteView;
-	
+
 	@Inject
 	private AtividadeService atividadeService;
 
 	private DualListModel<Atividade> atividadesDualList;
+	
 
 	public List<Ambiente> listarItensAtivos() {
 		if (ambienteView.getAmbientes().isEmpty()) {
 			this.atualizarView();
 		}
 		return ambienteView.getAmbientes();
+	}
+	
+	public String editar() {
+		setarAtividades();
+		service.editar(ambienteView.getAmbiente());
+		FacesUtil.mostrarMensagemSucesso(Constantes.Ambiente.MENSAGEM_EDICAO);
+		return Constantes.Ambiente.TELA_CONSULTA;
+	}
+
+	public void preparaViewCadastro() {
+		List<Atividade> source = atividadeService.listarItensAtivos();
+		List<Atividade> target = new ArrayList<Atividade>();
+		ambienteView.setAtividadesDualList(new DualListModel<Atividade>(source,
+				target));
+	}
+
+	public void preparaViewEdicao() {
+		List<Atividade> source = atividadeService.listarDesvinculadas(ambienteView.getAmbiente().getId());
+		List<Atividade> target;
+		if (ambienteComAtividades()) {
+			target = ambienteView.getAmbiente().getAtividades();
+		} else {
+			target = new ArrayList<Atividade>();
+		}
+		ambienteView.setAtividadesDualList(new DualListModel<Atividade>(source,
+				target));
+	}
+
+	private void setarAtividades() {
+		ambienteView.getAmbiente().setAtividades(
+				ambienteView.getAtividadesDualList().getTarget());
+	}
+
+	private boolean ambienteComAtividades() {
+		return ambienteView.getAmbiente().getAtividades() != null || !ambienteView.getAmbiente().getAtividades().isEmpty();
 	}
 
 	@Override
@@ -66,12 +100,6 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	}
 
-	public String editar() {
-		service.editar(ambienteView.getAmbiente());
-		FacesUtil.mostrarMensagemSucesso(Constantes.Ambiente.MENSAGEM_EDICAO);
-		return Constantes.Ambiente.TELA_CONSULTA;
-	}
-
 	@Override
 	public String visualizar() {
 		return Constantes.Ambiente.TELA_VISUALIZAR;
@@ -91,6 +119,7 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 				.getRequestParameter("isVisualizar"));
 	}
 
+	//GETTERS E SETTERS
 	public AmbienteView getAmbienteView() {
 		return ambienteView;
 	}
@@ -99,31 +128,12 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 		this.ambienteView = ambienteView;
 	}
 
-	public void preparaView(){
-		List<Atividade> source = atividadeService.listarItensAtivos();
-        List<Atividade> target = new ArrayList<Atividade>();
-        ambienteView.setAtividadesDualList(new DualListModel<Atividade>(source, target));
-	}
-	
 	public DualListModel<Atividade> getAtividadesDualList() {
 		return atividadesDualList;
 	}
-	
+
 	public void setAtividadesDualList(
 			DualListModel<Atividade> atividadesDualList) {
 		this.atividadesDualList = atividadesDualList;
-	}
-
-	public DualListModel<Atividade> atividadesDualListEdicao() {
-		atividadesDualList.setSource(atividadeService
-				.listarDesvinculadas(ambienteView.getAmbiente().getId()));
-		atividadesDualList.setTarget(atividadeService
-				.listarVinculadas(ambienteView.getAmbiente().getId()));
-
-		return atividadesDualList;
-	}
-	
-	private void setarAtividades(){
-		ambienteView.getAmbiente().setAtividades(ambienteView.getAtividadesDualList().getTarget());
 	}
 }

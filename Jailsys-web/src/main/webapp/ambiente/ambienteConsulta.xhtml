@@ -47,17 +47,20 @@
 
 				<p:column
 					headerText="#{msg['jailsysweb.ambiente.form.label.severidade']}"
-					sortBy="#{msg[ambiente.severidade.descricao]}"
+					sortBy="#{ambiente.severidade.descricao}"
 					filterBy="#{msg[ambiente.severidade.descricao]}"
 					filterMatchMode="contains">
 					<h:outputText value="#{msg[ambiente.severidade.descricao]}" />
 				</p:column>
 
-				<p:column headerText="Atividades Vinculadas"
-					sortBy="#{msg[ambiente.severidade.descricao]}"
+				<p:column headerText="#{msg[jailsysweb.ambiente.form.label.atividades]}"
+					sortBy="#{ambiente.atividades}"
 					filterBy="#{ambiente.atividades}">
-					<ui:repeat value="#{ambiente.atividades}" var="atividade">
-						<h:outputText value="#{atividade.nome}" styleClass="margin-left=5px"/><span> </span>
+						<h:dataTable>
+							<p:column >
+								<h:outputText value="#{ambiente.atividades}" />
+							</p:column>
+						</h:dataTable>
 					</ui:repeat>
 				</p:column>
 

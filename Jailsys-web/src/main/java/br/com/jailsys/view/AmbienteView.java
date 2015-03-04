@@ -26,6 +26,7 @@ public class AmbienteView implements Serializable {
 	
 	private DualListModel<Atividade> atividadesDualList;
 
+	//GETTERS E SETTERS
 	public Ambiente getAmbiente() {
 		return ambiente;
 	}

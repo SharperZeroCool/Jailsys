@@ -33,5 +33,4 @@ public class AtividadeDAO extends GenericDAO<Atividade> implements Serializable 
 				).getResultList();
 	}
 	
-
 }

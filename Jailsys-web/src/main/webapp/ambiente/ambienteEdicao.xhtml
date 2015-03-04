@@ -6,18 +6,19 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-
 	<ui:define name="titulo">#{msg['jailsysweb.ambiente.titulo.editar.label']}</ui:define>
 
 	<ui:define name="picklistAtividades">
-		<p:outputLabel value="Atividades" for="atividades" />
-		<p:pickList id="atividades"
-			value="#{ambienteBean.atividadesDualListEdicao()}" var="atividade"
-			itemLabel="#{atividade.nome}" itemValue="#{atividade}"
-			converter="atividadeConverter" addLabel="Adicionar Atividade"
-			addAllLabel="Adicionar todas Atividades"
-			removeLabel="Remover Atividade"
-			removeAllLabel="Remover todas Atividades" />
+		<f:event listener="#{ambienteBean.preparaViewEdicao()}"
+			type="preRenderComponent" />
+		<p:outputLabel value="#{msg[jailsysweb.ambiente.form.label.atividades]}" for="atividades" />
+		<p:pickList id="atividades" value="#{ambienteBean.ambienteView.atividadesDualList}"
+			var="atividade" itemLabel="#{atividade.nome}"
+			itemValue="#{atividade}" converter="atividadeConverter"
+			addLabel="#{msg['jailsysweb.ambiente.form.picklist.adiciona']}"
+			addAllLabel="#{msg['jailsysweb.ambiente.form.picklist.adicionatodos']}"
+			removeLabel="#{msg['jailsysweb.ambiente.form.picklist.remove']}"
+			removeAllLabel="#{msg['jailsysweb.ambiente.form.picklist.removetodos']}"/>
 	</ui:define>
 
 	<ui:define name="botao">
