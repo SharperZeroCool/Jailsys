@@ -12,6 +12,11 @@ import org.primefaces.push.annotation.PathParam;
 import org.primefaces.push.annotation.PushEndpoint;
 import org.primefaces.push.annotation.Singleton;
 
+import br.com.jailsys.util.MessageDecoder;
+import br.com.jailsys.util.MessageEncoder;
+import br.com.jailsys.view.ChatUsers;
+import br.com.jailsys.view.Message;
+
 import com.google.common.base.Strings;
 
 @PushEndpoint("/{room}/{user}")

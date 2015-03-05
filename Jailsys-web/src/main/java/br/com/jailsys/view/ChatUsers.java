@@ -1,4 +1,4 @@
-package br.com.jailsys.bean;
+package br.com.jailsys.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;

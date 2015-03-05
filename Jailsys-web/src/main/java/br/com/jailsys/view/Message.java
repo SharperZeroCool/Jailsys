@@ -1,4 +1,4 @@
-package br.com.jailsys.bean;
+package br.com.jailsys.view;
 
 public class Message {
 

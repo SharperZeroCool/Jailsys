@@ -14,6 +14,7 @@ import org.primefaces.push.EventBus;
 import org.primefaces.push.EventBusFactory;
 
 import br.com.jailsys.util.UtilitarioSeguranca;
+import br.com.jailsys.view.ChatUsers;
 
 import com.google.common.base.Strings;
 

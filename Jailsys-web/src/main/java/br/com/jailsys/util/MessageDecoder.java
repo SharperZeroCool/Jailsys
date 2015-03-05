@@ -1,6 +1,8 @@
-package br.com.jailsys.bean;
+package br.com.jailsys.util;
 
 import org.primefaces.push.Decoder;
+
+import br.com.jailsys.view.Message;
 
 /**
  * A Simple {@link org.primefaces.push.Decoder} that decode a String into a
