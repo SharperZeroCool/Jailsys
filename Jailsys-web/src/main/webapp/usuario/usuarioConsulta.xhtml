@@ -38,12 +38,27 @@
 						action="#{usuarioBean.prepararEdicao()}" ajax="false">
 						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
 					</p:commandButton>
+
+					<p:growl id="message" showDetail="true" />
 					<p:commandButton icon="ui-icon-trash"
-						action="#{usuarioBean.excluir(usuario)}" ajax="false">
-						<f:param name="idUsuario" value="#{usuario.id}"></f:param>
+						action="#{usuarioBean.excluir(usuario)}"
+						update=":formulario, message">
+						<p:confirm
+							header="#{msg['jailsysweb.excluir.confirmacao.header']}"
+							message="#{msg['jailsysweb.excluir.confirmacao.texto']}"
+							icon="ui-icon-alert" />
 					</p:commandButton>
+
 				</p:column>
 			</p:dataTable>
+			<p:confirmDialog global="true">
+				<p:commandButton
+					value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton
+					value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
 	</ui:define>
 </ui:composition>

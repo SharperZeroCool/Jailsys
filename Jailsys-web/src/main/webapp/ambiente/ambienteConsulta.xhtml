@@ -10,8 +10,7 @@
 
 	<ui:define name="corpo">
 
-
-		<h:form prependId="false">
+		<h:form id="formulario" prependId="false">
 			<p:dataTable var="ambiente"
 				value="#{ambienteBean.listarItensAtivos()}" paginator="true"
 				rows="10"
@@ -62,6 +61,7 @@
 
 				<p:column
 					headerText="#{msg['jailsysweb.ambiente.form.label.opcoes']}">
+
 					<p:commandButton
 						title="#{msg['jailsysweb.ambiente.form.consulta.botao.visualizar']}"
 						icon="ui-icon-image" action="#{ambienteBean.visualizar()}"
@@ -75,14 +75,26 @@
 						ajax="false">
 						<f:param name="idAmbiente" value="#{ambiente.id}"></f:param>
 					</p:commandButton>
+
+					<p:growl id="message" showDetail="true" />
 					<p:commandButton
 						title="#{msg['jailsysweb.ambiente.form.consulta.botao.excluir']}"
 						icon="ui-icon-trash" action="#{ambienteBean.excluir(ambiente)}"
-						ajax="false">
-						<f:param name="idAmbiente" value="#{ambiente.id}"></f:param>
+						update=":formulario, message">
+						<p:confirm
+							header="#{msg['jailsysweb.excluir.confirmacao.header']}"
+							message="#{msg['jailsysweb.excluir.confirmacao.texto']}"
+							icon="ui-icon-alert" />
 					</p:commandButton>
+
 				</p:column>
 			</p:dataTable>
+			<p:confirmDialog global="true">
+				<p:commandButton value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
 	</ui:define>
 </ui:composition>
