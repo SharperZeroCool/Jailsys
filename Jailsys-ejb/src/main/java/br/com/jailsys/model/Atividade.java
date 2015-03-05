@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,7 +27,7 @@ public class Atividade extends EntidadeComum {
 	@Column(nullable = false)
 	private boolean ativo;
 
-	@ManyToMany(mappedBy = "atividades")
+	@ManyToMany(mappedBy = "atividades", fetch = FetchType.EAGER)
 	private List<Ambiente> ambientes;
 
 	public String getNome() {

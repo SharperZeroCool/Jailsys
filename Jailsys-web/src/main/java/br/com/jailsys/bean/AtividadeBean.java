@@ -1,14 +1,11 @@
 package br.com.jailsys.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-
-import org.primefaces.model.DualListModel;
 
 import br.com.jailsys.bean.basic.AbstractBean;
 import br.com.jailsys.model.Atividade;
@@ -16,7 +13,6 @@ import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.service.AtividadeService;
 import br.com.jailsys.util.Constantes;
 import br.com.jailsys.util.FacesUtil;
-import br.com.jailsys.view.AmbienteView;
 import br.com.jailsys.view.AtividadeView;
 
 @ManagedBean
@@ -38,6 +34,13 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 		return atividadeView.getAtividades();
 	}
 
+	public String editar() {
+		service.editar(atividadeView.getAtividade());
+		this.atualizarView();
+		FacesUtil.mostrarMensagemSucesso(Constantes.Atividade.MENSAGEM_EDICAO);
+		return Constantes.Atividade.TELA_CONSULTA;
+	}
+
 	@Override
 	public String prepararEdicao() {
 		return Constantes.Atividade.TELA_EDICAO;
@@ -55,13 +58,6 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 	@Override
 	public void atualizarView() {
 		atividadeView.setAtividades(service.listarItensAtivos());
-	}
-
-	public String editar() {
-		service.editar(atividadeView.getAtividade());
-		this.atualizarView();
-		FacesUtil.mostrarMensagemSucesso(Constantes.Atividade.MENSAGEM_EDICAO);
-		return Constantes.Atividade.TELA_CONSULTA;
 	}
 
 	@Override

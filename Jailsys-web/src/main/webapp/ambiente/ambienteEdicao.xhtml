@@ -11,14 +11,17 @@
 	<ui:define name="picklistAtividades">
 		<f:event listener="#{ambienteBean.preparaViewEdicao()}"
 			type="preRenderComponent" />
-		<p:outputLabel value="#{msg[jailsysweb.ambiente.form.label.atividades]}" for="atividades" />
-		<p:pickList id="atividades" value="#{ambienteBean.ambienteView.atividadesDualList}"
+		<p:outputLabel
+			value="#{msg[jailsysweb.ambiente.form.label.atividades]}"
+			for="atividades" />
+		<p:pickList id="atividades"
+			value="#{ambienteBean.ambienteView.atividadesDualList}"
 			var="atividade" itemLabel="#{atividade.nome}"
 			itemValue="#{atividade}" converter="atividadeConverter"
 			addLabel="#{msg['jailsysweb.ambiente.form.picklist.adiciona']}"
 			addAllLabel="#{msg['jailsysweb.ambiente.form.picklist.adicionatodos']}"
 			removeLabel="#{msg['jailsysweb.ambiente.form.picklist.remove']}"
-			removeAllLabel="#{msg['jailsysweb.ambiente.form.picklist.removetodos']}"/>
+			removeAllLabel="#{msg['jailsysweb.ambiente.form.picklist.removetodos']}" />
 	</ui:define>
 
 	<ui:define name="botao">

@@ -36,7 +36,6 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 	private AtividadeService atividadeService;
 
 	private DualListModel<Atividade> atividadesDualList;
-	
 
 	public List<Ambiente> listarItensAtivos() {
 		if (ambienteView.getAmbientes().isEmpty()) {
@@ -44,9 +43,11 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 		}
 		return ambienteView.getAmbientes();
 	}
-	
+
 	public String editar() {
-		setarAtividades();
+		List<Atividade> atividades = ambienteView.getAtividadesDualList()
+				.getTarget();
+		setarAtividades(atividades);
 		service.editar(ambienteView.getAmbiente());
 		FacesUtil.mostrarMensagemSucesso(Constantes.Ambiente.MENSAGEM_EDICAO);
 		return Constantes.Ambiente.TELA_CONSULTA;
@@ -60,7 +61,8 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 	}
 
 	public void preparaViewEdicao() {
-		List<Atividade> source = atividadeService.listarDesvinculadas(ambienteView.getAmbiente().getId());
+		List<Atividade> source = atividadeService
+				.listarDesvinculadas(ambienteView.getAmbiente().getId());
 		List<Atividade> target;
 		if (ambienteComAtividades()) {
 			target = ambienteView.getAmbiente().getAtividades();
@@ -71,13 +73,18 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 				target));
 	}
 
-	private void setarAtividades() {
-		ambienteView.getAmbiente().setAtividades(
-				ambienteView.getAtividadesDualList().getTarget());
+	public List<Atividade> listaAtividades(Long id) {
+		Ambiente ambiente = (Ambiente) service.buscar(id);
+		return ambiente.getAtividades();
+	}
+
+	private void setarAtividades(List<Atividade> atividades) {
+		ambienteView.getAmbiente().setAtividades(atividades);
 	}
 
 	private boolean ambienteComAtividades() {
-		return ambienteView.getAmbiente().getAtividades() != null || !ambienteView.getAmbiente().getAtividades().isEmpty();
+		return ambienteView.getAmbiente().getAtividades() != null
+				|| !ambienteView.getAmbiente().getAtividades().isEmpty();
 	}
 
 	@Override
@@ -87,7 +94,9 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	@Override
 	public String salvar() {
-		setarAtividades();
+		List<Atividade> atividades = ambienteView.getAtividadesDualList()
+				.getTarget();
+		setarAtividades(atividades);
 		service.salvar(ambienteView.getAmbiente());
 		FacesUtil.mostrarMensagemSucesso(Constantes.Ambiente.MENSAGEM_CADASTRO);
 		this.atualizarView();
@@ -119,7 +128,7 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 				.getRequestParameter("isVisualizar"));
 	}
 
-	//GETTERS E SETTERS
+	// GETTERS E SETTERS
 	public AmbienteView getAmbienteView() {
 		return ambienteView;
 	}

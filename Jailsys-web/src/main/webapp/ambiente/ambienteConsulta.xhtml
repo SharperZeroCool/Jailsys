@@ -53,15 +53,11 @@
 					<h:outputText value="#{msg[ambiente.severidade.descricao]}" />
 				</p:column>
 
-				<p:column headerText="#{msg[jailsysweb.ambiente.form.label.atividades]}"
-					sortBy="#{ambiente.atividades}"
-					filterBy="#{ambiente.atividades}">
-						<h:dataTable>
-							<p:column >
-								<h:outputText value="#{ambiente.atividades}" />
-							</p:column>
-						</h:dataTable>
-					</ui:repeat>
+				<p:column
+					headerText="#{msg['jailsysweb.ambiente.form.label.atividades']}">
+					<p:dataList value="#{ambiente.atividades}" var="atividade">
+						#{atividade.nome}
+					</p:dataList>
 				</p:column>
 
 				<p:column

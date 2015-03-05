@@ -7,14 +7,17 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{ambienteBean.preparaViewCadastro()}" />
+		<f:event type="preRenderView"
+			listener="#{ambienteBean.preparaViewCadastro()}" />
 	</f:metadata>
 
 	<ui:define name="titulo">#{msg['jailsysweb.ambiente.titulo.cadastro.label']}</ui:define>
 
 
 	<ui:define name="picklistAtividades">
-		<p:outputLabel value="#{msg[jailsysweb.ambiente.form.label.atividades]}" for="atividades" />
+		<p:outputLabel
+			value="#{msg[jailsysweb.ambiente.form.label.atividades]}"
+			for="atividades" />
 		<p:pickList id="atividades"
 			value="#{ambienteBean.ambienteView.atividadesDualList}"
 			var="atividade" itemLabel="#{atividade.nome}"
