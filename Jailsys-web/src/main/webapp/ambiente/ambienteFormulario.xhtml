@@ -55,16 +55,16 @@
 					value="#{ambienteBean.ambienteView.ambiente.severidade}"
 					required="true">
 					<f:selectItem
-						itemLabel="#{msg['jailsysweb.ambiente.form.label.selecione']}"
+						itemLabel="#{msg['jailsysweb.ambiente.form.severidade.selecione']}"
 						itemValue="" noSelectionOption="true" />
 					<f:selectItem
-						itemLabel="#{msg['jailsysweb.ambiente.form.label.baixa']}"
+						itemLabel="#{msg['jailsysweb.ambiente.form.severidade.baixa']}"
 						itemValue="Baixa" />
 					<f:selectItem
-						itemLabel="#{msg['jailsysweb.ambiente.form.label.media']}"
+						itemLabel="#{msg['jailsysweb.ambiente.form.severidade.media']}"
 						itemValue="Media" />
 					<f:selectItem
-						itemLabel="#{msg['jailsysweb.ambiente.form.label.alta']}"
+						itemLabel="#{msg['jailsysweb.ambiente.form.severidade.alta']}"
 						itemValue="Alta" />
 				</p:selectOneMenu>
 
@@ -73,6 +73,9 @@
 				<p:selectBooleanCheckbox id="ativo"
 					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.ativo}" required="true" />
+
+				<ui:insert name="picklistAtividades" />
+
 				<ui:insert name="botao" />
 			</p:panelGrid>
 		</h:form>

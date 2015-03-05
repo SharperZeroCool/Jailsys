@@ -34,6 +34,13 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 		return atividadeView.getAtividades();
 	}
 
+	public String editar() {
+		service.editar(atividadeView.getAtividade());
+		this.atualizarView();
+		FacesUtil.mostrarMensagemSucesso(Constantes.Atividade.MENSAGEM_EDICAO);
+		return Constantes.Atividade.TELA_CONSULTA;
+	}
+
 	@Override
 	public String prepararEdicao() {
 		return Constantes.Atividade.TELA_EDICAO;
@@ -51,13 +58,6 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 	@Override
 	public void atualizarView() {
 		atividadeView.setAtividades(service.listarItensAtivos());
-	}
-
-	public String editar() {
-		service.editar(atividadeView.getAtividade());
-		this.atualizarView();
-		FacesUtil.mostrarMensagemSucesso(Constantes.Atividade.MENSAGEM_EDICAO);
-		return Constantes.Atividade.TELA_CONSULTA;
 	}
 
 	@Override
@@ -87,6 +87,4 @@ public class AtividadeBean implements Serializable, AbstractBean<EntidadeComum> 
 	public void setAtividadeView(AtividadeView atividadeView) {
 		this.atividadeView = atividadeView;
 	}
-
-
 }

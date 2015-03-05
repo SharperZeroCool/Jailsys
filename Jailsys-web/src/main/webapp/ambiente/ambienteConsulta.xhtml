@@ -47,10 +47,17 @@
 
 				<p:column
 					headerText="#{msg['jailsysweb.ambiente.form.label.severidade']}"
-					sortBy="#{msg[ambiente.severidade.descricao]}"
+					sortBy="#{ambiente.severidade.descricao}"
 					filterBy="#{msg[ambiente.severidade.descricao]}"
 					filterMatchMode="contains">
 					<h:outputText value="#{msg[ambiente.severidade.descricao]}" />
+				</p:column>
+
+				<p:column
+					headerText="#{msg['jailsysweb.ambiente.form.label.atividades']}">
+					<p:dataList value="#{ambiente.atividades}" var="atividade">
+						#{atividade.nome}
+					</p:dataList>
 				</p:column>
 
 				<p:column

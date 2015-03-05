@@ -36,6 +36,13 @@
 				</p:column>
 
 				<p:column
+					headerText="#{msg['jailsysweb.atividade.grid.cadastro.label.ambientes']}">
+					<p:dataList value="#{atividade.ambientes}" var="ambiente">
+						#{ambiente.nome}
+					</p:dataList>
+				</p:column>
+
+				<p:column
 					headerText="#{msg['jailsysweb.atividade.form.consulta.label.opcoes']}"
 					style="width:310px;">
 					<p:commandButton icon="ui-icon-image"
