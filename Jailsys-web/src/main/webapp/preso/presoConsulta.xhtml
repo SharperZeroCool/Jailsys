@@ -10,7 +10,7 @@
 		#{msg['jailsysweb.preso.titulo.consulta.label']}
 	</ui:define>
 
-	<ui:define name="corpo">
+	<ui:define id="formulario" name="corpo">
 		<h:form prependId="false">
 			<p:dataTable var="preso" value="#{presoBean.listarItensAtivos()}"
 				paginator="true" rows="10"

@@ -9,7 +9,7 @@
 	<ui:define name="titulo">#{msg['jailsysweb.pessoa.titulo.consulta.label']}</ui:define>
 
 	<ui:define name="corpo">
-		<h:form prependId="false">
+		<h:form id="formulario" prependId="false">
 			<p:dataTable paginator="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				var="pessoa" value="#{pessoaBean.listarItensAtivos()}">
