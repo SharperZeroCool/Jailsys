@@ -1,63 +1,80 @@
 package br.com.jailsys.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Atividade extends EntidadeComum {
+public class Atividade extends EntidadeComum implements Serializable {
 
-    @Column(nullable = false, length = 100)
-    private String nome;
+	private static final long serialVersionUID = -8005194247258410359L;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIME)
-    private Date horarioInicio;
+	@Column(nullable = false, length = 100)
+	private String nome;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIME)
-    private Date horarioFim;
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIME)
+	private Date horarioInicio;
 
-    @Column(nullable = false)
-    private boolean ativo;
-    
-    @Override
-	public String getDescricaoPesquisa(){
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIME)
+	private Date horarioFim;
+
+	@Column(nullable = false)
+	private boolean ativo;
+
+	@ManyToMany(mappedBy = "atividades", fetch = FetchType.EAGER)
+	private List<Ambiente> ambientes;
+
+	@Override
+	public String getDescricaoPesquisa() {
 		return nome;
 	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public Date getHorarioInicio() {
-        return horarioInicio;
-    }
+	public Date getHorarioInicio() {
+		return horarioInicio;
+	}
 
-    public void setHorarioInicio(Date horarioInicio) {
-        this.horarioInicio = horarioInicio;
-    }
+	public void setHorarioInicio(Date horarioInicio) {
+		this.horarioInicio = horarioInicio;
+	}
 
-    public Date getHorarioFim() {
-        return horarioFim;
-    }
+	public Date getHorarioFim() {
+		return horarioFim;
+	}
 
-    public void setHorarioFim(Date horarioFim) {
-        this.horarioFim = horarioFim;
-    }
+	public void setHorarioFim(Date horarioFim) {
+		this.horarioFim = horarioFim;
+	}
 
-    public boolean isAtivo() {
-        return ativo;
-    }
+	public boolean isAtivo() {
+		return ativo;
+	}
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public List<Ambiente> getAmbientes() {
+		return ambientes;
+	}
+
+	public void setAmbientes(List<Ambiente> ambientes) {
+		this.ambientes = ambientes;
+	}
 }
