@@ -45,14 +45,14 @@ public class LoginBean implements Serializable {
 					e);
 		}
 		String retorno = FacesUtil.getServletRequest().getHeader("Referer");
-		if (encalinhaPaginaSolicitada(retorno)) {
+		if (encaminhaPaginaSolicitada(retorno)) {
 			redirecionar(retorno);
 		} else {
 			redirecionar(FacesUtil.gerarUrl(Constantes.Login.TELA_INICIAL));
 		}
 	}
 
-	public boolean encalinhaPaginaSolicitada(String retorno) {
+	public boolean encaminhaPaginaSolicitada(String retorno) {
 		return retorno.contains("/")
 				&& (!retorno.contains(Constantes.Login.TELA_LOGIN));
 	}
