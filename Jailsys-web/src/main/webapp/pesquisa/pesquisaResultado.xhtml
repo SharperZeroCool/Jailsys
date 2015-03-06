@@ -10,8 +10,9 @@
 
 	<ui:define name="corpo">
 		<h:form id="formulario" prependId="false">
-			<p:dataTable var="resultado"
-				value="#{pesquisaBean.pesquisaView.resultado}">
+			<p:dataTable paginator="true" rows="10" rowsPerPageTemplate="5,10,15"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				var="resultado" value="#{pesquisaBean.pesquisaView.resultado}">
 				<p:column headerText="Tipo" sortBy="#{resultado.tipo}"
 					filterBy="#{resultado.tipo}" filterMatchMode="contains">
 					<h:outputText value="#{resultado.tipo}" />
@@ -34,8 +35,8 @@
 						<f:param name="#{'id'.concat(resultado.tipo)}"
 							value="#{resultado.id}"></f:param>
 					</p:commandButton>
-					
-					
+
+
 					<p:commandButton icon="ui-icon-trash"
 						action="#{pesquisaBean.excluir(resultado)}"
 						update=":formulario, :messages">
