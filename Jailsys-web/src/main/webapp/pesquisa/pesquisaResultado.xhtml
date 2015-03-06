@@ -9,7 +9,7 @@
 	<ui:define name="titulo">Resultado da Busca</ui:define>
 
 	<ui:define name="corpo">
-		<h:form prependId="false">
+		<h:form id="formulario" prependId="false">
 			<p:dataTable var="resultado"
 				value="#{pesquisaBean.pesquisaView.resultado}">
 				<p:column headerText="Tipo" sortBy="#{resultado.tipo}"
@@ -34,13 +34,28 @@
 						<f:param name="#{'id'.concat(resultado.tipo)}"
 							value="#{resultado.id}"></f:param>
 					</p:commandButton>
+					
+					
 					<p:commandButton icon="ui-icon-trash"
-						action="#{pesquisaBean.excluir(resultado)}" ajax="false">
-						<f:param name="#{'id'.concat(resultado.tipo)}"
-							value="#{resultado.id}"></f:param>
+						action="#{pesquisaBean.excluir(resultado)}"
+						update=":formulario, :messages">
+						<p:confirm
+							header="#{msg['jailsysweb.excluir.confirmacao.header']}"
+							message="#{msg['jailsysweb.excluir.confirmacao.texto']}"
+							icon="ui-icon-alert" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
+			<p:confirmDialog global="true">
+				<center>
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</center>
+			</p:confirmDialog>
 		</h:form>
 	</ui:define>
 </ui:composition>

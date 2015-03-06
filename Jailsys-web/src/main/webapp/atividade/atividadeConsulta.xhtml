@@ -55,10 +55,9 @@
 						<f:param name="idAtividade" value="#{atividade.id}"></f:param>
 					</p:commandButton>
 
-					<p:growl id="message" showDetail="true" />
 					<p:commandButton icon="ui-icon-trash"
 						action="#{atividadeBean.excluir(atividade)}"
-						update=":formulario, message">
+						update=":formulario, :messages">
 						<p:confirm
 							header="#{msg['jailsysweb.excluir.confirmacao.header']}"
 							message="#{msg['jailsysweb.excluir.confirmacao.texto']}"

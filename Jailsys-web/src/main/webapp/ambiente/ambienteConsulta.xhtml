@@ -76,11 +76,10 @@
 						<f:param name="idAmbiente" value="#{ambiente.id}"></f:param>
 					</p:commandButton>
 
-					<p:growl id="message" showDetail="true" />
 					<p:commandButton
 						title="#{msg['jailsysweb.ambiente.form.consulta.botao.excluir']}"
 						icon="ui-icon-trash" action="#{ambienteBean.excluir(ambiente)}"
-						update=":formulario, message">
+						update=":formulario, :messages">
 						<p:confirm
 							header="#{msg['jailsysweb.excluir.confirmacao.header']}"
 							message="#{msg['jailsysweb.excluir.confirmacao.texto']}"
