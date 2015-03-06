@@ -62,7 +62,7 @@ public class PesquisaBean {
 
 	public String excluir(EntidadeComum entidade) throws Exception {
 		Class classeBean = getClasseBean(entidade.getTipo());
-		Class[] classeEntidade = { entidade.getClass().getSuperclass() };
+		Class[] classeEntidade = { EntidadeComum.class };
 		Object instanciaBean = getInstanciaBean(classeBean);
 		return executaMetodoViaReflection(classeBean, instanciaBean,
 				METODO_EXCLUIR, classeEntidade, entidade);

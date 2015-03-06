@@ -23,9 +23,9 @@ public class Preso extends Pessoa {
 
 	@Temporal(TemporalType.DATE)
 	private Date dataSaida;
-	
+
 	@Override
-	public String getDescricaoPesquisa(){
+	public String getDescricaoPesquisa() {
 		return super.getNome();
 	}
 
@@ -54,8 +54,9 @@ public class Preso extends Pessoa {
 	}
 
 	/**
-	 * Gera o codigo do preso no seguinte formato: ANO DE NASCIMENTO + ANO DE
-	 * PRISAO + MES DE PRISAO.
+	 * Gera o codigo do preso no seguinte formato: ANO DE NASCIMENTO + MES DE
+	 * NASCIMENTO + DIA DO ANO DE NASCIMENTO + ANO DE PRISAO + MES DE PRISAO +
+	 * DIA DO ANO DE PRISAO.
 	 * 
 	 * @param preso
 	 * @return Codigo do preso no formato correto.
@@ -64,15 +65,18 @@ public class Preso extends Pessoa {
 	public void gerarCodigo() {
 		StringBuilder codigo = new StringBuilder();
 
-		// Pega o ano de nascimento do preso
+		// Pega o ano, mes e dia do ano de nascimento do preso
 		Calendar calendario = Calendar.getInstance();
 		calendario.setTime(super.getDataNasc());
 		codigo.append(calendario.get(Calendar.YEAR));
+		codigo.append(calendario.get(Calendar.MONTH));
+		codigo.append(calendario.get(Calendar.DAY_OF_YEAR));
 
-		// Pega o ano e mes de prisao do preso
+		// Pega o ano, mes e dia do ano de prisao do preso
 		calendario.setTime(this.dataPrisao);
 		codigo.append(calendario.get(Calendar.YEAR));
 		codigo.append(calendario.get(Calendar.MONTH));
+		codigo.append(calendario.get(Calendar.DAY_OF_YEAR));
 		this.codigo = codigo.toString();
 	}
 
