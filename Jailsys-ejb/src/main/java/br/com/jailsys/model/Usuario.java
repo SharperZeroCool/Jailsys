@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.google.common.base.Strings;
+
 import br.com.jailsys.util.CriptografiaUtil;
 import br.com.jailsys.util.EmailUtil;
 
@@ -21,7 +23,7 @@ public class Usuario extends EntidadeComum implements Serializable {
 	private String login;
 
 	@Column(length = 100, nullable = false)
-	private String senha;
+	private char[] senha;
 
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "pessoa")
@@ -39,7 +41,7 @@ public class Usuario extends EntidadeComum implements Serializable {
 	private static final String ASSUNTO_EMAIL_DIARIO = "Sistema Jailsys - Boletim";
 
 	public void criptografarSenha() {
-		this.senha = getSenhaCriptografada();
+		this.setSenha(getSenhaCriptografada());
 	}
 
 	public void enviarEmailDiario() {
@@ -62,6 +64,11 @@ public class Usuario extends EntidadeComum implements Serializable {
 				getConteudoEmailDeletarUsuario());
 	}
 
+	@Override
+	public String getDescricaoPesquisa() {
+		return login;
+	}
+
 	public String getLogin() {
 		return login;
 	}
@@ -71,11 +78,12 @@ public class Usuario extends EntidadeComum implements Serializable {
 	}
 
 	public String getSenha() {
-		return senha;
+		return senha != null ? String.valueOf(senha) : null;
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		if (!Strings.isNullOrEmpty(senha))
+			this.senha = senha.toCharArray();
 	}
 
 	public Pessoa getPessoa() {

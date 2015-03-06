@@ -28,3 +28,11 @@ body {
 .chatlogs {
 	word-break: break-word !important;
 }
+
+.form-pesquisa{
+	margin: 30px !important;
+}
+
+.form-pesquisa > input{
+	margin: 5px !important;
+}

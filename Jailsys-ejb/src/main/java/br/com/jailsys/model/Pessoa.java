@@ -37,6 +37,11 @@ public class Pessoa extends EntidadeComum implements Serializable {
 	private String celular;
 
 	private boolean ativo;
+	
+	@Override
+	public String getDescricaoPesquisa(){
+		return nome;
+	}
 
 	public String getNome() {
 		return nome;

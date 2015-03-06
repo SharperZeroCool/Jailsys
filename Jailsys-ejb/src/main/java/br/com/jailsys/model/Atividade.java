@@ -23,6 +23,11 @@ public class Atividade extends EntidadeComum {
 
     @Column(nullable = false)
     private boolean ativo;
+    
+    @Override
+	public String getDescricaoPesquisa(){
+		return nome;
+	}
 
     public String getNome() {
         return nome;

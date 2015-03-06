@@ -23,6 +23,11 @@ public class Preso extends Pessoa {
 
 	@Temporal(TemporalType.DATE)
 	private Date dataSaida;
+	
+	@Override
+	public String getDescricaoPesquisa(){
+		return super.getNome();
+	}
 
 	public String getCodigo() {
 		return codigo;

@@ -46,6 +46,12 @@ public class Ambiente extends EntidadeComum implements Serializable {
      * "idAmbiente"), inverseJoinColumns = @JoinColumn(name = "idAtividade"))
      * private List<Atividade> atividadeAmbiente;
      */
+    
+    @Override
+	public String getDescricaoPesquisa(){
+		return nome;
+	}
+    
     public String getNome() {
         return nome;
     }
