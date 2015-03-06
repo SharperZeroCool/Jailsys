@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Resultado da Busca</ui:define>
+
+	<ui:define name="corpo">
+		<h:form prependId="false">
+			<p:dataTable var="resultado"
+				value="#{pesquisaBean.pesquisaView.resultado}">
+				<p:column headerText="Tipo" sortBy="#{resultado.tipo}"
+					filterBy="#{resultado.tipo}" filterMatchMode="contains">
+					<h:outputText value="#{resultado.tipo}" />
+				</p:column>
+				<p:column headerText="Nome" sortBy="#{resultado.descricaoPesquisa}"
+					filterBy="#{resultado.descricaoPesquisa}"
+					filterMatchMode="contains">
+					<h:outputText value="#{resultado.descricaoPesquisa}" />
+				</p:column>
+
+				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-image"
+						action="#{pesquisaBean.visualizar(resultado)}" ajax="false">
+						<f:param name="#{'id'.concat(resultado.tipo)}"
+							value="#{resultado.id}"></f:param>
+						<f:param name="isVisualizar" value="true"></f:param>
+					</p:commandButton>
+					<p:commandButton icon="ui-icon-pencil"
+						action="#{pesquisaBean.prepararEdicao(resultado)}" ajax="false">
+						<f:param name="#{'id'.concat(resultado.tipo)}"
+							value="#{resultado.id}"></f:param>
+					</p:commandButton>
+					<p:commandButton icon="ui-icon-trash"
+						action="#{pesquisaBean.excluir(resultado)}" ajax="false">
+						<f:param name="#{'id'.concat(resultado.tipo)}"
+							value="#{resultado.id}"></f:param>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

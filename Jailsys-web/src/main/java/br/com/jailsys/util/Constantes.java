@@ -77,4 +77,8 @@ public class Constantes {
 		public static final String TELA_LOGIN = "login.xhtml";
 	}
 
+	public static final class Pesquisa {
+		public static final String TELA_RESULTADO = "/pesquisa/pesquisaResultado.xhtml";
+	}
+
 }

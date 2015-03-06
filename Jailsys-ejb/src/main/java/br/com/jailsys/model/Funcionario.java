@@ -64,6 +64,11 @@ public class Funcionario extends Pessoa {
 		codigo.append(calendario.get(Calendar.MONTH));
 		this.codigo = codigo.toString();
     }
+    
+    @Override
+	public String getDescricaoPesquisa(){
+		return super.getNome();
+	}
 
     public String getCodigo() {
         return codigo;

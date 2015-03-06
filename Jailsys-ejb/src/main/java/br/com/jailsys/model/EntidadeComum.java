@@ -21,6 +21,14 @@ public abstract class EntidadeComum {
 		this.id = id;
 	}
 
+	public String getTipo() {
+		return this.getClass().getSimpleName();
+	}
+
+	public String getDescricaoPesquisa() throws UnsupportedOperationException {
+		throw new UnsupportedOperationException();
+	}
+
 	// HashCode and Equals
 	@Override
 	public int hashCode() {
