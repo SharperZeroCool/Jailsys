@@ -52,8 +52,8 @@
 					</p:commandButton>
 
 					<p:growl id="message" showDetail="true" />
-					<p:commandButton
-						icon="ui-icon-trash" action="#{funcionarioBean.excluir(funcionario)}"
+					<p:commandButton icon="ui-icon-trash"
+						action="#{funcionarioBean.excluir(funcionario)}"
 						update=":formulario, message">
 						<p:confirm
 							header="#{msg['jailsysweb.excluir.confirmacao.header']}"
@@ -64,12 +64,14 @@
 				</p:column>
 			</p:dataTable>
 			<p:confirmDialog global="true">
-				<p:commandButton
-					value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
-					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-				<p:commandButton
-					value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
-					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				<center>
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</center>
 			</p:confirmDialog>
 		</h:form>
 	</ui:define>

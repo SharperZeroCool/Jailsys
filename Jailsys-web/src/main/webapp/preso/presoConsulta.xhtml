@@ -10,8 +10,8 @@
 		#{msg['jailsysweb.preso.titulo.consulta.label']}
 	</ui:define>
 
-	<ui:define id="formulario" name="corpo">
-		<h:form prependId="false">
+	<ui:define name="corpo">
+		<h:form id="formulario" prependId="false">
 			<p:dataTable var="preso" value="#{presoBean.listarItensAtivos()}"
 				paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -54,8 +54,7 @@
 
 					<p:growl id="message" showDetail="true" />
 					<p:commandButton icon="ui-icon-trash"
-						action="#{presoBean.excluir(preso)}"
-						update=":formulario, message">
+						action="#{presoBean.excluir(preso)}" update=":formulario, message">
 						<p:confirm
 							header="#{msg['jailsysweb.excluir.confirmacao.header']}"
 							message="#{msg['jailsysweb.excluir.confirmacao.texto']}"
@@ -65,12 +64,14 @@
 				</p:column>
 			</p:dataTable>
 			<p:confirmDialog global="true">
-				<p:commandButton
-					value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
-					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-				<p:commandButton
-					value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
-					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				<center>
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</center>
 			</p:confirmDialog>
 		</h:form>
 	</ui:define>

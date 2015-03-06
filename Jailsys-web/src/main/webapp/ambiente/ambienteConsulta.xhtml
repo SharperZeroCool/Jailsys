@@ -90,10 +90,14 @@
 				</p:column>
 			</p:dataTable>
 			<p:confirmDialog global="true">
-				<p:commandButton value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
-					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-				<p:commandButton value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
-					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				<center>
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</center>
 			</p:confirmDialog>
 		</h:form>
 	</ui:define>
