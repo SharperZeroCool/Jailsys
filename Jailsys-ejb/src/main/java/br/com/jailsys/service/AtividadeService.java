@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import br.com.jailsys.DAO.AtividadeDAO;
+import br.com.jailsys.model.Ambiente;
 import br.com.jailsys.model.Atividade;
 import br.com.jailsys.model.EntidadeComum;
 
@@ -53,8 +54,13 @@ public class AtividadeService implements AbstractService<EntidadeComum> {
 
 	@Override
 	public void excluir(EntidadeComum entidade) {
-		((Atividade) entidade).setAtivo(Boolean.FALSE);
-		atividadeDAO.editar((Atividade) entidade);
+		Atividade atividade = (Atividade) entidade;
+		atividade.setAtivo(Boolean.FALSE);
+		for(Ambiente ambiente : atividade.getAmbientes()){
+			atividadeDAO.excluirRelacionamentoAtividadeAmbiente(ambiente.getId(), atividade);
+		}
+		
+		atividadeDAO.editar(atividade);
 	}
 
 	@Override

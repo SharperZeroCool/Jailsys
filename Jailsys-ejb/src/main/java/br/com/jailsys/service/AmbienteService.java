@@ -51,6 +51,7 @@ public class AmbienteService implements AbstractService<EntidadeComum>,
 	@Override
 	public void excluir(EntidadeComum entidade) {
 		((Ambiente) entidade).setAtivo(Boolean.FALSE);
+		((Ambiente) entidade).setAtividades(null);
 		ambienteDao.editar((Ambiente) entidade);
 	}
 
