@@ -25,6 +25,11 @@ public abstract class EntidadeComum {
 		return this.getClass().getSimpleName();
 	}
 
+	/**
+	 * Deve ser sobreescrito por sub entidade
+	 * @return atributo de classe que melhor descreve a mesma para a tela de pesquisa
+	 * @throws UnsupportedOperationException
+	 */
 	public String getDescricaoPesquisa() throws UnsupportedOperationException {
 		throw new UnsupportedOperationException();
 	}

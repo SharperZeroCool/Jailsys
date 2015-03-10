@@ -37,9 +37,9 @@
 
 				<p:column
 					headerText="#{msg['jailsysweb.atividade.grid.cadastro.label.ambientes']}">
-					<p:dataList value="#{atividade.ambientes}" var="ambiente">
-						#{ambiente.nome}
-					</p:dataList>
+					<ui:repeat value="#{atividade.ambientes}" var="ambiente">
+						<li>#{ambiente.nome}</li>
+					</ui:repeat>
 				</p:column>
 
 				<p:column
