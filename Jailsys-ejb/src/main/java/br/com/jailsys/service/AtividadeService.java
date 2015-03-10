@@ -55,11 +55,10 @@ public class AtividadeService implements AbstractService<EntidadeComum> {
 	@Override
 	public void excluir(EntidadeComum entidade) {
 		Atividade atividade = (Atividade) entidade;
-		atividade.setAtivo(Boolean.FALSE);
 		for(Ambiente ambiente : atividade.getAmbientes()){
 			atividadeDAO.excluirRelacionamentoAtividadeAmbiente(ambiente.getId(), atividade);
 		}
-		
+		atividade.setAtivo(Boolean.FALSE);
 		atividadeDAO.editar(atividade);
 	}
 

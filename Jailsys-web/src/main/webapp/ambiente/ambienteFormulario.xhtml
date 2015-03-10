@@ -37,7 +37,7 @@
 				<p:calendar id="horarioInicio"
 					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.horarioInicio}"
-					pattern="HH:mm a" timeOnly="true" required="true" />
+					pattern="HH:mm" timeOnly="true" required="true" />
 
 				<p:outputLabel
 					value="#{msg['jailsysweb.ambiente.form.label.horarioFim']}"
@@ -45,7 +45,7 @@
 				<p:calendar id="horarioFim"
 					disabled="#{ambienteBean.isVisualizar()}"
 					value="#{ambienteBean.ambienteView.ambiente.horarioFim}"
-					pattern="HH:mm a" timeOnly="true" required="true" />
+					pattern="HH:mm" timeOnly="true" required="true" />
 
 				<p:outputLabel
 					value="#{msg['jailsysweb.ambiente.form.label.severidade']}"
