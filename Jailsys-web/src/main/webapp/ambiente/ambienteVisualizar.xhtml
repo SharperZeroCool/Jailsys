@@ -6,18 +6,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">#{msg['jailsysweb.ambiente.titulo.editar.label']}</ui:define>
-
 	<ui:define name="picklistAtividades">
 		<f:event listener="#{ambienteBean.getPickListAtividadePorAmbienteId()}"
 			type="preRenderComponent" />
 	</ui:define>
 
-	<ui:define name="botao">
-		<p:outputLabel />
-		<p:commandButton
-			value="#{msg['jailsysweb.ambiente.form.edicao.botao.editar']}"
-			action="#{ambienteBean.editar()}" ajax="false" />
-	</ui:define>
 
 </ui:composition>

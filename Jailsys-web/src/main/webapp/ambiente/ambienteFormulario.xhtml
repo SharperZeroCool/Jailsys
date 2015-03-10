@@ -57,15 +57,9 @@
 					<f:selectItem
 						itemLabel="#{msg['jailsysweb.ambiente.form.severidade.selecione']}"
 						itemValue="" noSelectionOption="true" />
-					<f:selectItem
-						itemLabel="#{msg['jailsysweb.ambiente.form.severidade.baixa']}"
-						itemValue="Baixa" />
-					<f:selectItem
-						itemLabel="#{msg['jailsysweb.ambiente.form.severidade.media']}"
-						itemValue="Media" />
-					<f:selectItem
-						itemLabel="#{msg['jailsysweb.ambiente.form.severidade.alta']}"
-						itemValue="Alta" />
+					<f:selectItems value="#{ambienteBean.ambienteView.severidade}"
+						var="severidade" itemLabel="#{msg[severidade.descricao]}"
+						itemValue="#{severidade}" />
 				</p:selectOneMenu>
 
 				<p:outputLabel
@@ -75,6 +69,18 @@
 					value="#{ambienteBean.ambienteView.ambiente.ativo}" required="true" />
 
 				<ui:insert name="picklistAtividades" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.ambiente.form.label.atividades']}"
+					for="atividades" />
+				<p:pickList id="atividades"
+					disabled="#{ambienteBean.isVisualizar()}"
+					value="#{ambienteBean.ambienteView.atividadesDualList}"
+					var="atividade" itemLabel="#{atividade.nome}"
+					itemValue="#{atividade}" converter="atividadeConverter"
+					addLabel="#{msg['jailsysweb.ambiente.form.picklist.adiciona']}"
+					addAllLabel="#{msg['jailsysweb.ambiente.form.picklist.adicionatodos']}"
+					removeLabel="#{msg['jailsysweb.ambiente.form.picklist.remove']}"
+					removeAllLabel="#{msg['jailsysweb.ambiente.form.picklist.removetodos']}" />
 
 				<ui:insert name="botao" />
 			</p:panelGrid>

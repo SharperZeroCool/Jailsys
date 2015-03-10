@@ -53,21 +53,19 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 		return Constantes.Ambiente.TELA_CONSULTA;
 	}
 
-	public void preparaViewCadastro() {
+	public void getPickListAtividade() {
 		List<Atividade> source = atividadeService.listarItensAtivos();
 		List<Atividade> target = new ArrayList<Atividade>();
 		ambienteView.setAtividadesDualList(new DualListModel<Atividade>(source,
 				target));
 	}
 
-	public void preparaViewEdicao() {
+	public void getPickListAtividadePorAmbienteId() {
 		List<Atividade> source = atividadeService
 				.listarDesvinculadas(ambienteView.getAmbiente().getId());
-		List<Atividade> target;
+		List<Atividade> target = new ArrayList<Atividade>();
 		if (ambienteComAtividades()) {
 			target = ambienteView.getAmbiente().getAtividades();
-		} else {
-			target = new ArrayList<Atividade>();
 		}
 		ambienteView.setAtividadesDualList(new DualListModel<Atividade>(source,
 				target));

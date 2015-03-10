@@ -43,7 +43,7 @@ public class Constantes {
 		public static final String TELA_CONSULTA = "/ambiente/ambienteConsulta.xhtml";
 		public static final String TELA_CADASTRO = "/ambiente/ambienteCadastro.xhtml";
 		public static final String TELA_EDICAO = "/ambiente/ambienteEdicao.xhtml";
-		public static final String TELA_VISUALIZAR = "/ambiente/ambienteFormulario.xhtml";
+		public static final String TELA_VISUALIZAR = "/ambiente/ambienteVisualizar.xhtml";
 		public static final String MENSAGEM_CADASTRO = "jailsysweb.ambiente.cadastro.sucesso";
 		public static final String MENSAGEM_EDICAO = "jailsysweb.ambiente.edicao.sucesso";
 		public static final String MENSAGEM_EXCLUSAO = "jailsysweb.ambiente.exclusao.sucesso";
