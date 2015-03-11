@@ -10,11 +10,16 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
+import org.primefaces.event.TransferEvent;
+import org.primefaces.model.DualListModel;
+
 import br.com.jailsys.bean.basic.AbstractBean;
 import br.com.jailsys.enums.TipoPessoa;
+import br.com.jailsys.model.Atividade;
 import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Funcionario;
 import br.com.jailsys.model.Pessoa;
+import br.com.jailsys.service.AtividadeService;
 import br.com.jailsys.service.PessoaService;
 import br.com.jailsys.util.Constantes;
 import br.com.jailsys.util.FacesUtil;
@@ -36,6 +41,9 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 	private PessoaService service;
 
 	private List<SelectItem> paginas;
+
+	@Inject
+	private AtividadeService atividadeService;
 
 	private String tipoPessoa;
 
@@ -102,6 +110,27 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 		return Constantes.Pessoa.PAGINA_FUNCIONARIO.equals(tipoPessoa)
 				|| pessoaView.getPessoa() instanceof Funcionario;
 	}
+
+	public void getPickListAtividade() {
+		List<Atividade> source = atividadeService.listarItensAtivos();
+		List<Atividade> target = new ArrayList<Atividade>();
+		pessoaView.setAtividadesDualList(new DualListModel<Atividade>(source,
+				target));
+	}
+
+	public void getPickListAtividadePorPessoaId() {
+		List<Atividade> source = atividadeService
+				.listarDesvinculadas(pessoaView.getPessoa());
+		List<Atividade> target = pessoaView.getPessoa().getAtividades();
+		pessoaView.setAtividadesDualList(new DualListModel<Atividade>(source,
+				target));
+	}
+
+	public void setarAtividades(TransferEvent event) {
+		pessoaView.getPessoa().setAtividades(
+				pessoaView.getAtividadesDualList().getTarget());
+	}
+	
 
 	public List<SelectItem> getPaginas() {
 		return paginas;

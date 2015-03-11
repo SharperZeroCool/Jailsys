@@ -5,6 +5,11 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+	<ui:define name="picklistAtividades">
+		<f:event listener="#{pessoaBean.getPickListAtividadePorPessoaId()}"
+			type="preRenderComponent" />
+	</ui:define>
+
 	<ui:define name="presoFormulario">
 		<ui:include src="presoFormulario.xhtml" />
 	</ui:define>

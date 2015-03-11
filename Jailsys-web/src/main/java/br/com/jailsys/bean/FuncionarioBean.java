@@ -101,6 +101,7 @@ public class FuncionarioBean implements AbstractBean<EntidadeComum>,
 		funcionario.setDataNasc(pessoa.getDataNasc());
 		funcionario.setCelular(pessoa.getCelular());
 		funcionario.setAtivo(pessoa.isAtivo());
+		funcionario.setAtividades(pessoa.getAtividades());
 	}
 
 	public FuncionarioView getFuncionarioView() {

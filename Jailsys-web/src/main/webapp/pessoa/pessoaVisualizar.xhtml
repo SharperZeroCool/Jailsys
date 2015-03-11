@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<ui:composition template="/preso/presoInclude.xhtml"
+<ui:composition template="/pessoa/pessoaFormulario.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">
-		#{msg['jailsysweb.preso.titulo.cadastro.label']}
-	</ui:define>
-
 	<ui:define name="picklistAtividades">
 		<f:event listener="#{pessoaBean.getPickListAtividadePorPessoaId()}"
 			type="preRenderComponent" />
 	</ui:define>
-	
-	<ui:define name="botaoPreso">
-		<p:outputLabel />
-		<p:commandButton value="Editar"
-			action="#{presoBean.editar(pessoaBean.pessoaView.pessoa)}"
-			ajax="false" />
-	</ui:define>
+
 
 </ui:composition>

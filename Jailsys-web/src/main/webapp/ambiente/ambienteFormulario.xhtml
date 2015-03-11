@@ -65,7 +65,9 @@
 					addLabel="#{msg['jailsysweb.ambiente.form.picklist.adiciona']}"
 					addAllLabel="#{msg['jailsysweb.ambiente.form.picklist.adicionatodos']}"
 					removeLabel="#{msg['jailsysweb.ambiente.form.picklist.remove']}"
-					removeAllLabel="#{msg['jailsysweb.ambiente.form.picklist.removetodos']}" />
+					removeAllLabel="#{msg['jailsysweb.ambiente.form.picklist.removetodos']}">
+					<p:ajax event="transfer" listener="#{ambienteBean.setarAtividades}" />
+				</p:pickList>
 
 				<ui:insert name="botao" />
 			</p:panelGrid>

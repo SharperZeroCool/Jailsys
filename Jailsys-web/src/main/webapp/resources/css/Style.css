@@ -44,3 +44,7 @@ body {
 .ui-panelgrid > tbody > tr{
 	height: 45px;
 }
+
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 90% !important;
+}

@@ -8,6 +8,8 @@ import javax.inject.Inject;
 
 import br.com.jailsys.model.Ambiente;
 import br.com.jailsys.model.Atividade;
+import br.com.jailsys.model.EntidadeComum;
+import br.com.jailsys.model.Pessoa;
 
 @Stateless
 @SuppressWarnings("unchecked")
@@ -17,29 +19,35 @@ public class AtividadeDAO extends GenericDAO<Atividade> implements Serializable 
 
 	@Inject
 	AmbienteDAO ambienteDao;
+	
+	@Inject
+	PessoaDAO pessoaDao;
 
 	public List<Atividade> listarItensAtivos() {
 		return getEntityManager().createQuery(
 				"FROM Atividade a WHERE a.ativo = true").getResultList();
 	}
 
-	public List<Atividade> listarDesvinculadas(String idAmbiente) {
+	public List<Atividade> listarDesvinculadas(EntidadeComum entidade) {
 		return getEntityManager()
 				.createQuery(
-						"SELECT a FROM Atividade a WHERE ((a.ativo = true) AND (a.id NOT IN(SELECT a2.id FROM Ambiente amb2 JOIN amb2.atividades a2 WHERE amb2.id ="
-								+ idAmbiente + ")))").getResultList();
-	}
-
-	public List<Atividade> listarVinculadas(String idAmbiente) {
-		return getEntityManager().createQuery(
-				"SELECT a FROM Ambiente amb JOIN amb.atividades a WHERE amb.id ="
-						+ idAmbiente + ")").getResultList();
+						"SELECT a FROM Atividade a WHERE ((a.ativo = true) AND (a.id NOT IN(SELECT a2.id FROM "
+								+ entidade.getClass().getSimpleName()
+								+ " ent JOIN ent.atividades a2 WHERE ent.id ="
+								+ entidade.getId() + ")))").getResultList();
 	}
 
 	public void excluirRelacionamentoAtividadeAmbiente(Long idAmbiente,
 			Atividade atividade) {
 		Ambiente ambiente = ambienteDao.buscar(idAmbiente);
 		ambiente.getAtividades().remove(atividade);
+		getEntityManager().flush();
+	}
+	
+	public void excluirRelacionamentoAtividadePessoa(Long idPessoa,
+			Atividade atividade) {
+		Pessoa pessoa = pessoaDao.buscar(idPessoa);
+		pessoa.getAtividades().remove(atividade);
 		getEntityManager().flush();
 	}
 

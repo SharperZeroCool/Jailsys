@@ -8,6 +8,7 @@ import br.com.jailsys.DAO.AtividadeDAO;
 import br.com.jailsys.model.Ambiente;
 import br.com.jailsys.model.Atividade;
 import br.com.jailsys.model.EntidadeComum;
+import br.com.jailsys.model.Pessoa;
 
 public class AtividadeService implements AbstractService<EntidadeComum> {
 
@@ -22,14 +23,10 @@ public class AtividadeService implements AbstractService<EntidadeComum> {
 		return atividadeDAO.listarItensAtivos();
 	}
 
-	public List<Atividade> listarDesvinculadas(Long idAmbiente) {
-		return atividadeDAO.listarDesvinculadas(idAmbiente.toString());
+	public List<Atividade> listarDesvinculadas(EntidadeComum entidade) {
+		return atividadeDAO.listarDesvinculadas(entidade);
 	}
-	
-	public List<Atividade> listarVinculadas(Long idAmbiente) {
-		return atividadeDAO.listarVinculadas(idAmbiente.toString());
-	}
-	
+
 	@Override
 	public void salvar(EntidadeComum entidade) {
 		atividadeDAO.salvar((Atividade) entidade);
@@ -55,10 +52,15 @@ public class AtividadeService implements AbstractService<EntidadeComum> {
 	@Override
 	public void excluir(EntidadeComum entidade) {
 		Atividade atividade = (Atividade) entidade;
-		for(Ambiente ambiente : atividade.getAmbientes()){
-			atividadeDAO.excluirRelacionamentoAtividadeAmbiente(ambiente.getId(), atividade);
-		}
 		atividade.setAtivo(Boolean.FALSE);
+		for (Ambiente ambiente : atividade.getAmbientes()) {
+			atividadeDAO.excluirRelacionamentoAtividadeAmbiente(
+					ambiente.getId(), atividade);
+		}
+		for (Pessoa pessoa : atividade.getPessoas()) {
+			atividadeDAO.excluirRelacionamentoAtividadePessoa(pessoa.getId(),
+					atividade);
+		}
 		atividadeDAO.editar(atividade);
 	}
 

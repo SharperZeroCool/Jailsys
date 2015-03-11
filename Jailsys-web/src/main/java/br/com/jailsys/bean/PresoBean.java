@@ -96,6 +96,7 @@ public class PresoBean implements AbstractBean<EntidadeComum>, Serializable {
 		preso.setDataNasc(pessoa.getDataNasc());
 		preso.setCelular(pessoa.getCelular());
 		preso.setAtivo(pessoa.isAtivo());
+		preso.setAtividades(pessoa.getAtividades());
 	}
 
 	public PresoView getPresoView() {

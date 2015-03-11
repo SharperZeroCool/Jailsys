@@ -28,7 +28,7 @@ public class Atividade extends EntidadeComum implements Serializable {
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIME)
 	private Date horarioFim;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private Severidade severidade;
@@ -38,6 +38,9 @@ public class Atividade extends EntidadeComum implements Serializable {
 
 	@ManyToMany(mappedBy = "atividades", fetch = FetchType.EAGER)
 	private List<Ambiente> ambientes;
+
+	@ManyToMany(mappedBy = "atividades", fetch = FetchType.EAGER)
+	private List<Pessoa> pessoas;
 
 	@Override
 	public String getDescricaoPesquisa() {
@@ -67,7 +70,7 @@ public class Atividade extends EntidadeComum implements Serializable {
 	public void setHorarioFim(Date horarioFim) {
 		this.horarioFim = horarioFim;
 	}
-	
+
 	public Severidade getSeveridade() {
 		return severidade;
 	}
@@ -90,5 +93,13 @@ public class Atividade extends EntidadeComum implements Serializable {
 
 	public void setAmbientes(List<Ambiente> ambientes) {
 		this.ambientes = ambientes;
+	}
+
+	public List<Pessoa> getPessoas() {
+		return pessoas;
+	}
+
+	public void setPessoas(List<Pessoa> pessoas) {
+		this.pessoas = pessoas;
 	}
 }

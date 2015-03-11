@@ -45,6 +45,7 @@ public class PessoaService implements AbstractService<EntidadeComum>,
 	@Override
 	public void excluir(EntidadeComum entidade) {
 		((Pessoa) entidade).setAtivo(Boolean.FALSE);
+		((Pessoa) entidade).setAtividades(null);
 		pessoaDao.editar((Pessoa) entidade);
 	}
 

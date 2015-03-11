@@ -7,6 +7,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.model.DualListModel;
+
+import br.com.jailsys.model.Atividade;
 import br.com.jailsys.model.Pessoa;
 import br.com.jailsys.qualifier.PessoaBean;
 
@@ -24,6 +27,8 @@ public class PessoaView implements Serializable {
 
 	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 
+	private DualListModel<Atividade> atividadesDualList;
+
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -38,6 +43,15 @@ public class PessoaView implements Serializable {
 
 	public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
+	}
+
+	public DualListModel<Atividade> getAtividadesDualList() {
+		return atividadesDualList;
+	}
+
+	public void setAtividadesDualList(
+			DualListModel<Atividade> atividadesDualList) {
+		this.atividadesDualList = atividadesDualList;
 	}
 
 }

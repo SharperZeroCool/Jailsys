@@ -46,6 +46,22 @@
 				<p:selectBooleanCheckbox id="ativo"
 					disabled="#{pessoaBean.isVisualizar()}"
 					value="#{pessoaBean.pessoaView.pessoa.ativo}" />
+
+				<ui:insert name="picklistAtividades" />
+				<p:outputLabel
+					value="#{msg['jailsysweb.ambiente.form.label.atividades']}"
+					for="atividades" />
+				<p:pickList id="atividades" disabled="#{pessoaBean.isVisualizar()}"
+					value="#{pessoaBean.pessoaView.atividadesDualList}" var="atividade"
+					itemLabel="#{atividade.nome}" itemValue="#{atividade}"
+					converter="atividadeConverter"
+					addLabel="#{msg['jailsysweb.ambiente.form.picklist.adiciona']}"
+					addAllLabel="#{msg['jailsysweb.ambiente.form.picklist.adicionatodos']}"
+					removeLabel="#{msg['jailsysweb.ambiente.form.picklist.remove']}"
+					removeAllLabel="#{msg['jailsysweb.ambiente.form.picklist.removetodos']}">
+					<p:ajax event="transfer" listener="#{pessoaBean.setarAtividades}" />
+				</p:pickList>
+
 				<ui:include src="#{pessoaBean.tipoPessoa}" />
 				<ui:insert name="funcionarioFormulario" />
 				<ui:insert name="presoFormulario" />

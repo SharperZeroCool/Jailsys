@@ -9,6 +9,13 @@
 	<ui:define name="titulo">
 		#{msg['jailsysweb.pessoa.titulo.edicao.label']}
 	</ui:define>
+
+	<ui:define name="picklistAtividades">
+		<f:event
+			listener="#{pessoaBean.getPickListAtividadePorPessoaId()}"
+			type="preRenderComponent" />
+	</ui:define>
+
 	<ui:define name="botao">
 		<p:outputLabel />
 		<p:commandButton

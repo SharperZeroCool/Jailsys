@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
+import org.primefaces.event.TransferEvent;
 import org.primefaces.model.DualListModel;
 
 import br.com.jailsys.bean.basic.AbstractBean;
@@ -35,8 +36,6 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 	@Inject
 	private AtividadeService atividadeService;
 
-	private DualListModel<Atividade> atividadesDualList;
-
 	public List<Ambiente> listarItensAtivos() {
 		if (ambienteView.getAmbientes().isEmpty()) {
 			this.atualizarView();
@@ -45,9 +44,6 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 	}
 
 	public String editar() {
-		List<Atividade> atividades = ambienteView.getAtividadesDualList()
-				.getTarget();
-		setarAtividades(atividades);
 		service.editar(ambienteView.getAmbiente());
 		FacesUtil.mostrarMensagemSucesso(Constantes.Ambiente.MENSAGEM_EDICAO);
 		return Constantes.Ambiente.TELA_CONSULTA;
@@ -62,27 +58,15 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	public void getPickListAtividadePorAmbienteId() {
 		List<Atividade> source = atividadeService
-				.listarDesvinculadas(ambienteView.getAmbiente().getId());
-		List<Atividade> target = new ArrayList<Atividade>();
-		if (ambienteComAtividades()) {
-			target = ambienteView.getAmbiente().getAtividades();
-		}
+				.listarDesvinculadas(ambienteView.getAmbiente());
+		List<Atividade> target = ambienteView.getAmbiente().getAtividades();
 		ambienteView.setAtividadesDualList(new DualListModel<Atividade>(source,
 				target));
 	}
 
-	public List<Atividade> listaAtividades(Long id) {
-		Ambiente ambiente = (Ambiente) service.buscar(id);
-		return ambiente.getAtividades();
-	}
-
-	private void setarAtividades(List<Atividade> atividades) {
-		ambienteView.getAmbiente().setAtividades(atividades);
-	}
-
-	private boolean ambienteComAtividades() {
-		return ambienteView.getAmbiente().getAtividades() != null
-				|| !ambienteView.getAmbiente().getAtividades().isEmpty();
+	public void setarAtividades(TransferEvent event) {
+		ambienteView.getAmbiente().setAtividades(
+				ambienteView.getAtividadesDualList().getTarget());
 	}
 
 	@Override
@@ -92,9 +76,6 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	@Override
 	public String salvar() {
-		List<Atividade> atividades = ambienteView.getAtividadesDualList()
-				.getTarget();
-		setarAtividades(atividades);
 		service.salvar(ambienteView.getAmbiente());
 		FacesUtil.mostrarMensagemSucesso(Constantes.Ambiente.MENSAGEM_CADASTRO);
 		this.atualizarView();
@@ -133,14 +114,5 @@ public class AmbienteBean implements AbstractBean<EntidadeComum>, Serializable {
 
 	public void setAmbienteView(AmbienteView ambienteView) {
 		this.ambienteView = ambienteView;
-	}
-
-	public DualListModel<Atividade> getAtividadesDualList() {
-		return atividadesDualList;
-	}
-
-	public void setAtividadesDualList(
-			DualListModel<Atividade> atividadesDualList) {
-		this.atividadesDualList = atividadesDualList;
 	}
 }

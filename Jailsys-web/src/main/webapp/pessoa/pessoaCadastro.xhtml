@@ -6,6 +6,11 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{pessoaBean.getPickListAtividade()}" />
+	</f:metadata>
+
 	<ui:define name="titulo">
 		#{msg['jailsysweb.pessoa.titulo.cadastro.label']}
 	</ui:define>
