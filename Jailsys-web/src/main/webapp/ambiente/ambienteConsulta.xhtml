@@ -45,14 +45,6 @@
 				</p:column>
 
 				<p:column
-					headerText="#{msg['jailsysweb.ambiente.form.label.severidade']}"
-					sortBy="#{ambiente.severidade.descricao}"
-					filterBy="#{msg[ambiente.severidade.descricao]}"
-					filterMatchMode="contains">
-					<h:outputText value="#{msg[ambiente.severidade.descricao]}" />
-				</p:column>
-
-				<p:column
 					headerText="#{msg['jailsysweb.ambiente.form.label.atividades']}">
 					<ui:repeat value="#{ambiente.atividades}" var="atividade">
 						<li>#{atividade.nome}</li>

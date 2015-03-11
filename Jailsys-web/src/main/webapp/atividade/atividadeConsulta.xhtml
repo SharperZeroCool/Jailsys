@@ -34,6 +34,14 @@
 					filterMatchMode="contains">
 					<h:outputText value="#{atividade.horarioFim}" pattern="HH:mm" />
 				</p:column>
+				
+				<p:column
+					headerText="#{msg['jailsysweb.atividade.form.label.severidade']}"
+					sortBy="#{atividade.severidade.descricao}"
+					filterBy="#{msg[atividade.severidade.descricao]}"
+					filterMatchMode="contains">
+					<h:outputText value="#{msg[atividade.severidade.descricao]}" />
+				</p:column>
 
 				<p:column
 					headerText="#{msg['jailsysweb.atividade.grid.cadastro.label.ambientes']}">

@@ -1,9 +1,9 @@
 package br.com.jailsys.model;
 
 public enum Severidade {
-    Baixa("jailsysweb.ambiente.form.severidade.baixa"),
-    Media("jailsysweb.ambiente.form.severidade.media"),
-    Alta("jailsysweb.ambiente.form.severidade.alta");
+    Baixa("jailsysweb.atividade.form.severidade.baixa"),
+    Media("jailsysweb.atividade.form.severidade.media"),
+    Alta("jailsysweb.atividade.form.severidade.alta");
 
     private String descricao;
 

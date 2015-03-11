@@ -9,10 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import com.google.common.base.Strings;
-
 import br.com.jailsys.util.CriptografiaUtil;
 import br.com.jailsys.util.EmailUtil;
+
+import com.google.common.base.Strings;
 
 @Entity
 public class Usuario extends EntidadeComum implements Serializable {

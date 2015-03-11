@@ -3,12 +3,12 @@ package br.com.jailsys.factory;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import com.google.common.base.Strings;
-
 import br.com.jailsys.model.Ambiente;
 import br.com.jailsys.qualifier.AmbienteBean;
 import br.com.jailsys.service.AmbienteService;
 import br.com.jailsys.util.FacesUtil;
+
+import com.google.common.base.Strings;
 
 public class ProdutorAmbiente {
 

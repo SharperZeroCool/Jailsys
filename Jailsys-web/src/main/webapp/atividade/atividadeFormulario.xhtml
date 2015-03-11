@@ -32,6 +32,21 @@
 					pattern="HH:mm" timeOnly="true" required="true" />
 
 				<p:outputLabel
+					value="#{msg['jailsysweb.atividade.form.label.severidade']}"
+					for="severidade" />
+				<p:selectOneMenu id="severidade"
+					disabled="#{ambienteBean.isVisualizar()}"
+					value="#{atividadeBean.atividadeView.atividade.severidade}"
+					required="true">
+					<f:selectItem
+						itemLabel="#{msg['jailsysweb.atividade.form.severidade.selecione']}"
+						itemValue="" noSelectionOption="true" />
+					<f:selectItems value="#{atividadeBean.atividadeView.severidade}"
+						var="severidade" itemLabel="#{msg[severidade.descricao]}"
+						itemValue="#{severidade}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel
 					value="#{msg['jailsysweb.atividade.grid.cadastro.label.ativo']}"
 					for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"

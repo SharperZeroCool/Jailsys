@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -36,10 +34,6 @@ public class Ambiente extends EntidadeComum implements Serializable {
 	@Temporal(TemporalType.TIME)
 	@Column(nullable = false)
 	private Date horarioFim;
-
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private Severidade severidade;
 
 	@Column(nullable = false)
 	private boolean ativo;
@@ -91,14 +85,6 @@ public class Ambiente extends EntidadeComum implements Serializable {
 
 	public void setHorarioFim(Date horarioFim) {
 		this.horarioFim = horarioFim;
-	}
-
-	public Severidade getSeveridade() {
-		return severidade;
-	}
-
-	public void setSeveridade(Severidade severidade) {
-		this.severidade = severidade;
 	}
 
 	public boolean isAtivo() {

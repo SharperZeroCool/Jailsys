@@ -11,7 +11,6 @@ import org.primefaces.model.DualListModel;
 
 import br.com.jailsys.model.Ambiente;
 import br.com.jailsys.model.Atividade;
-import br.com.jailsys.model.Severidade;
 import br.com.jailsys.qualifier.AmbienteBean;
 
 @Named
@@ -28,10 +27,6 @@ public class AmbienteView implements Serializable {
 	private DualListModel<Atividade> atividadesDualList;
 
 	// GETTERS E SETTERS
-	public Severidade[] getSeveridade() {
-		return Severidade.values();
-	}
-
 	public Ambiente getAmbiente() {
 		return ambiente;
 	}
