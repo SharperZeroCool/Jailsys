@@ -61,6 +61,10 @@ public class PessoaBean implements AbstractBean<EntidadeComum>, Serializable {
 			this.atualizarView();
 		return pessoaView.getPessoas();
 	}
+	
+	public List<Pessoa> listarVisitantes(){
+		return service.listarVisitantes();
+	}
 
 	@Override
 	public String prepararEdicao() {

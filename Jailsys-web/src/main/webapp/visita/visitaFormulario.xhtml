@@ -30,7 +30,7 @@
 					<f:selectItem
 						itemLabel="#{msg['jailsysweb.visita.form.label.item.selecione']}"
 						itemValue="" noSelectionOption="true" />
-					<f:selectItems value="#{pessoaBean.listarItensAtivos()}"
+					<f:selectItems value="#{pessoaBean.listarVisitantes()}"
 						var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa}" />
 				</p:selectOneMenu>
 

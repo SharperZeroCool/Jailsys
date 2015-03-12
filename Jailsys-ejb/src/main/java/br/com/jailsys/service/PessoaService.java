@@ -61,5 +61,9 @@ public class PessoaService implements AbstractService<EntidadeComum>,
 	public List<Pessoa> listarItensAtivos() {
 		return pessoaDao.listarItensAtivos();
 	}
+	
+	public List<Pessoa> listarVisitantes(){
+		return pessoaDao.listarVisitantes();
+	}
 
 }
