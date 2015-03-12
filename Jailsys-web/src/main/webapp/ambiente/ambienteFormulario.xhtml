@@ -48,21 +48,6 @@
 					pattern="HH:mm" timeOnly="true" required="true" />
 
 				<p:outputLabel
-					value="#{msg['jailsysweb.ambiente.form.label.severidade']}"
-					for="severidade" />
-				<p:selectOneMenu id="severidade"
-					disabled="#{ambienteBean.isVisualizar()}"
-					value="#{ambienteBean.ambienteView.ambiente.severidade}"
-					required="true">
-					<f:selectItem
-						itemLabel="#{msg['jailsysweb.ambiente.form.severidade.selecione']}"
-						itemValue="" noSelectionOption="true" />
-					<f:selectItems value="#{ambienteBean.ambienteView.severidade}"
-						var="severidade" itemLabel="#{msg[severidade.descricao]}"
-						itemValue="#{severidade}" />
-				</p:selectOneMenu>
-
-				<p:outputLabel
 					value="#{msg['jailsysweb.ambiente.form.label.ativo']}" for="ativo" />
 				<p:selectBooleanCheckbox id="ativo"
 					disabled="#{ambienteBean.isVisualizar()}"
@@ -80,7 +65,9 @@
 					addLabel="#{msg['jailsysweb.form.picklist.adiciona']}"
 					addAllLabel="#{msg['jailsysweb.form.picklist.adicionatodos']}"
 					removeLabel="#{msg['jailsysweb.form.picklist.remove']}"
-					removeAllLabel="#{msg['jailsysweb.form.picklist.removetodos']}" />
+					removeAllLabel="#{msg['jailsysweb.form.picklist.removetodos']}">
+					<p:ajax event="transfer" listener="#{ambienteBean.setarAtividades}" />
+				</p:pickList>
 
 				<ui:insert name="botao" />
 			</p:panelGrid>
