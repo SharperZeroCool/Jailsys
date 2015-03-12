@@ -4,6 +4,11 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="pickListCrimes">
+		<f:event type="preRenderComponent"
+			listener="#{presoBean.listarCrimesPorPreso()}" />
+	</ui:define>
 
 	<ui:define name="picklistAtividades">
 		<f:event listener="#{pessoaBean.getPickListAtividadePorPessoaId()}"
