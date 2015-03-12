@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.persistence.Query;
 
+import br.com.jailsys.model.Crime;
 import br.com.jailsys.model.Preso;
 
 @Stateless
@@ -12,15 +15,29 @@ import br.com.jailsys.model.Preso;
 public class PresoDAO extends GenericDAO<Preso> implements Serializable {
 
 	private static final long serialVersionUID = -5038738004256802472L;
-
-	public List<Preso> listarAtivo() {
-		return getEntityManager()
-				.createQuery("FROM Preso p Where p.ativo=true").getResultList();
-	}
+	
+	@Inject
+	private CrimeDAO crimeDao;
 
 	public List<Preso> listarItensAtivos() {
 		return getEntityManager().createQuery(
 				"FROM Preso p WHERE p.ativo = true").getResultList();
+	}
+	
+	public List<Crime> listarCrimes() {
+	    return crimeDao.listar();
+	}
+	
+	public List<Crime> listarCrimesDesvinculados(Long presoId) {
+	    Query query = getEntityManager().createQuery("SELECT c FROM Crime c WHERE c.id NOT IN (SELECT c.id FROM Preso p JOIN p.crimes c WHERE p.id = :valor)");
+	    query.setParameter("valor", presoId);
+	    return query.getResultList();
+	}
+	
+	public List<Crime> listarCrimesVinculados(Long presoId) {
+	    Query query = getEntityManager().createQuery("SELECT c FROM Preso p JOIN p.crimes c WHERE p.id = :valor");
+        query.setParameter("valor", presoId);
+        return query.getResultList();
 	}
 
 }

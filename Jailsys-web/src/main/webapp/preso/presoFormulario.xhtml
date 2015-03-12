@@ -13,5 +13,20 @@
 		for="dataSaida" />
 	<p:calendar id="dataSaida" disabled="#{presoBean.isVisualizar()}"
 		value="#{presoBean.presoView.preso.dataSaida}" />
+	<ui:insert name="pickListCrimes" />
+	<p:outputLabel
+		value="#{msg['jailsysweb.pessoa.form.cadastro.label.crimes']}"
+		for="crimes" />
+	<p:pickList id="crimes"
+		disabled="#{presoBean.isVisualizar()}"
+		value="#{presoBean.presoView.crimes}"
+		var="crime" itemLabel="#{crime.nome}" itemValue="#{crime}"
+		converter="pickListConverter"
+		addLabel="#{msg['jailsysweb.form.picklist.adiciona']}"
+		addAllLabel="#{msg['jailsysweb.form.picklist.adicionatodos']}"
+		removeLabel="#{msg['jailsysweb.form.picklist.remove']}"
+		removeAllLabel="#{msg['jailsysweb.form.picklist.removetodos']}">
+		<p:ajax event="transfer" listener="#{presoBean.setarCrimes}" />
+	</p:pickList>
 	<ui:insert name="botaoPreso" />
 </ui:composition>

@@ -20,7 +20,7 @@
 		<p:selectOneRadio value="#{pessoaBean.tipoPessoa}">
 			<f:selectItems value="#{pessoaBean.paginas}" var="pagina"
 				itemLabel="#{pagina.description}" itemValue="#{pagina.label}" />
-			<f:ajax render="tipo" />
+			<f:ajax render="tipo" listener="#{presoBean.preparaListagemDeCrimes(pessoaBean.tipoPessoa)}" />
 		</p:selectOneRadio>
 	</ui:define>
 </ui:composition>

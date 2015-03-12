@@ -7,6 +7,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.model.DualListModel;
+
+import br.com.jailsys.model.Crime;
 import br.com.jailsys.model.Preso;
 import br.com.jailsys.qualifier.PresoBean;
 
@@ -20,6 +23,8 @@ public class PresoView implements Serializable {
 	private Preso preso;
 
 	private List<Preso> presos = new ArrayList<Preso>();
+	
+	private DualListModel<Crime> crimes = new DualListModel<Crime>();
 
 	public Preso getPreso() {
 		return preso;
@@ -36,5 +41,13 @@ public class PresoView implements Serializable {
 	public void setPresos(List<Preso> presos) {
 		this.presos = presos;
 	}
+
+    public DualListModel<Crime> getCrimes() {
+        return crimes;
+    }
+
+    public void setCrimes(DualListModel<Crime> crimes) {
+        this.crimes = crimes;
+    }
 
 }
