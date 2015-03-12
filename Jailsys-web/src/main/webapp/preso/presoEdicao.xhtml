@@ -10,11 +10,6 @@
 		#{msg['jailsysweb.preso.titulo.cadastro.label']}
 	</ui:define>
 
-	<ui:define name="picklistAtividades">
-		<f:event listener="#{pessoaBean.getPickListAtividadePorPessoaId()}"
-			type="preRenderComponent" />
-	</ui:define>
-	
 	<ui:define name="botaoPreso">
 		<p:outputLabel />
 		<p:commandButton value="Editar"

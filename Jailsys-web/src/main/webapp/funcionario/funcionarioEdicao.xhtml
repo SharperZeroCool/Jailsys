@@ -8,12 +8,6 @@
 
 	<ui:define name="titulo">#{msg['jailsysweb.funcionario.titulo.editar.label']}</ui:define>
 	
-	<ui:define name="picklistAtividades">
-		<f:event
-			listener="#{pessoaBean.getPickListAtividadePorPessoaId()}"
-			type="preRenderComponent" />
-	</ui:define>
-	
 	<ui:define name="botaoFuncionario">
 		<p:outputLabel />
 		<p:commandButton
