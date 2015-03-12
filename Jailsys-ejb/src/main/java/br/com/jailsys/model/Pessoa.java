@@ -1,12 +1,14 @@
 package br.com.jailsys.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -43,9 +45,9 @@ public class Pessoa extends EntidadeComum implements Serializable {
 
 	private boolean ativo;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "pessoaatividade", joinColumns = @JoinColumn(name = "idPessoa"), inverseJoinColumns = @JoinColumn(name = "idAtividade"))
-	private List<Atividade> atividades;
+	private Set<Atividade> atividades;
 
 	@Override
 	public String getDescricaoPesquisa() {
@@ -101,10 +103,10 @@ public class Pessoa extends EntidadeComum implements Serializable {
 	}
 
 	public List<Atividade> getAtividades() {
-		return atividades;
+		return new ArrayList<Atividade>(this.atividades);
 	}
 
 	public void setAtividades(List<Atividade> atividades) {
-		this.atividades = atividades;
+		this.atividades = new HashSet<Atividade>(atividades);
 	}
 }

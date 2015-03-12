@@ -39,7 +39,7 @@ public class Atividade extends EntidadeComum implements Serializable {
 	@ManyToMany(mappedBy = "atividades", fetch = FetchType.EAGER)
 	private List<Ambiente> ambientes;
 
-	@ManyToMany(mappedBy = "atividades", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "atividades")
 	private List<Pessoa> pessoas;
 
 	@Override
