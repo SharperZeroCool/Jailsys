@@ -9,35 +9,35 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Crime extends EntidadeComum implements Serializable {
 
-    private static final long serialVersionUID = 5936314317616471466L;
+	private static final long serialVersionUID = 5936314317616471466L;
 
-    private String nome;
-    private String descricao;
-    
-    @ManyToMany(mappedBy = "crimes")
-    private List<Preso> presos;
+	private String nome;
+	private String descricao;
 
-    public String getNome() {
-        return nome;
-    }
+	@ManyToMany(mappedBy = "crimes")
+	private List<Preso> presos;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public String getDescricao() {
-        return descricao;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+	public String getDescricao() {
+		return descricao;
+	}
 
-    public List<Preso> getPresos() {
-        return presos;
-    }
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-    public void setPresos(List<Preso> presos) {
-        this.presos = presos;
-    }
+	public List<Preso> getPresos() {
+		return presos;
+	}
+
+	public void setPresos(List<Preso> presos) {
+		this.presos = presos;
+	}
 }

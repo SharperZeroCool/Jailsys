@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.Query;
 
 import br.com.jailsys.model.Ambiente;
 import br.com.jailsys.model.Atividade;
@@ -19,7 +20,7 @@ public class AtividadeDAO extends GenericDAO<Atividade> implements Serializable 
 
 	@Inject
 	AmbienteDAO ambienteDao;
-	
+
 	@Inject
 	PessoaDAO pessoaDao;
 
@@ -29,12 +30,13 @@ public class AtividadeDAO extends GenericDAO<Atividade> implements Serializable 
 	}
 
 	public List<Atividade> listarDesvinculadas(EntidadeComum entidade) {
-		return getEntityManager()
+		Query query = getEntityManager()
 				.createQuery(
 						"SELECT a FROM Atividade a WHERE ((a.ativo = true) AND (a.id NOT IN(SELECT a2.id FROM "
 								+ entidade.getClass().getSimpleName()
-								+ " ent JOIN ent.atividades a2 WHERE ent.id ="
-								+ entidade.getId() + ")))").getResultList();
+								+ " ent JOIN ent.atividades a2 WHERE ent.id =:id)))");
+		query.setParameter("id", entidade.getId());
+		return query.getResultList();
 	}
 
 	public void excluirRelacionamentoAtividadeAmbiente(Long idAmbiente,
@@ -43,7 +45,7 @@ public class AtividadeDAO extends GenericDAO<Atividade> implements Serializable 
 		ambiente.getAtividades().remove(atividade);
 		getEntityManager().flush();
 	}
-	
+
 	public void excluirRelacionamentoAtividadePessoa(Long idPessoa,
 			Atividade atividade) {
 		Pessoa pessoa = pessoaDao.buscar(idPessoa);
