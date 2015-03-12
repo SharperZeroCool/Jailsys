@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import br.com.jailsys.DAO.PresoDAO;
+import br.com.jailsys.model.Crime;
 import br.com.jailsys.model.EntidadeComum;
 import br.com.jailsys.model.Pessoa;
 import br.com.jailsys.model.Preso;
@@ -55,11 +56,23 @@ public class PresoService implements AbstractService<EntidadeComum>,
 	}
 
 	public List<Preso> listar() {
-		return presoDao.listarAtivo();
+		return presoDao.listar();
 	}
-
+	
 	public List<Preso> listarItensAtivos() {
 		return presoDao.listarItensAtivos();
 	}
+	
+	public List<Crime> listarCrimes() {
+	    return presoDao.listarCrimes();
+	}
+	
+	public List<Crime> listarCrimesDesvinculados(Long presoId) {
+	    return presoDao.listarCrimesDesvinculados(presoId);
+	}
+	
+	public List<Crime> listarCrimesVinculados(Long presoId) {
+        return presoDao.listarCrimesVinculados(presoId);
+    }
 
 }
