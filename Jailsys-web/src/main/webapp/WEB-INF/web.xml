@@ -60,6 +60,7 @@
 			<url-pattern>/pessoa/*</url-pattern>
 			<url-pattern>/preso/*</url-pattern>
 			<url-pattern>/usuario/*</url-pattern>
+			<url-pattern>/visita/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>ADMIN</role-name>
