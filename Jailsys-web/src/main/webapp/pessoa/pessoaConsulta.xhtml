@@ -21,6 +21,10 @@
 					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.cpf']}">
 					<h:outputText value="#{pessoa.cpf}" />
 				</p:column>
+				<p:column headerText="Tipo" sortBy="#{pessoa.tipo}"
+					filterBy="#{pessoa.tipo}" filterMatchMode="contains">
+					<h:outputText value="#{pessoa.tipo}" />
+				</p:column>
 				<p:column
 					headerText="#{msg['jailsysweb.pessoa.grid.consulta.label.opcoes']}">
 					<p:commandButton action="#{pessoaBean.visualizar()}"
