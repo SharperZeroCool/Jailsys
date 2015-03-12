@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">#{msg['jailsysweb.visita.titulo.consulta.label']}</ui:define>
+
+	<ui:define name="corpo">
+
+		<h:form id="formulario" prependId="false">
+			<p:dataTable var="visita" value="#{visitaBean.listar()}"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+
+				<p:column headerText="#{msg['jailsysweb.visita.form.label.preso']}"
+					sortBy="#{visita.preso.nome}" filterBy="#{visita.preso.nome}"
+					filterMatchMode="contains">
+					<h:outputText value="#{visita.preso.nome}" />
+				</p:column>
+
+				<p:column headerText="#{msg['jailsysweb.visita.form.label.pessoa']}"
+					sortBy="#{visita.pessoa.nome}" filterBy="#{visita.pessoa.nome}"
+					filterMatchMode="contains">
+					<h:outputText value="#{visita.pessoa.nome}" />
+				</p:column>
+
+				<p:column
+					headerText="#{msg['jailsysweb.visita.form.label.horaInicio']}"
+					sortBy="#{visita.horaInicio}" filterBy="#{visita.horaInicio}"
+					filterMatchMode="contains">
+					<h:outputText value="#{visita.horaInicio}" />
+				</p:column>
+
+				<p:column
+					headerText="#{msg['jailsysweb.visita.form.label.duracao']}"
+					sortBy="#{visita.duracao}" filterBy="#{visita.duracao}"
+					filterMatchMode="contains">
+					<h:outputText value="#{visita.duracao}" />
+				</p:column>
+
+				<p:column
+					headerText="#{msg['jailsysweb.visita.consulta.grid.opcoes']}">
+
+					<p:commandButton
+						title="#{msg['jailsysweb.visita.consulta.grid.opcoes.visualizar']}"
+						icon="ui-icon-image" action="#{visitaBean.visualizar()}"
+						ajax="false">
+						<f:param name="idVisita" value="#{visita.id}" />
+						<f:param name="isVisualizar" value="true" />
+					</p:commandButton>
+					
+					<p:commandButton
+						title="#{msg['jailsysweb.visita.consulta.grid.opcoes.editar']}"
+						icon="ui-icon-pencil" action="#{visitaBean.prepararEdicao()}" ajax="false">
+						<f:param name="idVisita" value="#{visita.id}"/>
+					</p:commandButton>
+
+					<p:commandButton
+						title="#{msg['jailsysweb.visita.consulta.grid.opcoes.excluir']}"
+						icon="ui-icon-trash" action="#{visitaBean.excluir(visita)}"
+						update=":formulario, :messages">
+						<p:confirm
+							header="#{msg['jailsysweb.excluir.confirmacao.header']}"
+							message="#{msg['jailsysweb.excluir.confirmacao.texto']}"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+
+				</p:column>
+			</p:dataTable>
+			<p:confirmDialog global="true">
+				<center>
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.sim']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton
+						value="#{msg['jailsysweb.excluir.confirmacao.nao']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</center>
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:composition>

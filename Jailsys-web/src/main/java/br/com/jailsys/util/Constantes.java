@@ -80,5 +80,15 @@ public class Constantes {
 	public static final class Pesquisa {
 		public static final String TELA_RESULTADO = "/pesquisa/pesquisaResultado.xhtml";
 	}
+	
+	public static final class Visita{
+		public static final String TELA_CONSULTA = "/visita/visitaConsulta.xhtml";
+		public static final String TELA_CADASTRO = "/visita/visitaCadastro.xhtml";
+		public static final String TELA_EDICAO = "/visita/visitaEdicao.xhtml";
+		public static final String TELA_VISUALIZAR = "/visita/visitaFormulario.xhtml";
+		public static final String MENSAGEM_CADASTRO = "jailsysweb.visita.cadastro.sucesso";
+		public static final String MENSAGEM_EDICAO = "jailsysweb.visita.edicao.sucesso";
+		public static final String MENSAGEM_EXCLUSAO = "jailsysweb.visita.exclusao.sucesso";
+	}
 
 }

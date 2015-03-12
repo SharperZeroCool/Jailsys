@@ -59,6 +59,12 @@
 						<p:menuitem value="Consultar Atividade"
 							action="/atividade/atividadeConsulta?faces-redirect=true" />
 					</p:submenu>
+					<p:submenu label="#{msg['jailsysweb.visita.menu.label']}">
+						<p:menuitem value="#{msg['jailsysweb.visita.submenu.label.cadastro']}"
+							action="/visita/visitaCadastro?faces-redirect=true" />
+						<p:menuitem value="#{msg['jailsysweb.visita.submenu.label.consulta']}"
+							action="/visita/visitaConsulta?faces-redirect=true" />
+					</p:submenu>
 					<f:facet name="options">
 						<p:commandButton value="Sair" action="#{loginBean.sair()}"
 							rendered="#{loginBean.estaLogado()}" icon="ui-icon-extlink"
