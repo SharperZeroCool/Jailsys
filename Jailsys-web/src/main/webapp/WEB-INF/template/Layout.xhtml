@@ -8,7 +8,7 @@
 	<link type="text/css" rel="stylesheet"
 		href="/project/faces/javax.faces.resource/theme.css?ln=primefaces-home" />
 	<h:outputStylesheet name="css/Style.css" />
-	<title><ui:insert name="titulo">Jailsys</ui:insert></title>
+	<title><ui:insert name="titulo">#{msg['jailsysweb.template.header']}</ui:insert></title>
 </h:head>
 <h:body>
 	<f:loadBundle basename="messages" var="msg" />
@@ -41,7 +41,7 @@
 							value="#{msg['jailsysweb.funcionario.menu.consulta.label']}"
 							action="/funcionario/funcionarioConsulta?faces-redirect=true" />
 					</p:submenu>
-					<p:submenu label="Preso">
+					<p:submenu label="#{msg['jailsysweb.preso.menu.label']}">
 						<p:menuitem value="#{msg['jailsysweb.preso.menu.consulta.label']}"
 							action="/preso/presoConsulta?faces-redirect=true" />
 					</p:submenu>
@@ -53,16 +53,20 @@
 							value="#{msg['jailsysweb.ambiente.menu.consulta.label']}"
 							action="/ambiente/ambienteConsulta?faces-redirect=true" />
 					</p:submenu>
-					<p:submenu label="Atividade">
-						<p:menuitem value="Cadastrar Atividade"
+					<p:submenu label="#{msg['jailsysweb.atividade.menu.label']}">
+						<p:menuitem
+							value="#{msg['jailsysweb.atividade.submenu.label.cadastro']}"
 							action="/atividade/atividadeCadastro?faces-redirect=true" />
-						<p:menuitem value="Consultar Atividade"
+						<p:menuitem
+							value="#{msg['jailsysweb.atividade.submenu.label.consulta']}"
 							action="/atividade/atividadeConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.visita.menu.label']}">
-						<p:menuitem value="#{msg['jailsysweb.visita.submenu.label.cadastro']}"
+						<p:menuitem
+							value="#{msg['jailsysweb.visita.submenu.label.cadastro']}"
 							action="/visita/visitaCadastro?faces-redirect=true" />
-						<p:menuitem value="#{msg['jailsysweb.visita.submenu.label.consulta']}"
+						<p:menuitem
+							value="#{msg['jailsysweb.visita.submenu.label.consulta']}"
 							action="/visita/visitaConsulta?faces-redirect=true" />
 					</p:submenu>
 					<f:facet name="options">
