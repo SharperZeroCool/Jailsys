@@ -6,24 +6,25 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Resultado da Busca</ui:define>
+	<ui:define name="titulo">#{msg['jailsysweb.pesquisa.titulo']}</ui:define>
 
 	<ui:define name="corpo">
 		<h:form id="formulario" prependId="false">
 			<p:dataTable paginator="true" rows="10" rowsPerPageTemplate="5,10,15"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				var="resultado" value="#{pesquisaBean.pesquisaView.resultado}">
-				<p:column headerText="Tipo" sortBy="#{resultado.tipo}"
+				
+				<p:column headerText="#{msg['jailsysweb.pesquisa.grid.tipo']}" sortBy="#{resultado.tipo}"
 					filterBy="#{resultado.tipo}" filterMatchMode="contains">
 					<h:outputText value="#{resultado.tipo}" />
 				</p:column>
-				<p:column headerText="Nome" sortBy="#{resultado.descricaoPesquisa}"
+				<p:column headerText="#{msg['jailsysweb.pesquisa.grid.nome']}" sortBy="#{resultado.descricaoPesquisa}"
 					filterBy="#{resultado.descricaoPesquisa}"
 					filterMatchMode="contains">
 					<h:outputText value="#{resultado.descricaoPesquisa}" />
 				</p:column>
 
-				<p:column headerText="Opções">
+				<p:column headerText="#{msg['jailsysweb.pesquisa.grid.opcoes']}">
 					<p:commandButton icon="ui-icon-image"
 						action="#{pesquisaBean.visualizar(resultado)}" ajax="false">
 						<f:param name="#{'id'.concat(resultado.tipo)}"
