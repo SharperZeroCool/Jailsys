@@ -70,6 +70,16 @@
 							action="/visita/visitaConsulta?faces-redirect=true" />
 					</p:submenu>
 					<f:facet name="options">
+						<p:outputPanel class="ui-state-default"
+							rendered="#{loginBean.estaLogado()}">
+							<h:form class="form-pesquisa">
+								<p:inputText id="termoPesquisa" label="Termos de Pesquisa"
+									value="#{pesquisaBean.pesquisaView.termoPesquisa}"
+									required="true" />
+								<p:commandButton value="Buscar"
+									action="#{pesquisaBean.listarPorLike()}" ajax="false" />
+							</h:form>
+						</p:outputPanel>
 						<p:commandButton value="Sair" action="#{loginBean.sair()}"
 							rendered="#{loginBean.estaLogado()}" icon="ui-icon-extlink"
 							ajax="false" />
@@ -77,15 +87,7 @@
 				</p:menubar>
 			</h:form>
 			<p:messages id="messages" />
-			<p:outputPanel class="ui-state-default"
-				rendered="#{loginBean.estaLogado()}">
-				<h:form class="form-pesquisa">
-					<p:inputText id="termoPesquisa" label="Termos de Pesquisa"
-						value="#{pesquisaBean.pesquisaView.termoPesquisa}" required="true" />
-					<p:commandButton value="Buscar"
-						action="#{pesquisaBean.listarPorLike()}" ajax="false" />
-				</h:form>
-			</p:outputPanel>
+
 			<p:outputPanel class="ui-state-default"
 				rendered="#{loginBean.estaLogado()}">
 				<p:outputLabel

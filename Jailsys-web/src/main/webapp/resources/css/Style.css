@@ -29,19 +29,30 @@ body {
 	word-break: break-word !important;
 }
 
-.form-pesquisa{
+.form-pesquisa {
 	margin: 30px !important;
 }
 
-.form-pesquisa > input{
+.ui-menuitem>button {
+	float: right !important;
+}
+
+.ui-menuitem>.ui-state-default {
+	display:inline-block !important;
+	border-radius: 0 40px 40px 0 !important;
 	margin: 5px !important;
 }
 
-.ui-panelgrid > tbody > tr > td{
-	width:50% !important;
+.form-pesquisa>input {
+	margin: 5px !important;
+}
+
+.ui-panelgrid>tbody>tr>td {
+	width: 50% !important;
 	vertical-align: top;
 }
-.ui-panelgrid > tbody > tr{
+
+.ui-panelgrid>tbody>tr {
 	height: 45px;
 }
 
