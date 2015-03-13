@@ -38,13 +38,17 @@ body {
 }
 
 .ui-menuitem>.ui-state-default {
-	display:inline-block !important;
+	display: inline-block !important;
 	border-radius: 0 40px 40px 0 !important;
 	margin: 5px !important;
 }
 
 .form-pesquisa>input {
 	margin: 5px !important;
+}
+
+.botao-buscar {
+	border-radius: 10px !important;
 }
 
 .ui-panelgrid>tbody>tr>td {
