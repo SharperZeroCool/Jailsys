@@ -14,12 +14,24 @@
 	<f:loadBundle basename="messages" var="msg" />
 	<div id="conteudo" align="center">
 		<header>
-			<h1 class="title ui-widget-header ui-corner-all">
-				<h:outputText value="#{msg['jailsysweb.template.header']}" />
-			</h1>
+			<div class="title ui-widget-header ui-corner-all"
+				style="height: 100px !important;">
+				<p:outputPanel rendered="#{loginBean.estaLogado()}"
+					style="float:right !important; width: 42%; text-align: right; margin: 2% 1% 0 0;">
+					<p:outputLabel
+						value="#{msg['jailsysweb.template.saudacao'].concat(loginBean.usuario.pessoa.nome)}" />
+					<br />
+					<p:outputLabel
+						value="#{msg['jailsysweb.template.voceEstaLogado'].concat(loginBean.usuario.login)}" />
+				</p:outputPanel>
+				<h1 style="float: left; width: 57%; text-align: right;">
+					<h:outputText value="#{msg['jailsysweb.template.header']}" />
+				</h1>
+			</div>
 			<h:form prependId="false">
 				<p:menubar style="margin-top: -20px; margin-bottom: 20px">
-					<p:menuitem value="Início" outcome="/index" />
+					<p:menuitem value="#{msg['jailsysweb.template.inicio']}"
+						outcome="/index" />
 					<p:submenu label="#{msg['jailsysweb.usuario.menu.label']}">
 						<p:menuitem
 							value="#{msg['jailsysweb.usuario.menu.cadastro.label']}"
@@ -73,29 +85,22 @@
 						<p:outputPanel class="ui-state-default"
 							rendered="#{loginBean.estaLogado()}">
 							<h:form class="form-pesquisa">
-								<p:inputText id="termoPesquisa" label="Termos de Pesquisa"
+								<p:inputText id="termoPesquisa"
+									label="#{msg['jailsysweb.template.label.pesquisa']}"
 									value="#{pesquisaBean.pesquisaView.termoPesquisa}"
 									required="true" />
-								<p:commandButton value="Buscar"
+								<p:commandButton
+									value="#{msg['jailsysweb.template.botao.buscar']}"
 									action="#{pesquisaBean.listarPorLike()}" ajax="false" />
 							</h:form>
 						</p:outputPanel>
-						<p:commandButton value="Sair" action="#{loginBean.sair()}"
-							rendered="#{loginBean.estaLogado()}" icon="ui-icon-extlink"
-							ajax="false" />
+						<p:commandButton value="#{msg['jailsysweb.template.botao.sair']}"
+							action="#{loginBean.sair()}" rendered="#{loginBean.estaLogado()}"
+							icon="ui-icon-extlink" ajax="false" />
 					</f:facet>
 				</p:menubar>
 			</h:form>
 			<p:messages id="messages" />
-
-			<p:outputPanel class="ui-state-default"
-				rendered="#{loginBean.estaLogado()}">
-				<p:outputLabel
-					value="#{'Olá '.concat(loginBean.usuario.pessoa.nome)}" />
-				<br />
-				<p:outputLabel
-					value="#{'Você está logado como: '.concat(loginBean.usuario.login)}" />
-			</p:outputPanel>
 		</header>
 		<ui:insert name="corpo" />
 		<ui:include src="/chat.xhtml" />

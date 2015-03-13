@@ -8,7 +8,7 @@
 	<h:form id="form" rendered="#{loginBean.estaLogado()}">
 		<p:remoteCommand name="updateList" update="users" process="@this" />
 
-		<p:fieldset id="container" legend="JailsysChat" toggleable="true">
+		<p:fieldset id="container" legend="#{msg['jailsysweb.chat.legenda']}" toggleable="true">
 
 			<h:panelGroup>
 				<h:panelGrid columns="2" columnClasses="publicColumn,usersColumn"
@@ -18,7 +18,7 @@
 					<p:dataList id="users" var="user" value="#{chatBean.users.users}"
 						styleClass="usersList">
 						<f:facet name="header">
-                        	Usuários
+                        	#{msg['jailsysweb.chat.usuarios']}
                     	</f:facet>
                    		#{user}
                 	</p:dataList>
@@ -31,7 +31,7 @@
 					<f:validateRegex pattern="[a-zA-Z0-9 ]+" />
 				</p:inputText>
 				<p:spacer width="5" />
-				<p:commandButton value="Send"
+				<p:commandButton value="#{msg['jailsysweb.chat.botao.enviar']}"
 					actionListener="#{chatBean.sendGlobal}"
 					oncomplete="$('.messageInput').val('').focus()" />
 			</h:panelGroup>
