@@ -30,54 +30,55 @@
 			</div>
 			<h:form prependId="false">
 				<p:menubar style="margin-top: -20px; margin-bottom: 20px">
-					<p:menuitem value="#{msg['jailsysweb.template.inicio']}"
-						outcome="/index" />
+					<p:menuitem immediate="true"
+						value="#{msg['jailsysweb.template.inicio']}" outcome="/index" />
 					<p:submenu label="#{msg['jailsysweb.usuario.menu.label']}">
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.usuario.menu.cadastro.label']}"
 							action="/usuario/usuarioCadastro?faces-redirect=true" />
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.usuario.menu.consulta.label']}"
 							action="/usuario/usuarioConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.pessoa.menu.label']}">
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.pessoa.menu.cadastro.label']}"
 							action="/pessoa/pessoaCadastro?faces-redirect=true" />
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.pessoa.menu.consulta.label']}"
 							action="/pessoa/pessoaConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.funcionario.menu.label']}">
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.funcionario.menu.consulta.label']}"
 							action="/funcionario/funcionarioConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.preso.menu.label']}">
-						<p:menuitem value="#{msg['jailsysweb.preso.menu.consulta.label']}"
+						<p:menuitem immediate="true"
+							value="#{msg['jailsysweb.preso.menu.consulta.label']}"
 							action="/preso/presoConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.ambiente.menu.label']}">
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.ambiente.menu.cadastro.label']}"
 							action="/ambiente/ambienteCadastro?faces-redirect=true" />
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.ambiente.menu.consulta.label']}"
 							action="/ambiente/ambienteConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.atividade.menu.label']}">
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.atividade.submenu.label.cadastro']}"
 							action="/atividade/atividadeCadastro?faces-redirect=true" />
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.atividade.submenu.label.consulta']}"
 							action="/atividade/atividadeConsulta?faces-redirect=true" />
 					</p:submenu>
 					<p:submenu label="#{msg['jailsysweb.visita.menu.label']}">
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.visita.submenu.label.cadastro']}"
 							action="/visita/visitaCadastro?faces-redirect=true" />
-						<p:menuitem
+						<p:menuitem immediate="true"
 							value="#{msg['jailsysweb.visita.submenu.label.consulta']}"
 							action="/visita/visitaConsulta?faces-redirect=true" />
 					</p:submenu>
@@ -94,7 +95,8 @@
 									action="#{pesquisaBean.listarPorLike()}" ajax="false" />
 							</h:form>
 						</p:outputPanel>
-						<p:commandButton value="#{msg['jailsysweb.template.botao.sair']}"
+						<p:commandButton immediate="true"
+							value="#{msg['jailsysweb.template.botao.sair']}"
 							action="#{loginBean.sair()}" rendered="#{loginBean.estaLogado()}"
 							icon="ui-icon-extlink" ajax="false" />
 					</f:facet>
