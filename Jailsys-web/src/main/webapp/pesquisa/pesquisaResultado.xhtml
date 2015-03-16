@@ -18,10 +18,10 @@
 					filterBy="#{resultado.tipo}" filterMatchMode="contains">
 					<h:outputText value="#{resultado.tipo}" />
 				</p:column>
-				<p:column headerText="#{msg['jailsysweb.pesquisa.grid.nome']}" sortBy="#{resultado.descricaoPesquisa}"
-					filterBy="#{resultado.descricaoPesquisa}"
+				<p:column headerText="#{msg['jailsysweb.pesquisa.grid.nome']}" sortBy="#{resultado}"
+					filterBy="#{resultado}"
 					filterMatchMode="contains">
-					<h:outputText value="#{resultado.descricaoPesquisa}" />
+					<h:outputText value="#{resultado}" />
 				</p:column>
 
 				<p:column headerText="#{msg['jailsysweb.pesquisa.grid.opcoes']}">

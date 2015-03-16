@@ -26,13 +26,10 @@ public abstract class EntidadeComum {
 	}
 
 	/**
-	 * Deve ser sobreescrito por sub entidade
-	 * @return atributo de classe que melhor descreve a mesma para a tela de pesquisa
-	 * @throws UnsupportedOperationException
+	 * @return atributo de classe que melhor descreve a mesma para a tela de
+	 *         pesquisa
 	 */
-	public String getDescricaoPesquisa() throws UnsupportedOperationException {
-		throw new UnsupportedOperationException();
-	}
+	public abstract String toString();
 
 	// HashCode and Equals
 	@Override

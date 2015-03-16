@@ -64,11 +64,6 @@ public class Usuario extends EntidadeComum implements Serializable {
 				getConteudoEmailDeletarUsuario());
 	}
 
-	@Override
-	public String getDescricaoPesquisa() {
-		return login;
-	}
-
 	public String getLogin() {
 		return login;
 	}
@@ -108,6 +103,11 @@ public class Usuario extends EntidadeComum implements Serializable {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+	
+	@Override
+	public String toString() {
+		return login;
 	}
 
 	private String getSenhaCriptografada() {

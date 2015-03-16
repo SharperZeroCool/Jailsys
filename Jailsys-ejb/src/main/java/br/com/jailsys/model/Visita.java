@@ -11,30 +11,30 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Visita extends EntidadeComum implements Serializable{
+public class Visita extends EntidadeComum implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3652089900090894430L;
-	
+
 	@ManyToOne
-	@JoinColumn(name="idPreso")
+	@JoinColumn(name = "idPreso")
 	private Preso preso;
-	
+
 	@ManyToOne
-	@JoinColumn(name="idPessoa")
+	@JoinColumn(name = "idPessoa")
 	private Pessoa pessoa;
-	
+
 	@Temporal(TemporalType.TIME)
 	@Column(nullable = false)
 	private Date horaInicio;
-	
+
 	@Temporal(TemporalType.TIME)
 	@Column(nullable = false)
 	private Date duracao;
 
-	//GETTERS E SETTERS
+	// GETTERS E SETTERS
 	public Preso getPreso() {
 		return preso;
 	}
@@ -65,6 +65,12 @@ public class Visita extends EntidadeComum implements Serializable{
 
 	public void setDuracao(Date duracao) {
 		this.duracao = duracao;
+	}
+
+	@Override
+	public String toString() {
+		return "Preso: " + this.preso.getNome() + " visitado por: "
+				+ this.pessoa.getNome();
 	}
 
 }

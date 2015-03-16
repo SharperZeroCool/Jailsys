@@ -35,11 +35,6 @@ public class Preso extends Pessoa {
 	@JoinTable(name = "presocrime", joinColumns = @JoinColumn(name = "idPreso"), inverseJoinColumns = @JoinColumn(name = "idCrime"))
 	private Set<Crime> crimes;
 
-	@Override
-	public String getDescricaoPesquisa() {
-		return super.getNome();
-	}
-
 	public String getCodigo() {
 		return codigo;
 	}
@@ -98,5 +93,5 @@ public class Preso extends Pessoa {
 		codigo.append(calendario.get(Calendar.DAY_OF_YEAR));
 		this.codigo = codigo.toString();
 	}
-
+	
 }

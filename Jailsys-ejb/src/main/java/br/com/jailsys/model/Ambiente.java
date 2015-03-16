@@ -42,11 +42,6 @@ public class Ambiente extends EntidadeComum implements Serializable {
 	@JoinTable(name = "atividadeambiente", joinColumns = @JoinColumn(name = "idAmbiente"), inverseJoinColumns = @JoinColumn(name = "idAtividade"))
 	private List<Atividade> atividades;
 
-	@Override
-	public String getDescricaoPesquisa() {
-		return nome;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -101,6 +96,11 @@ public class Ambiente extends EntidadeComum implements Serializable {
 
 	public void setAtividades(List<Atividade> atividades) {
 		this.atividades = atividades;
+	}
+	
+	@Override
+	public String toString() {
+		return nome;
 	}
 
 }

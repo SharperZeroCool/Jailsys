@@ -65,11 +65,6 @@ public class Funcionario extends Pessoa {
 		this.codigo = codigo.toString();
     }
     
-    @Override
-	public String getDescricaoPesquisa(){
-		return super.getNome();
-	}
-
     public String getCodigo() {
         return codigo;
     }

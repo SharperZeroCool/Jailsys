@@ -42,11 +42,6 @@ public class Atividade extends EntidadeComum implements Serializable {
 	@ManyToMany(mappedBy = "atividades")
 	private List<Pessoa> pessoas;
 
-	@Override
-	public String getDescricaoPesquisa() {
-		return nome;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -101,5 +96,10 @@ public class Atividade extends EntidadeComum implements Serializable {
 
 	public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
+	}
+
+	@Override
+	public String toString() {
+		return nome;
 	}
 }

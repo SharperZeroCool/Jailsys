@@ -40,4 +40,9 @@ public class Crime extends EntidadeComum implements Serializable {
 	public void setPresos(List<Preso> presos) {
 		this.presos = presos;
 	}
+	
+	@Override
+	public String toString(){
+		return nome;
+	}
 }

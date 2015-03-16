@@ -49,11 +49,6 @@ public class Pessoa extends EntidadeComum implements Serializable {
 	@JoinTable(name = "pessoaatividade", joinColumns = @JoinColumn(name = "idPessoa"), inverseJoinColumns = @JoinColumn(name = "idAtividade"))
 	private Set<Atividade> atividades;
 
-	@Override
-	public String getDescricaoPesquisa() {
-		return nome;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -108,5 +103,10 @@ public class Pessoa extends EntidadeComum implements Serializable {
 
 	public void setAtividades(List<Atividade> atividades) {
 		this.atividades = new HashSet<Atividade>(atividades);
+	}
+
+	@Override
+	public String toString() {
+		return nome;
 	}
 }
